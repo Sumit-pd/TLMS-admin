@@ -19,6 +19,6 @@ struct AdminHomeScreen: View {
 
 struct AdminHomeScreen_Preview: PreviewProvider {
     static var previews: some View {
-        AdminHomeScreen()
+        TargetScreen()
     }
 }
