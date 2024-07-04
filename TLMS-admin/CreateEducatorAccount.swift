@@ -10,11 +10,24 @@ import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
 
+struct NavigationHelper: View {
+    var destination: AnyView
+
+    var body: some View {
+        NavigationLink(destination: destination, isActive: .constant(true)) {
+            EmptyView()
+        }
+    }
+}
+
 struct CreateAccount:View{
     @State private var fullName = ""
     @State private var email = ""
     @State private var password = ""
     @State private var showAlert = false
+    @State private var alertMessage = ""
+    @State private var navigateToPendingScreen = false
+    
         var body :some View{
             
             NavigationView{
@@ -48,29 +61,15 @@ struct CreateAccount:View{
                                 .cornerRadius(8)
                         }
                         
-                        NavigationLink(destination: EducatorScreen()){
-                            Button(action : {
-                                Auth.auth().createUser(withEmail: email, password: password) {
-                                    _, error in if let _ = error {
-                                        print("Couldn't Sign Up")
-                                    }
-                                    else {
-                                        uploadUserDetails()
-                                    }
-                                }
-                                
-                                
-                            }) {
-                                Text("Create Account")
-//                                    .foregroundColor(.white)
-//                                    .font(.headline)
-//                                    .frame(width: 335, height: 51)
-//                                    .background(Color("6C5DD4"))
-//                                    .cornerRadius(12)
-//                                    .padding(.top, 20)
-                            }
-                                
-                        }.padding(.top , 30)
+                        Button(action: {
+                            uploadPendingEducatorDetails()
+                        }) {
+                            Text("Create Account")
+                        }
+                        
+                        if navigateToPendingScreen {
+                            NavigationHelper(destination: AnyView(PendingEducatorScreen()))
+                        }
                         
                     } .padding(.horizontal).frame(maxWidth: .infinity ,alignment: .top)
                     
@@ -81,13 +80,21 @@ struct CreateAccount:View{
             }
     }
     
-    func uploadUserDetails() {
+    func uploadPendingEducatorDetails() {
         let datadict = ["Name" : fullName,
                        "Email" : email,
-                       "Password" : password
+                       "Password" : password,
+                        "role" : "Pending-Educator"
                       ]
         let db = Firestore.firestore()
-        let ref = db.collection("Pending-Educators").addDocument(data: datadict)
+        db.collection("Pending-Educators").addDocument(data: datadict) { error in
+            if let error = error {
+                alertMessage = error.localizedDescription
+                showAlert = true
+            } else {
+                navigateToPendingScreen = true
+            }
+        }
     }
     
 }

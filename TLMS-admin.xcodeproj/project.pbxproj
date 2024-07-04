@@ -28,6 +28,8 @@
 		D1D98E552C3557B30087BE49 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D1D98E542C3557B30087BE49 /* FirebaseStorage */; };
 		EF2865F22C370F2C00C08AE8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF2865F12C370F2C00C08AE8 /* GoogleService-Info.plist */; };
 		EF2865F42C3722D000C08AE8 /* CheckAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2865F32C3722D000C08AE8 /* CheckAuthentication.swift */; };
+		EF2865F62C3725B300C08AE8 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2865F52C3725B300C08AE8 /* DataModel.swift */; };
+		EF2865F82C372A2900C08AE8 /* PendingEducatorScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2865F72C372A2900C08AE8 /* PendingEducatorScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 		D19D5B342C35425F00E9AE98 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		EF2865F12C370F2C00C08AE8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EF2865F32C3722D000C08AE8 /* CheckAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAuthentication.swift; sourceTree = "<group>"; };
+		EF2865F52C3725B300C08AE8 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		EF2865F72C372A2900C08AE8 /* PendingEducatorScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingEducatorScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,8 @@
 				953B89A62C36A94C00A4618D /* EducatorLogin.swift */,
 				953B89982C36A8E200A4618D /* CreateEducatorAccount.swift */,
 				953B899A2C36A8F000A4618D /* EducatorHomeScreen.swift */,
+				EF2865F72C372A2900C08AE8 /* PendingEducatorScreen.swift */,
+				EF2865F52C3725B300C08AE8 /* DataModel.swift */,
 				D19D5B0E2C35423200E9AE98 /* Assets.xcassets */,
 				D19D5B102C35423200E9AE98 /* Preview Content */,
 			);
@@ -310,10 +316,12 @@
 				953B89992C36A8E200A4618D /* CreateEducatorAccount.swift in Sources */,
 				EF2865F42C3722D000C08AE8 /* CheckAuthentication.swift in Sources */,
 				953B899B2C36A8F000A4618D /* EducatorHomeScreen.swift in Sources */,
+				EF2865F82C372A2900C08AE8 /* PendingEducatorScreen.swift in Sources */,
 				953B89972C36A8BC00A4618D /* AdminHomeScreen.swift in Sources */,
 				953B89A72C36A94C00A4618D /* EducatorLogin.swift in Sources */,
 				953B89A92C36A96800A4618D /* AdminLogin.swift in Sources */,
 				D19D5B0B2C35423100E9AE98 /* TLMS_adminApp.swift in Sources */,
+				EF2865F62C3725B300C08AE8 /* DataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

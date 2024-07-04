@@ -24,10 +24,25 @@ struct TLMS_adminApp: App {
     var body: some Scene {
         WindowGroup {
             if authViewModel.isLoggedIn {
-                
-                    .environmentObject(authViewModel)
+                if let role = authViewModel.userRole {
+                    switch role {
+                    case "educator":
+                        EducatorHomeScreen()
+                            .environmentObject(authViewModel)
+                    case "admin":
+                        AdminHomeScreen()
+                            .environmentObject(authViewModel)
+                    case "pendingEducator":
+                        PendingEducatorScreen()
+                            .environmentObject(authViewModel)
+                    default:
+                        Text("Unknown role")
+                    }
+                } else {
+                    Text("Loading...") // or a loading indicator
+                }
             } else {
-                MainView()
+                MainScreenView()
                     .environmentObject(authViewModel)
             }
         }
