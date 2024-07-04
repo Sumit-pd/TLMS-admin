@@ -15,7 +15,9 @@
 		D19D5B262C35423200E9AE98 /* TLMS_adminUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D5B252C35423200E9AE98 /* TLMS_adminUITests.swift */; };
 		D19D5B282C35423200E9AE98 /* TLMS_adminUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D5B272C35423200E9AE98 /* TLMS_adminUITestsLaunchTests.swift */; };
 		D19D5B352C35425F00E9AE98 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = D19D5B342C35425F00E9AE98 /* .gitignore */; };
-		D1D98E482C35566E0087BE49 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1D98E472C35566E0087BE49 /* GoogleService-Info.plist */; };
+		D1BFEE8E2C368320006492F2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1BFEE8D2C368320006492F2 /* GoogleService-Info.plist */; };
+		D1BFEE8F2C368320006492F2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1BFEE8D2C368320006492F2 /* GoogleService-Info.plist */; };
+		D1BFEE902C368320006492F2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1BFEE8D2C368320006492F2 /* GoogleService-Info.plist */; };
 		D1D98E4B2C3557B30087BE49 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D1D98E4A2C3557B30087BE49 /* FirebaseAuth */; };
 		D1D98E4D2C3557B30087BE49 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = D1D98E4C2C3557B30087BE49 /* FirebaseDatabase */; };
 		D1D98E4F2C3557B30087BE49 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D1D98E4E2C3557B30087BE49 /* FirebaseDatabaseSwift */; };
@@ -53,7 +55,7 @@
 		D19D5B252C35423200E9AE98 /* TLMS_adminUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLMS_adminUITests.swift; sourceTree = "<group>"; };
 		D19D5B272C35423200E9AE98 /* TLMS_adminUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLMS_adminUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D19D5B342C35425F00E9AE98 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		D1D98E472C35566E0087BE49 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D1BFEE8D2C368320006492F2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,8 +92,8 @@
 		D19D5AFE2C35423100E9AE98 = {
 			isa = PBXGroup;
 			children = (
+				D1BFEE8D2C368320006492F2 /* GoogleService-Info.plist */,
 				D19D5B342C35425F00E9AE98 /* .gitignore */,
-				D1D98E472C35566E0087BE49 /* GoogleService-Info.plist */,
 				D19D5B092C35423100E9AE98 /* TLMS-admin */,
 				D19D5B1A2C35423200E9AE98 /* TLMS-adminTests */,
 				D19D5B242C35423200E9AE98 /* TLMS-adminUITests */,
@@ -261,7 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D19D5B122C35423200E9AE98 /* Preview Assets.xcassets in Resources */,
-				D1D98E482C35566E0087BE49 /* GoogleService-Info.plist in Resources */,
+				D1BFEE8E2C368320006492F2 /* GoogleService-Info.plist in Resources */,
 				D19D5B352C35425F00E9AE98 /* .gitignore in Resources */,
 				D19D5B0F2C35423200E9AE98 /* Assets.xcassets in Resources */,
 			);
@@ -271,6 +273,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1BFEE8F2C368320006492F2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +281,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1BFEE902C368320006492F2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,7 +470,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.TLMS-Infy-Educator";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.TLMS-Infy-Admin";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -495,7 +499,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.TLMS-Infy-Educator";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.TLMS-Infy-Admin";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
