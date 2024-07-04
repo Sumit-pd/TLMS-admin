@@ -6,12 +6,32 @@
 //
 
 import Foundation
+import FirebaseAuth
 import SwiftUI
 
 struct AdminHomeScreen: View {
     var body: some View {
-        Text("Admin Home Screen")
-            .navigationBarBackButtonHidden()
+        VStack {
+            Text("Admin Home Screen")
+                .navigationBarBackButtonHidden()
+            NavigationLink(destination : MainView()) {
+                Button(action : {
+                    print("Button")
+                    do {
+                        try Auth.auth().signOut()
+                        
+                    } catch let signOutError as NSError {
+                        print("Error signing out: %@", signOutError)
+                    }
+                    
+                }) {
+                    Text("Sign Out")
+                        .foregroundColor(.blue)
+                }
+                .padding(.top, 200)
+            }
+        }
+        
     }
 
 }

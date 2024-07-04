@@ -7,6 +7,8 @@
 
 import Foundation
 import SwiftUI
+import FirebaseAuth
+import FirebaseFirestore
 
 struct CreateAccount:View{
     @State private var fullName = ""
@@ -47,7 +49,26 @@ struct CreateAccount:View{
                         }
                         
                         NavigationLink(destination: EducatorScreen()){
-                                    Text("Create Account").font(.title2).foregroundColor(.white).frame(maxWidth: .infinity, minHeight: 50).background(Color(UIColor(named: "PrimaryColour")!)).cornerRadius(8)
+                            Button(action : {
+                                Auth.auth().createUser(withEmail: email, password: password) {
+                                    _, error in if let _ = error {
+                                        print("Couldn't Sign Up")
+                                    }
+                                    else {
+                                        uploadUserDetails()
+                                    }
+                                }
+                                
+                                
+                            }) {
+                                Text("Create Account")
+//                                    .foregroundColor(.white)
+//                                    .font(.headline)
+//                                    .frame(width: 335, height: 51)
+//                                    .background(Color("6C5DD4"))
+//                                    .cornerRadius(12)
+//                                    .padding(.top, 20)
+                            }
                                 
                         }.padding(.top , 30)
                         
@@ -60,6 +81,15 @@ struct CreateAccount:View{
             }
     }
     
+    func uploadUserDetails() {
+        let datadict = ["Name" : fullName,
+                       "Email" : email,
+                       "Password" : password
+                      ]
+        let db = Firestore.firestore()
+        let ref = db.collection("Pending-Educators").addDocument(data: datadict)
+    }
+    
 }
 
 
@@ -69,3 +99,5 @@ struct CreateAccount_preview:
         CreateAccount()
     }
 }
+
+

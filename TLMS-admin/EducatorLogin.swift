@@ -7,11 +7,14 @@
 
 import Foundation
 import SwiftUI
+import FirebaseAuth
 
 struct EducatorScreen:View{
     @State private var email = ""
     @State private var password = ""
     @State private var showAlert = false
+    @State private var errorMessage: String?
+    
     var body :some View{
             ZStack(alignment: .center) {
            
@@ -41,7 +44,23 @@ struct EducatorScreen:View{
                     VStack {
                     
                             NavigationLink(destination: EducatorHomeScreen()){
-                                Text("Login").font(.title2).foregroundColor(.white).frame(maxWidth: .infinity, minHeight: 50).background(Color(UIColor(named: "PrimaryColour")!)).cornerRadius(8)
+                                Button(action : {
+                                    print("Button Action")
+                                    Auth.auth().signIn(withEmail: email, password: password) {
+                                        _, error in if let _ = error {
+                                            print("Error Logging In")
+                                        }
+                                        else {
+                                            errorMessage = "You've successfully logged in"
+                                            showAlert = true
+                                        }
+                                    }
+                                }) {
+                                    Text("Login")
+                                        .font(.title3)
+                                        .foregroundColor(.blue)
+                                        .background()
+                                }
                                 
                             }
                             NavigationLink(destination: CreateAccount(), label: {

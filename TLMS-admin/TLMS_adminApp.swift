@@ -18,10 +18,18 @@ class AppDelegate:NSObject,UIApplicationDelegate{
 @main
 struct TLMS_adminApp: App {
     
+    @StateObject var authViewModel = AuthViewModel()
+    
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
-            MainView()
+            if authViewModel.isLoggedIn {
+                
+                    .environmentObject(authViewModel)
+            } else {
+                MainView()
+                    .environmentObject(authViewModel)
+            }
         }
     }
 }
