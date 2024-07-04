@@ -7,15 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3242436D2C36DF6900532F01 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3242436C2C36DF6900532F01 /* GoogleService-Info.plist */; };
+		3242436E2C36DF6900532F01 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3242436C2C36DF6900532F01 /* GoogleService-Info.plist */; };
+		3242436F2C36DF6900532F01 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3242436C2C36DF6900532F01 /* GoogleService-Info.plist */; };
+		32EC53D72C3716BE007F84C8 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EC53D62C3716BE007F84C8 /* MainButton.swift */; };
+		32EC53D92C372B7A007F84C8 /* UIHexcolor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EC53D82C372B7A007F84C8 /* UIHexcolor.swift */; };
+		32EC53E22C3739B7007F84C8 /* TextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EC53E12C3739B7007F84C8 /* TextLabel.swift */; };
+		32EC53E42C3741B8007F84C8 /* PasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EC53E32C3741B8007F84C8 /* PasswordField.swift */; };
+		32EC53E62C3746D1007F84C8 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32EC53E52C3746D0007F84C8 /* Poppins-Bold.ttf */; };
+		32EC53E82C3746E3007F84C8 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32EC53E72C3746E3007F84C8 /* Poppins-SemiBold.ttf */; };
+		32EC53EA2C3746EE007F84C8 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32EC53E92C3746EE007F84C8 /* Poppins-Medium.ttf */; };
+		32EC53EC2C3746FC007F84C8 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32EC53EB2C3746FC007F84C8 /* Poppins-Light.ttf */; };
+		32EC53EE2C3748CC007F84C8 /* TitleLable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EC53ED2C3748CC007F84C8 /* TitleLable.swift */; };
+		32EC53F02C374CC1007F84C8 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EC53EF2C374CC1007F84C8 /* ImageView.swift */; };
+		32EC53F22C374FA9007F84C8 /* HeadingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EC53F12C374FA9007F84C8 /* HeadingLabel.swift */; };
 		953B89972C36A8BC00A4618D /* AdminHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B89962C36A8BB00A4618D /* AdminHomeScreen.swift */; };
 		953B89992C36A8E200A4618D /* CreateEducatorAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B89982C36A8E200A4618D /* CreateEducatorAccount.swift */; };
 		953B899B2C36A8F000A4618D /* EducatorHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B899A2C36A8F000A4618D /* EducatorHomeScreen.swift */; };
 		953B899D2C36A8FA00A4618D /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B899C2C36A8FA00A4618D /* MainScreen.swift */; };
 		953B89A72C36A94C00A4618D /* EducatorLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B89A62C36A94C00A4618D /* EducatorLogin.swift */; };
 		953B89A92C36A96800A4618D /* AdminLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B89A82C36A96800A4618D /* AdminLogin.swift */; };
-		D10336F92C36BB7000DC39AA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D10336F82C36BB7000DC39AA /* GoogleService-Info.plist */; };
-		D10336FA2C36BB7000DC39AA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D10336F82C36BB7000DC39AA /* GoogleService-Info.plist */; };
-		D10336FB2C36BB7000DC39AA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D10336F82C36BB7000DC39AA /* GoogleService-Info.plist */; };
 		D19D5B0B2C35423100E9AE98 /* TLMS_adminApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D5B0A2C35423100E9AE98 /* TLMS_adminApp.swift */; };
 		D19D5B0D2C35423100E9AE98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D5B0C2C35423100E9AE98 /* ContentView.swift */; };
 		D19D5B0F2C35423200E9AE98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D19D5B0E2C35423200E9AE98 /* Assets.xcassets */; };
@@ -50,13 +61,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3242436C2C36DF6900532F01 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		32EC53D62C3716BE007F84C8 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
+		32EC53D82C372B7A007F84C8 /* UIHexcolor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHexcolor.swift; sourceTree = "<group>"; };
+		32EC53E02C373161007F84C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		32EC53E12C3739B7007F84C8 /* TextLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabel.swift; sourceTree = "<group>"; };
+		32EC53E32C3741B8007F84C8 /* PasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordField.swift; sourceTree = "<group>"; };
+		32EC53E52C3746D0007F84C8 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Bold.ttf"; path = "../../../../Desktop/Poppins/Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		32EC53E72C3746E3007F84C8 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-SemiBold.ttf"; path = "../../../../Desktop/Poppins/Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		32EC53E92C3746EE007F84C8 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Medium.ttf"; path = "../../../../Desktop/Poppins/Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		32EC53EB2C3746FC007F84C8 /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Light.ttf"; path = "../../../../Desktop/Poppins/Poppins-Light.ttf"; sourceTree = "<group>"; };
+		32EC53ED2C3748CC007F84C8 /* TitleLable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLable.swift; sourceTree = "<group>"; };
+		32EC53EF2C374CC1007F84C8 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		32EC53F12C374FA9007F84C8 /* HeadingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadingLabel.swift; sourceTree = "<group>"; };
 		953B89962C36A8BB00A4618D /* AdminHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHomeScreen.swift; sourceTree = "<group>"; };
 		953B89982C36A8E200A4618D /* CreateEducatorAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEducatorAccount.swift; sourceTree = "<group>"; };
 		953B899A2C36A8F000A4618D /* EducatorHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducatorHomeScreen.swift; sourceTree = "<group>"; };
 		953B899C2C36A8FA00A4618D /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		953B89A62C36A94C00A4618D /* EducatorLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducatorLogin.swift; sourceTree = "<group>"; };
 		953B89A82C36A96800A4618D /* AdminLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminLogin.swift; sourceTree = "<group>"; };
-		D10336F82C36BB7000DC39AA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D19D5B072C35423100E9AE98 /* TLMS-admin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TLMS-admin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D19D5B0A2C35423100E9AE98 /* TLMS_adminApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLMS_adminApp.swift; sourceTree = "<group>"; };
 		D19D5B0C2C35423100E9AE98 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -101,10 +124,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32EC53D52C3712BD007F84C8 /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				32EC53D62C3716BE007F84C8 /* MainButton.swift */,
+				32EC53E12C3739B7007F84C8 /* TextLabel.swift */,
+				32EC53E32C3741B8007F84C8 /* PasswordField.swift */,
+				32EC53ED2C3748CC007F84C8 /* TitleLable.swift */,
+				32EC53EF2C374CC1007F84C8 /* ImageView.swift */,
+				32EC53F12C374FA9007F84C8 /* HeadingLabel.swift */,
+			);
+			path = Elements;
+			sourceTree = "<group>";
+		};
+		32EC53DA2C372FC2007F84C8 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				32EC53E52C3746D0007F84C8 /* Poppins-Bold.ttf */,
+				32EC53E72C3746E3007F84C8 /* Poppins-SemiBold.ttf */,
+				32EC53E92C3746EE007F84C8 /* Poppins-Medium.ttf */,
+				32EC53EB2C3746FC007F84C8 /* Poppins-Light.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		D19D5AFE2C35423100E9AE98 = {
 			isa = PBXGroup;
 			children = (
-				D10336F82C36BB7000DC39AA /* GoogleService-Info.plist */,
+				3242436C2C36DF6900532F01 /* GoogleService-Info.plist */,
 				D19D5B342C35425F00E9AE98 /* .gitignore */,
 				D19D5B092C35423100E9AE98 /* TLMS-admin */,
 				D19D5B1A2C35423200E9AE98 /* TLMS-adminTests */,
@@ -126,6 +173,9 @@
 		D19D5B092C35423100E9AE98 /* TLMS-admin */ = {
 			isa = PBXGroup;
 			children = (
+				32EC53E02C373161007F84C8 /* Info.plist */,
+				32EC53DA2C372FC2007F84C8 /* Fonts */,
+				32EC53D52C3712BD007F84C8 /* Elements */,
 				D19D5B0A2C35423100E9AE98 /* TLMS_adminApp.swift */,
 				953B89962C36A8BB00A4618D /* AdminHomeScreen.swift */,
 				953B89982C36A8E200A4618D /* CreateEducatorAccount.swift */,
@@ -136,6 +186,7 @@
 				D19D5B0C2C35423100E9AE98 /* ContentView.swift */,
 				D19D5B0E2C35423200E9AE98 /* Assets.xcassets */,
 				D19D5B102C35423200E9AE98 /* Preview Content */,
+				32EC53D82C372B7A007F84C8 /* UIHexcolor.swift */,
 			);
 			path = "TLMS-admin";
 			sourceTree = "<group>";
@@ -281,7 +332,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D19D5B122C35423200E9AE98 /* Preview Assets.xcassets in Resources */,
-				D10336F92C36BB7000DC39AA /* GoogleService-Info.plist in Resources */,
+				32EC53EA2C3746EE007F84C8 /* Poppins-Medium.ttf in Resources */,
+				3242436D2C36DF6900532F01 /* GoogleService-Info.plist in Resources */,
+				32EC53EC2C3746FC007F84C8 /* Poppins-Light.ttf in Resources */,
+				32EC53E62C3746D1007F84C8 /* Poppins-Bold.ttf in Resources */,
+				32EC53E82C3746E3007F84C8 /* Poppins-SemiBold.ttf in Resources */,
 				D19D5B352C35425F00E9AE98 /* .gitignore in Resources */,
 				D19D5B0F2C35423200E9AE98 /* Assets.xcassets in Resources */,
 			);
@@ -291,7 +346,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D10336FA2C36BB7000DC39AA /* GoogleService-Info.plist in Resources */,
+				3242436E2C36DF6900532F01 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,7 +354,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D10336FB2C36BB7000DC39AA /* GoogleService-Info.plist in Resources */,
+				3242436F2C36DF6900532F01 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,14 +365,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32EC53EE2C3748CC007F84C8 /* TitleLable.swift in Sources */,
+				32EC53F22C374FA9007F84C8 /* HeadingLabel.swift in Sources */,
 				953B899D2C36A8FA00A4618D /* MainScreen.swift in Sources */,
+				32EC53E42C3741B8007F84C8 /* PasswordField.swift in Sources */,
 				953B89992C36A8E200A4618D /* CreateEducatorAccount.swift in Sources */,
 				953B899B2C36A8F000A4618D /* EducatorHomeScreen.swift in Sources */,
+				32EC53E22C3739B7007F84C8 /* TextLabel.swift in Sources */,
 				953B89972C36A8BC00A4618D /* AdminHomeScreen.swift in Sources */,
 				D19D5B0D2C35423100E9AE98 /* ContentView.swift in Sources */,
 				953B89A72C36A94C00A4618D /* EducatorLogin.swift in Sources */,
 				953B89A92C36A96800A4618D /* AdminLogin.swift in Sources */,
+				32EC53D72C3716BE007F84C8 /* MainButton.swift in Sources */,
 				D19D5B0B2C35423100E9AE98 /* TLMS_adminApp.swift in Sources */,
+				32EC53F02C374CC1007F84C8 /* ImageView.swift in Sources */,
+				32EC53D92C372B7A007F84C8 /* UIHexcolor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,14 +543,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TLMS-admin/Preview Content\"";
-				DEVELOPMENT_TEAM = 8SGTXTM2JK;
+				DEVELOPMENT_TEAM = 4R988LYXRQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "TLMS-admin/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -510,14 +574,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TLMS-admin/Preview Content\"";
-				DEVELOPMENT_TEAM = 8SGTXTM2JK;
+				DEVELOPMENT_TEAM = 4R988LYXRQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "TLMS-admin/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
