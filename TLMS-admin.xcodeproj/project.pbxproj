@@ -7,17 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D19D5B0B2C35423100E9AE98 /* TLMS_adminApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D5B0A2C35423100E9AE98 /* TLMS_adminApp.swift */; };
-		D19D5B0D2C35423100E9AE98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D5B0C2C35423100E9AE98 /* ContentView.swift */; };
+		52B87DAE2C36B03B007C8B25 /* AdminHomescreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B87DAD2C36B03B007C8B25 /* AdminHomescreen.swift */; };
+		52B87DB02C36B2FF007C8B25 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52B87DAF2C36B2FF007C8B25 /* GoogleService-Info.plist */; };
+		52B87DB12C36B2FF007C8B25 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52B87DAF2C36B2FF007C8B25 /* GoogleService-Info.plist */; };
+		52B87DB22C36B2FF007C8B25 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52B87DAF2C36B2FF007C8B25 /* GoogleService-Info.plist */; };
+		52C97A022C3706F0007DC8FF /* CoursesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C97A012C3706F0007DC8FF /* CoursesView.swift */; };
 		D19D5B0F2C35423200E9AE98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D19D5B0E2C35423200E9AE98 /* Assets.xcassets */; };
 		D19D5B122C35423200E9AE98 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D19D5B112C35423200E9AE98 /* Preview Assets.xcassets */; };
 		D19D5B1C2C35423200E9AE98 /* TLMS_adminTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D5B1B2C35423200E9AE98 /* TLMS_adminTests.swift */; };
 		D19D5B262C35423200E9AE98 /* TLMS_adminUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D5B252C35423200E9AE98 /* TLMS_adminUITests.swift */; };
 		D19D5B282C35423200E9AE98 /* TLMS_adminUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D5B272C35423200E9AE98 /* TLMS_adminUITestsLaunchTests.swift */; };
 		D19D5B352C35425F00E9AE98 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = D19D5B342C35425F00E9AE98 /* .gitignore */; };
-		D1BFEE8E2C368320006492F2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1BFEE8D2C368320006492F2 /* GoogleService-Info.plist */; };
-		D1BFEE8F2C368320006492F2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1BFEE8D2C368320006492F2 /* GoogleService-Info.plist */; };
-		D1BFEE902C368320006492F2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1BFEE8D2C368320006492F2 /* GoogleService-Info.plist */; };
 		D1D98E4B2C3557B30087BE49 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D1D98E4A2C3557B30087BE49 /* FirebaseAuth */; };
 		D1D98E4D2C3557B30087BE49 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = D1D98E4C2C3557B30087BE49 /* FirebaseDatabase */; };
 		D1D98E4F2C3557B30087BE49 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D1D98E4E2C3557B30087BE49 /* FirebaseDatabaseSwift */; };
@@ -44,9 +44,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		52B87DAD2C36B03B007C8B25 /* AdminHomescreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHomescreen.swift; sourceTree = "<group>"; };
+		52B87DAF2C36B2FF007C8B25 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/ELDEN RING [DODI Repack]/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		52C97A012C3706F0007DC8FF /* CoursesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesView.swift; sourceTree = "<group>"; };
 		D19D5B072C35423100E9AE98 /* TLMS-admin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TLMS-admin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D19D5B0A2C35423100E9AE98 /* TLMS_adminApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLMS_adminApp.swift; sourceTree = "<group>"; };
-		D19D5B0C2C35423100E9AE98 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D19D5B0E2C35423200E9AE98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D19D5B112C35423200E9AE98 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D19D5B172C35423200E9AE98 /* TLMS-adminTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TLMS-adminTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,7 +56,6 @@
 		D19D5B252C35423200E9AE98 /* TLMS_adminUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLMS_adminUITests.swift; sourceTree = "<group>"; };
 		D19D5B272C35423200E9AE98 /* TLMS_adminUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLMS_adminUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D19D5B342C35425F00E9AE98 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		D1BFEE8D2C368320006492F2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,8 +92,8 @@
 		D19D5AFE2C35423100E9AE98 = {
 			isa = PBXGroup;
 			children = (
-				D1BFEE8D2C368320006492F2 /* GoogleService-Info.plist */,
 				D19D5B342C35425F00E9AE98 /* .gitignore */,
+				52B87DAF2C36B2FF007C8B25 /* GoogleService-Info.plist */,
 				D19D5B092C35423100E9AE98 /* TLMS-admin */,
 				D19D5B1A2C35423200E9AE98 /* TLMS-adminTests */,
 				D19D5B242C35423200E9AE98 /* TLMS-adminUITests */,
@@ -114,8 +114,8 @@
 		D19D5B092C35423100E9AE98 /* TLMS-admin */ = {
 			isa = PBXGroup;
 			children = (
-				D19D5B0A2C35423100E9AE98 /* TLMS_adminApp.swift */,
-				D19D5B0C2C35423100E9AE98 /* ContentView.swift */,
+				52B87DAD2C36B03B007C8B25 /* AdminHomescreen.swift */,
+				52C97A012C3706F0007DC8FF /* CoursesView.swift */,
 				D19D5B0E2C35423200E9AE98 /* Assets.xcassets */,
 				D19D5B102C35423200E9AE98 /* Preview Content */,
 			);
@@ -263,9 +263,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D19D5B122C35423200E9AE98 /* Preview Assets.xcassets in Resources */,
-				D1BFEE8E2C368320006492F2 /* GoogleService-Info.plist in Resources */,
 				D19D5B352C35425F00E9AE98 /* .gitignore in Resources */,
 				D19D5B0F2C35423200E9AE98 /* Assets.xcassets in Resources */,
+				52B87DB02C36B2FF007C8B25 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,7 +273,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1BFEE8F2C368320006492F2 /* GoogleService-Info.plist in Resources */,
+				52B87DB12C36B2FF007C8B25 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +281,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1BFEE902C368320006492F2 /* GoogleService-Info.plist in Resources */,
+				52B87DB22C36B2FF007C8B25 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,8 +292,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D19D5B0D2C35423100E9AE98 /* ContentView.swift in Sources */,
-				D19D5B0B2C35423100E9AE98 /* TLMS_adminApp.swift in Sources */,
+				52B87DAE2C36B03B007C8B25 /* AdminHomescreen.swift in Sources */,
+				52C97A022C3706F0007DC8FF /* CoursesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

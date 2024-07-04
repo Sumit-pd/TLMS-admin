@@ -6,12 +6,3 @@
 //
 
 import SwiftUI
-
-@main
-struct TLMS_adminApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
-}
