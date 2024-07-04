@@ -11,6 +11,7 @@ import SwiftUI
 struct AdminHomeScreen: View {
     var body: some View {
         Text("Admin Home Screen")
+            .navigationBarBackButtonHidden()
     }
 
 }

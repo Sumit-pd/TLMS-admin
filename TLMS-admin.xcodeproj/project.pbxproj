@@ -11,12 +11,11 @@
 		953B89992C36A8E200A4618D /* CreateEducatorAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B89982C36A8E200A4618D /* CreateEducatorAccount.swift */; };
 		953B899B2C36A8F000A4618D /* EducatorHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B899A2C36A8F000A4618D /* EducatorHomeScreen.swift */; };
 		953B899D2C36A8FA00A4618D /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B899C2C36A8FA00A4618D /* MainScreen.swift */; };
-		953B89A32C36A93100A4618D /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B89A22C36A93100A4618D /* ResetPassword.swift */; };
 		953B89A72C36A94C00A4618D /* EducatorLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B89A62C36A94C00A4618D /* EducatorLogin.swift */; };
 		953B89A92C36A96800A4618D /* AdminLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B89A82C36A96800A4618D /* AdminLogin.swift */; };
-		953B89AB2C36AB5700A4618D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 953B89AA2C36AB5700A4618D /* GoogleService-Info.plist */; };
-		953B89AC2C36AB5700A4618D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 953B89AA2C36AB5700A4618D /* GoogleService-Info.plist */; };
-		953B89AD2C36AB5700A4618D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 953B89AA2C36AB5700A4618D /* GoogleService-Info.plist */; };
+		D10336F92C36BB7000DC39AA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D10336F82C36BB7000DC39AA /* GoogleService-Info.plist */; };
+		D10336FA2C36BB7000DC39AA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D10336F82C36BB7000DC39AA /* GoogleService-Info.plist */; };
+		D10336FB2C36BB7000DC39AA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D10336F82C36BB7000DC39AA /* GoogleService-Info.plist */; };
 		D19D5B0B2C35423100E9AE98 /* TLMS_adminApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D5B0A2C35423100E9AE98 /* TLMS_adminApp.swift */; };
 		D19D5B0D2C35423100E9AE98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D5B0C2C35423100E9AE98 /* ContentView.swift */; };
 		D19D5B0F2C35423200E9AE98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D19D5B0E2C35423200E9AE98 /* Assets.xcassets */; };
@@ -55,10 +54,9 @@
 		953B89982C36A8E200A4618D /* CreateEducatorAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEducatorAccount.swift; sourceTree = "<group>"; };
 		953B899A2C36A8F000A4618D /* EducatorHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducatorHomeScreen.swift; sourceTree = "<group>"; };
 		953B899C2C36A8FA00A4618D /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
-		953B89A22C36A93100A4618D /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassword.swift; sourceTree = "<group>"; };
 		953B89A62C36A94C00A4618D /* EducatorLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducatorLogin.swift; sourceTree = "<group>"; };
 		953B89A82C36A96800A4618D /* AdminLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminLogin.swift; sourceTree = "<group>"; };
-		953B89AA2C36AB5700A4618D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D10336F82C36BB7000DC39AA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D19D5B072C35423100E9AE98 /* TLMS-admin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TLMS-admin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D19D5B0A2C35423100E9AE98 /* TLMS_adminApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLMS_adminApp.swift; sourceTree = "<group>"; };
 		D19D5B0C2C35423100E9AE98 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -106,7 +104,7 @@
 		D19D5AFE2C35423100E9AE98 = {
 			isa = PBXGroup;
 			children = (
-				953B89AA2C36AB5700A4618D /* GoogleService-Info.plist */,
+				D10336F82C36BB7000DC39AA /* GoogleService-Info.plist */,
 				D19D5B342C35425F00E9AE98 /* .gitignore */,
 				D19D5B092C35423100E9AE98 /* TLMS-admin */,
 				D19D5B1A2C35423200E9AE98 /* TLMS-adminTests */,
@@ -133,7 +131,6 @@
 				953B89982C36A8E200A4618D /* CreateEducatorAccount.swift */,
 				953B899A2C36A8F000A4618D /* EducatorHomeScreen.swift */,
 				953B899C2C36A8FA00A4618D /* MainScreen.swift */,
-				953B89A22C36A93100A4618D /* ResetPassword.swift */,
 				953B89A62C36A94C00A4618D /* EducatorLogin.swift */,
 				953B89A82C36A96800A4618D /* AdminLogin.swift */,
 				D19D5B0C2C35423100E9AE98 /* ContentView.swift */,
@@ -284,7 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D19D5B122C35423200E9AE98 /* Preview Assets.xcassets in Resources */,
-				953B89AB2C36AB5700A4618D /* GoogleService-Info.plist in Resources */,
+				D10336F92C36BB7000DC39AA /* GoogleService-Info.plist in Resources */,
 				D19D5B352C35425F00E9AE98 /* .gitignore in Resources */,
 				D19D5B0F2C35423200E9AE98 /* Assets.xcassets in Resources */,
 			);
@@ -294,7 +291,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				953B89AC2C36AB5700A4618D /* GoogleService-Info.plist in Resources */,
+				D10336FA2C36BB7000DC39AA /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,7 +299,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				953B89AD2C36AB5700A4618D /* GoogleService-Info.plist in Resources */,
+				D10336FB2C36BB7000DC39AA /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,7 +312,6 @@
 			files = (
 				953B899D2C36A8FA00A4618D /* MainScreen.swift in Sources */,
 				953B89992C36A8E200A4618D /* CreateEducatorAccount.swift in Sources */,
-				953B89A32C36A93100A4618D /* ResetPassword.swift in Sources */,
 				953B899B2C36A8F000A4618D /* EducatorHomeScreen.swift in Sources */,
 				953B89972C36A8BC00A4618D /* AdminHomeScreen.swift in Sources */,
 				D19D5B0D2C35423100E9AE98 /* ContentView.swift in Sources */,
