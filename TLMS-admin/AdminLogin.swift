@@ -53,9 +53,10 @@ struct AdminScreen: View {
                             .cornerRadius(8)
                     }
 
-                    NavigationLink(destination: AdminHomeScreen(), isActive: $isLoggedIn) {
+                    NavigationLink(destination: TargetScreen(), isActive: $isLoggedIn) {
                         EmptyView()
                     }
+                    
                     .navigationBarBackButtonHidden()
                 }
             }
@@ -75,8 +76,8 @@ struct AdminScreen: View {
                 return
             }
             isLoggedIn = true
-        }
-    }
+            
+        }    }
 }
 
 
