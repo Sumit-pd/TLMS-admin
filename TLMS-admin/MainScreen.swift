@@ -14,7 +14,7 @@ struct MainView:View{
             VStack{
                 MainScreenView()
             }
-           
+            
         }
     }
     
@@ -31,8 +31,10 @@ struct AdminButton:View {
     var body: some View {
         
         NavigationLink(destination: AdminScreen()){
-        Text(title).font(.title2).foregroundColor(.white).frame(maxWidth: .infinity , maxHeight: 50).background(Color(UIColor(named: "PrimaryColour")!)).cornerRadius(8).padding(.vertical)
-        
+            CustomButton(label: "Login as Admin"){
+                print("Button Pressed!")
+            }
+            
         }
         
     }
@@ -40,30 +42,38 @@ struct AdminButton:View {
 struct EducatorButton:View {
     var title:String
     var body: some View {
-            NavigationLink(destination: EducatorScreen()){
-            Text(title).font(.title2).foregroundColor(.white).frame(maxWidth: .infinity , maxHeight: 50).background(Color(UIColor(named: "PrimaryColour")!)).cornerRadius(8).padding(.vertical)
-            
+        NavigationLink(destination: EducatorScreen()){
+            CustomButton(label: "Login as Educator"){
+                print("Button Pressed!")
             }
+            
+        }
     }
 }
 struct MainScreenView: View {
     var body: some View {
         NavigationView{
-            ZStack{
-                Color(UIColor(named: "BackgroundColour")!).edgesIgnoringSafeArea(.all)
-                
-                VStack{
-                    Text("Welcome To \n" + "Svadhyaya").bold().font(.title).frame(maxWidth: .infinity , alignment: .leading).padding(.vertical)
-                    Text("Countinuous Learning Made Easy").font(.title2).foregroundColor(Color(UIColor(named: "PrimaryColour")!)).frame(maxWidth: .infinity , alignment: .leading)
+            VStack(spacing: 10){
+                TitleLabel(text: "Welcome To Svadhyay")
                     
-                    Spacer()
-                    Image(.mainScreen).resizable().frame(width:300,height: 200).scaledToFit()
-                    Spacer()
+                Text("Countinuous Learnzing Made Easy")
+                    .font(.custom("Poppins-Light", size: 25))
+                    .foregroundColor(Color(UIColor(named: "PrimaryColour")!))
+                    .frame(maxWidth: 400 ,maxHeight: .infinity, alignment: .leading)
+                    
+                
+                
+                Spacer()
+                PNGImageView(imageName: "MainScreenImage", width: 436, height: 325)
+                Spacer()
                     AdminButton(title: "Login as Admin")
                     EducatorButton(title: "Login as Educator")
-                    
-                }.padding()
+                
             }
+            .padding(.horizontal, 10)
+            .padding(.vertical, 80)
+            .ignoresSafeArea()
+            .background(Color(UIColor(named: "BackgroundColour")!))
         }
     }
 }

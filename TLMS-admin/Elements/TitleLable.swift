@@ -6,13 +6,20 @@ struct TitleLabel: View {
     var fontSize: CGFloat = 34 // Default font size
 
     var body: some View {
+        
         Text(text)
-            .font(.system(size: fontSize, weight: .bold))
-            .padding()
-            .frame(maxWidth: 350, alignment: .leading) // Optional: Full width alignment
+            .lineLimit(nil)
+                        .multilineTextAlignment(.leading)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .padding()
+            .frame(alignment: .leading)
+            .ignoresSafeArea()
+            .padding(.top, 0)
+            .font(.custom("Poppins-Bold", size: 40))            
+            .foregroundColor(.black)
+            .frame(maxWidth: 400, alignment: .leading) // Optional: Full width alignment
             .background(Color.clear) // Optional: Background color
-            .padding(.leading, 0)
-            .padding(.top, 40)
+            .padding(.leading, 5)
             .lineLimit(nil)
             .multilineTextAlignment(.leading)
     }
