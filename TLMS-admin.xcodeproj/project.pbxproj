@@ -148,6 +148,13 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		32EC53F32C3762D7007F84C8 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
 		D19D5AFE2C35423100E9AE98 = {
 			isa = PBXGroup;
 			children = (
@@ -173,20 +180,21 @@
 		D19D5B092C35423100E9AE98 /* TLMS-admin */ = {
 			isa = PBXGroup;
 			children = (
+				32EC53F32C3762D7007F84C8 /* Screens */,
 				32EC53E02C373161007F84C8 /* Info.plist */,
 				32EC53DA2C372FC2007F84C8 /* Fonts */,
 				32EC53D52C3712BD007F84C8 /* Elements */,
+				D19D5B0E2C35423200E9AE98 /* Assets.xcassets */,
+				D19D5B102C35423200E9AE98 /* Preview Content */,
+				32EC53D82C372B7A007F84C8 /* UIHexcolor.swift */,
+				953B89A62C36A94C00A4618D /* EducatorLogin.swift */,
+				953B89A82C36A96800A4618D /* AdminLogin.swift */,
 				D19D5B0A2C35423100E9AE98 /* TLMS_adminApp.swift */,
 				953B89962C36A8BB00A4618D /* AdminHomeScreen.swift */,
 				953B89982C36A8E200A4618D /* CreateEducatorAccount.swift */,
 				953B899A2C36A8F000A4618D /* EducatorHomeScreen.swift */,
 				953B899C2C36A8FA00A4618D /* MainScreen.swift */,
-				953B89A62C36A94C00A4618D /* EducatorLogin.swift */,
-				953B89A82C36A96800A4618D /* AdminLogin.swift */,
 				D19D5B0C2C35423100E9AE98 /* ContentView.swift */,
-				D19D5B0E2C35423200E9AE98 /* Assets.xcassets */,
-				D19D5B102C35423200E9AE98 /* Preview Content */,
-				32EC53D82C372B7A007F84C8 /* UIHexcolor.swift */,
 			);
 			path = "TLMS-admin";
 			sourceTree = "<group>";

@@ -11,10 +11,16 @@ struct AdminScreen: View {
     @State private var inputText: String = ""
     @State private var newpassword: String = ""
     var body: some View {
-        ZStack(alignment: .center) {
+        ZStack{
+        ZStack(alignment: .bottom){
+            
+            PNGImageView(imageName: "Waves", width: 395.0, height: 195.0)
+        }
+        ZStack(alignment: .topLeading) {
             Color(UIColor(named: "BackgroundColour")!).edgesIgnoringSafeArea(.all)
             VStack{
                 TitleLabel(text: "Welcome To "  + "Swadhyay")
+                
                 VStack(spacing: 30) {
                     
                     
@@ -32,20 +38,18 @@ struct AdminScreen: View {
                     CustomButton(label: "Login") {
                         print("Button Pressed!")
                     }
-                    
-                    
-                    .navigationBarBackButtonHidden()
-                    
                 }
-                
-                .padding()
-                .padding(0)
-                .frame(maxWidth: .infinity, alignment: .leading)
+                //
+            }
+               
+            }
+//            .padding(.top, 0)
+//                .padding(.horizontal)
                 .alert(isPresented: $showAlert) {
                     Alert(title: Text("Error"), message: Text(errorMessage ?? "Unknown error"), dismissButton: .default(Text("OK")))
                 }
-            }.padding(.top, -150)
-        }
+            
+            }
     }
 
     func login() {
