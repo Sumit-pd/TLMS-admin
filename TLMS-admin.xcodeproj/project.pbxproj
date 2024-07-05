@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52B87DAE2C36B03B007C8B25 /* AdminHomescreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B87DAD2C36B03B007C8B25 /* AdminHomescreen.swift */; };
+		52B87DB02C36B2FF007C8B25 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52B87DAF2C36B2FF007C8B25 /* GoogleService-Info.plist */; };
+		52B87DB12C36B2FF007C8B25 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52B87DAF2C36B2FF007C8B25 /* GoogleService-Info.plist */; };
+		52B87DB22C36B2FF007C8B25 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52B87DAF2C36B2FF007C8B25 /* GoogleService-Info.plist */; };
+		52C97A022C3706F0007DC8FF /* CoursesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C97A012C3706F0007DC8FF /* CoursesView.swift */; };
 		953B89972C36A8BC00A4618D /* AdminHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B89962C36A8BB00A4618D /* AdminHomeScreen.swift */; };
 		953B89992C36A8E200A4618D /* CreateEducatorAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B89982C36A8E200A4618D /* CreateEducatorAccount.swift */; };
 		953B899B2C36A8F000A4618D /* EducatorHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B899A2C36A8F000A4618D /* EducatorHomeScreen.swift */; };
@@ -55,6 +60,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		52B87DAD2C36B03B007C8B25 /* AdminHomescreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHomescreen.swift; sourceTree = "<group>"; };
+		52B87DAF2C36B2FF007C8B25 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/ELDEN RING [DODI Repack]/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		52C97A012C3706F0007DC8FF /* CoursesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesView.swift; sourceTree = "<group>"; };
+		D19D5B072C35423100E9AE98 /* TLMS-admin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TLMS-admin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		953B89962C36A8BB00A4618D /* AdminHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHomeScreen.swift; sourceTree = "<group>"; };
 		953B89982C36A8E200A4618D /* CreateEducatorAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEducatorAccount.swift; sourceTree = "<group>"; };
 		953B899A2C36A8F000A4618D /* EducatorHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducatorHomeScreen.swift; sourceTree = "<group>"; };
@@ -118,6 +127,7 @@
 			children = (
 				EF2865F12C370F2C00C08AE8 /* GoogleService-Info.plist */,
 				D19D5B342C35425F00E9AE98 /* .gitignore */,
+				52B87DAF2C36B2FF007C8B25 /* GoogleService-Info.plist */,
 				D19D5B092C35423100E9AE98 /* TLMS-admin */,
 				D19D5B1A2C35423200E9AE98 /* TLMS-adminTests */,
 				D19D5B242C35423200E9AE98 /* TLMS-adminUITests */,
@@ -138,6 +148,8 @@
 		D19D5B092C35423100E9AE98 /* TLMS-admin */ = {
 			isa = PBXGroup;
 			children = (
+				52B87DAD2C36B03B007C8B25 /* AdminHomescreen.swift */,
+				52C97A012C3706F0007DC8FF /* CoursesView.swift */,
 				EF2865F32C3722D000C08AE8 /* CheckAuthentication.swift */,
 				D19D5B0A2C35423100E9AE98 /* TLMS_adminApp.swift */,
 				953B899C2C36A8FA00A4618D /* MainScreen.swift */,
@@ -303,6 +315,7 @@
 				EF2865F22C370F2C00C08AE8 /* GoogleService-Info.plist in Resources */,
 				D19D5B352C35425F00E9AE98 /* .gitignore in Resources */,
 				D19D5B0F2C35423200E9AE98 /* Assets.xcassets in Resources */,
+				52B87DB02C36B2FF007C8B25 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +323,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B87DB12C36B2FF007C8B25 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +331,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B87DB22C36B2FF007C8B25 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +342,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B87DAE2C36B03B007C8B25 /* AdminHomescreen.swift in Sources */,
+				52C97A022C3706F0007DC8FF /* CoursesView.swift in Sources */,
 				BBB4DD062C373EBC00150FE5 /* TargetScreen.swift in Sources */,
 				953B899D2C36A8FA00A4618D /* MainScreen.swift in Sources */,
 				EF25117D2C37C46D0035C58E /* CourseServices.swift in Sources */,
