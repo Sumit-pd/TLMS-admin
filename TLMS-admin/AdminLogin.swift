@@ -1,6 +1,7 @@
 import Foundation
 import SwiftUI
 import FirebaseAuth
+import FirebaseFirestore
 
 struct AdminScreen: View {
     @State private var email = ""
@@ -56,7 +57,7 @@ struct AdminScreen: View {
                         EmptyView()
                     }
                     
-                    .navigationBarBackButtonHidden()
+//                    .navigationBarBackButtonHidden()
                 }
             }
             .padding(.horizontal)
@@ -74,11 +75,11 @@ struct AdminScreen: View {
                 showAlert = true
                 return
             }
-            // Navigate to AdminHomeScreen if login is successful
             isLoggedIn = true
             
         }    }
 }
+
 
 struct AdminScreen_Preview: PreviewProvider {
     static var previews: some View {

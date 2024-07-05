@@ -7,12 +7,27 @@
 
 import Foundation
 import SwiftUI
+import FirebaseAuth
+import FirebaseFirestore
+
+struct NavigationHelper: View {
+    var destination: AnyView
+
+    var body: some View {
+        NavigationLink(destination: destination, isActive: .constant(true)) {
+            EmptyView()
+        }
+    }
+}
 
 struct CreateAccount:View{
     @State private var fullName = ""
     @State private var email = ""
     @State private var password = ""
     @State private var showAlert = false
+    @State private var alertMessage = ""
+    @State private var navigateToPendingScreen = false
+    
         var body :some View{
             
             NavigationView{
@@ -46,10 +61,15 @@ struct CreateAccount:View{
                                 .cornerRadius(8)
                         }
                         
-                        NavigationLink(destination: EducatorScreen()){
-                                    Text("Create Account").font(.title2).foregroundColor(.white).frame(maxWidth: .infinity, minHeight: 50).background(Color(UIColor(named: "PrimaryColour")!)).cornerRadius(8)
-                                
-                        }.padding(.top , 30)
+                        Button(action: {
+                            uploadPendingEducatorDetails()
+                        }) {
+                            Text("Create Account")
+                        }
+                        
+                        if navigateToPendingScreen {
+                            NavigationHelper(destination: AnyView(PendingEducatorScreen()))
+                        }
                         
                     } .padding(.horizontal).frame(maxWidth: .infinity ,alignment: .top)
                     
@@ -58,6 +78,25 @@ struct CreateAccount:View{
                 
                 
             }
+    }
+    
+    func uploadPendingEducatorDetails() {
+        let datadict = ["Name" : fullName,
+                       "Email" : email,
+                       "Password" : password,
+                        "role" : "Pending-Educator"
+                      ]
+        let db = Firestore.firestore()
+        db.collection("Pending-Educators").addDocument(data: datadict) { error in
+            if let error = error {
+                alertMessage = error.localizedDescription
+                showAlert = true
+            } else {
+                alertMessage = "Awesome! Account approval request sent."
+                showAlert = true
+                navigateToPendingScreen = true
+            }
+        }
     }
     
 }
@@ -69,3 +108,5 @@ struct CreateAccount_preview:
         CreateAccount()
     }
 }
+
+

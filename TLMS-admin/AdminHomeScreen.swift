@@ -6,16 +6,35 @@
 //
 
 import Foundation
+import FirebaseAuth
 import SwiftUI
 
 struct AdminHomeScreen: View {
+    @EnvironmentObject var authViewModel: AuthViewModel
+
     var body: some View {
-        Text("Admin Home Screen")
-            .navigationBarBackButtonHidden()
+        
+        VStack {
+            Text("Admin Home Screen")
+                .navigationBarBackButtonHidden()
+            
+            Button(action: {
+                do {
+                    try Auth.auth().signOut()
+                    authViewModel.signOut()
+                } catch let signOutError as NSError {
+                    print("Error signing out: %@", signOutError)
+                }
+            }) {
+                Text("Sign Out")
+                    .foregroundColor(.blue)
+            }
+            .padding(.top, 200)
+            
+            NavigationLink("", destination: MainView(), isActive: $authViewModel.isLoggedIn)
+        }
     }
-
 }
-
 
 struct AdminHomeScreen_Preview: PreviewProvider {
     static var previews: some View {

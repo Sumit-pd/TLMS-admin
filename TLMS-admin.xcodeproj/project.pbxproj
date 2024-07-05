@@ -16,10 +16,8 @@
 		BBB4DD052C373EBC00150FE5 /* NewTargetScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB4DD022C373EBC00150FE5 /* NewTargetScreen.swift */; };
 		BBB4DD062C373EBC00150FE5 /* TargetScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB4DD032C373EBC00150FE5 /* TargetScreen.swift */; };
 		BBB4DD072C373EBC00150FE5 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB4DD042C373EBC00150FE5 /* File.swift */; };
-		BBB4DD092C37408200150FE5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBB4DD082C37408200150FE5 /* GoogleService-Info.plist */; };
 		BBB4DD0B2C3748D400150FE5 /* CourseCreationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB4DD0A2C3748D400150FE5 /* CourseCreationScreen.swift */; };
 		D19D5B0B2C35423100E9AE98 /* TLMS_adminApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D5B0A2C35423100E9AE98 /* TLMS_adminApp.swift */; };
-		D19D5B0D2C35423100E9AE98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D5B0C2C35423100E9AE98 /* ContentView.swift */; };
 		D19D5B0F2C35423200E9AE98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D19D5B0E2C35423200E9AE98 /* Assets.xcassets */; };
 		D19D5B122C35423200E9AE98 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D19D5B112C35423200E9AE98 /* Preview Assets.xcassets */; };
 		D19D5B1C2C35423200E9AE98 /* TLMS_adminTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D5B1B2C35423200E9AE98 /* TLMS_adminTests.swift */; };
@@ -32,6 +30,11 @@
 		D1D98E512C3557B30087BE49 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D1D98E502C3557B30087BE49 /* FirebaseFirestore */; };
 		D1D98E532C3557B30087BE49 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D1D98E522C3557B30087BE49 /* FirebaseFirestoreSwift */; };
 		D1D98E552C3557B30087BE49 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D1D98E542C3557B30087BE49 /* FirebaseStorage */; };
+		EF25117D2C37C46D0035C58E /* CourseServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF25117C2C37C46D0035C58E /* CourseServices.swift */; };
+		EF2865F22C370F2C00C08AE8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF2865F12C370F2C00C08AE8 /* GoogleService-Info.plist */; };
+		EF2865F42C3722D000C08AE8 /* CheckAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2865F32C3722D000C08AE8 /* CheckAuthentication.swift */; };
+		EF2865F62C3725B300C08AE8 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2865F52C3725B300C08AE8 /* DataModel.swift */; };
+		EF2865F82C372A2900C08AE8 /* PendingEducatorScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2865F72C372A2900C08AE8 /* PendingEducatorScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,11 +64,9 @@
 		BBB4DD022C373EBC00150FE5 /* NewTargetScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTargetScreen.swift; sourceTree = "<group>"; };
 		BBB4DD032C373EBC00150FE5 /* TargetScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetScreen.swift; sourceTree = "<group>"; };
 		BBB4DD042C373EBC00150FE5 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
-		BBB4DD082C37408200150FE5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BBB4DD0A2C3748D400150FE5 /* CourseCreationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCreationScreen.swift; sourceTree = "<group>"; };
 		D19D5B072C35423100E9AE98 /* TLMS-admin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TLMS-admin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D19D5B0A2C35423100E9AE98 /* TLMS_adminApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLMS_adminApp.swift; sourceTree = "<group>"; };
-		D19D5B0C2C35423100E9AE98 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D19D5B0E2C35423200E9AE98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D19D5B112C35423200E9AE98 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D19D5B172C35423200E9AE98 /* TLMS-adminTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TLMS-adminTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +75,11 @@
 		D19D5B252C35423200E9AE98 /* TLMS_adminUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLMS_adminUITests.swift; sourceTree = "<group>"; };
 		D19D5B272C35423200E9AE98 /* TLMS_adminUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLMS_adminUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D19D5B342C35425F00E9AE98 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		EF25117C2C37C46D0035C58E /* CourseServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseServices.swift; sourceTree = "<group>"; };
+		EF2865F12C370F2C00C08AE8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EF2865F32C3722D000C08AE8 /* CheckAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAuthentication.swift; sourceTree = "<group>"; };
+		EF2865F52C3725B300C08AE8 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		EF2865F72C372A2900C08AE8 /* PendingEducatorScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingEducatorScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +116,7 @@
 		D19D5AFE2C35423100E9AE98 = {
 			isa = PBXGroup;
 			children = (
-				BBB4DD082C37408200150FE5 /* GoogleService-Info.plist */,
+				EF2865F12C370F2C00C08AE8 /* GoogleService-Info.plist */,
 				D19D5B342C35425F00E9AE98 /* .gitignore */,
 				D19D5B092C35423100E9AE98 /* TLMS-admin */,
 				D19D5B1A2C35423200E9AE98 /* TLMS-adminTests */,
@@ -132,18 +138,21 @@
 		D19D5B092C35423100E9AE98 /* TLMS-admin */ = {
 			isa = PBXGroup;
 			children = (
+				EF2865F32C3722D000C08AE8 /* CheckAuthentication.swift */,
 				D19D5B0A2C35423100E9AE98 /* TLMS_adminApp.swift */,
-				953B89962C36A8BB00A4618D /* AdminHomeScreen.swift */,
-				953B89982C36A8E200A4618D /* CreateEducatorAccount.swift */,
-				953B899A2C36A8F000A4618D /* EducatorHomeScreen.swift */,
 				953B899C2C36A8FA00A4618D /* MainScreen.swift */,
 				BBB4DD042C373EBC00150FE5 /* File.swift */,
 				BBB4DD022C373EBC00150FE5 /* NewTargetScreen.swift */,
 				BBB4DD032C373EBC00150FE5 /* TargetScreen.swift */,
 				BBB4DD0A2C3748D400150FE5 /* CourseCreationScreen.swift */,
-				953B89A62C36A94C00A4618D /* EducatorLogin.swift */,
+				EF25117C2C37C46D0035C58E /* CourseServices.swift */,
 				953B89A82C36A96800A4618D /* AdminLogin.swift */,
-				D19D5B0C2C35423100E9AE98 /* ContentView.swift */,
+				953B89962C36A8BB00A4618D /* AdminHomeScreen.swift */,
+				953B89A62C36A94C00A4618D /* EducatorLogin.swift */,
+				953B89982C36A8E200A4618D /* CreateEducatorAccount.swift */,
+				953B899A2C36A8F000A4618D /* EducatorHomeScreen.swift */,
+				EF2865F72C372A2900C08AE8 /* PendingEducatorScreen.swift */,
+				EF2865F52C3725B300C08AE8 /* DataModel.swift */,
 				D19D5B0E2C35423200E9AE98 /* Assets.xcassets */,
 				D19D5B102C35423200E9AE98 /* Preview Content */,
 			);
@@ -291,7 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D19D5B122C35423200E9AE98 /* Preview Assets.xcassets in Resources */,
-				BBB4DD092C37408200150FE5 /* GoogleService-Info.plist in Resources */,
+				EF2865F22C370F2C00C08AE8 /* GoogleService-Info.plist in Resources */,
 				D19D5B352C35425F00E9AE98 /* .gitignore in Resources */,
 				D19D5B0F2C35423200E9AE98 /* Assets.xcassets in Resources */,
 			);
@@ -320,14 +329,17 @@
 			files = (
 				BBB4DD062C373EBC00150FE5 /* TargetScreen.swift in Sources */,
 				953B899D2C36A8FA00A4618D /* MainScreen.swift in Sources */,
+				EF25117D2C37C46D0035C58E /* CourseServices.swift in Sources */,
 				953B89992C36A8E200A4618D /* CreateEducatorAccount.swift in Sources */,
+				EF2865F42C3722D000C08AE8 /* CheckAuthentication.swift in Sources */,
 				953B899B2C36A8F000A4618D /* EducatorHomeScreen.swift in Sources */,
+				EF2865F82C372A2900C08AE8 /* PendingEducatorScreen.swift in Sources */,
 				953B89972C36A8BC00A4618D /* AdminHomeScreen.swift in Sources */,
-				D19D5B0D2C35423100E9AE98 /* ContentView.swift in Sources */,
 				953B89A72C36A94C00A4618D /* EducatorLogin.swift in Sources */,
 				BBB4DD0B2C3748D400150FE5 /* CourseCreationScreen.swift in Sources */,
 				953B89A92C36A96800A4618D /* AdminLogin.swift in Sources */,
 				D19D5B0B2C35423100E9AE98 /* TLMS_adminApp.swift in Sources */,
+				EF2865F62C3725B300C08AE8 /* DataModel.swift in Sources */,
 				BBB4DD072C373EBC00150FE5 /* File.swift in Sources */,
 				BBB4DD052C373EBC00150FE5 /* NewTargetScreen.swift in Sources */,
 			);
