@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TargetScreen: View {
     @State private var isPresentingNewTarget = false
+    @State private var navigateToCourseCreation = false
 
     var body: some View {
         NavigationView {
@@ -26,6 +27,17 @@ struct TargetScreen: View {
                         .foregroundColor(Color(UIColor(hex: "#6C5DD4") ?? .black))
                         .font(.custom("headline", size: 24))
                         .fontWeight(.bold)
+                    
+                    Button(action : {
+                        print("Course Creation")
+                        navigateToCourseCreation.toggle()
+                        
+                    }) {
+                        Text("Create a Course")
+                    }
+                    NavigationLink(destination: CourseCreationView(), isActive: $navigateToCourseCreation) {
+                        EmptyView()
+                    }
                 }
             }
             .toolbar {

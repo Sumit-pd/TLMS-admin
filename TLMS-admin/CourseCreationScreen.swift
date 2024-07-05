@@ -1,8 +1,11 @@
 import SwiftUI
+import FirebaseAuth
+import FirebaseFirestore
+
 
 struct CourseCreationView: View {
-    @State private var courseTitle: String = "Enter Course Title"
-    @State private var courseDescription: String = "Enter Course Description"
+    @State private var courseTitle: String = ""
+    @State private var courseDescription: String = ""
     @State private var selectedEducator: String = ""
     @State private var courseImage: UIImage? = nil
 
@@ -10,9 +13,9 @@ struct CourseCreationView: View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
-                    Text("Customize Your")
-                        .font(.headline)
-                        .padding(.top)
+//                    Text("Customize Your")
+//                        .font(.headline)
+//                        .padding(.top)
 
                     EditableFieldView(title: "Course Title", text: $courseTitle, placeholder: "Enter Course Title")
                         
@@ -25,6 +28,7 @@ struct CourseCreationView: View {
                         Text("Educator 1").tag("Educator 1")
                         Text("Educator 2").tag("Educator 2")
                     }
+
                     .pickerStyle(MenuPickerStyle())
                     .background(Color(.systemGray6))
                     .cornerRadius(8)
@@ -34,6 +38,7 @@ struct CourseCreationView: View {
                     
                     Button(action: {
                         // Action to add file
+                        
                     }) {
                         HStack {
                             Image(systemName: "square.and.arrow.up")
@@ -46,7 +51,15 @@ struct CourseCreationView: View {
                     }
                     
                     Button(action: {
-                        // Action to create course
+                        let courseData = ["Title" : courseTitle,
+                                          "Description" : courseDescription,
+                                          "Educator" : selectedEducator,
+                                          "CoverImage" : ""
+                        ]
+                        
+                        let db = Firestore.firestore()
+                        db.collection("Target").document("TargetName").collection("Courses").document(courseTitle).setData(courseData)
+                        
                     }) {
                         Text("Create Course")
                             .frame(maxWidth: .infinity)
@@ -59,11 +72,6 @@ struct CourseCreationView: View {
                 .padding()
             }
             .navigationTitle("Course Creation")
-            .navigationBarItems(leading: Button(action: {
-                // Action for back button
-            }) {
-                Text("Back")
-            })
         }
     }
 }

@@ -7,11 +7,6 @@ class AuthViewModel: ObservableObject {
     @Published var userRole: String? = nil
 
     init() {
-//        do {
-//            try Auth.auth().signOut()
-//        } catch {
-//
-//        }
         self.isLoggedIn = Auth.auth().currentUser != nil
         if self.isLoggedIn {
             fetchUserRole()

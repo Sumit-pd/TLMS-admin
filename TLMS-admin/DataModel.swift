@@ -21,6 +21,7 @@ struct Target {
 }
 
 struct Course {
+    var courseID : UUID
     var courseName : String
     var courseDescription : String
     var courseImage : String

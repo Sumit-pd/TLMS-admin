@@ -92,6 +92,8 @@ struct CreateAccount:View{
                 alertMessage = error.localizedDescription
                 showAlert = true
             } else {
+                alertMessage = "Awesome! Account approval request sent."
+                showAlert = true
                 navigateToPendingScreen = true
             }
         }

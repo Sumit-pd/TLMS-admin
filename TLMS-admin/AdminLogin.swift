@@ -57,7 +57,7 @@ struct AdminScreen: View {
                         EmptyView()
                     }
                     
-                    .navigationBarBackButtonHidden()
+//                    .navigationBarBackButtonHidden()
                 }
             }
             .padding(.horizontal)
