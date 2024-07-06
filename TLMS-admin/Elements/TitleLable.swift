@@ -9,18 +9,17 @@ struct TitleLabel: View {
         
         Text(text)
             .lineLimit(nil)
-                        .multilineTextAlignment(.leading)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .padding()
+                        
             .frame(alignment: .leading)
             .ignoresSafeArea()
-            .padding(.top, 0)
-            .font(.custom("Poppins-Bold", size: 40))            
+//            .padding(.top, 0)
+//            .position(CGPoint(x: 65.0, y: -25.0))
+            .font(.custom("Poppins-Bold", size: 34))
             .foregroundColor(.black)
             .frame(maxWidth: 400, alignment: .leading) // Optional: Full width alignment
             .background(Color.clear) // Optional: Background color
             .padding(.leading, 5)
-            .lineLimit(nil)
+//            .lineLimit(nil)
             .multilineTextAlignment(.leading)
     }
 }

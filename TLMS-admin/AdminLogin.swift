@@ -49,7 +49,7 @@ struct AdminScreen: View {
                     Alert(title: Text("Error"), message: Text(errorMessage ?? "Unknown error"), dismissButton: .default(Text("OK")))
                 }
             
-            }
+        }.padding(.top,40)
     }
 
     func login() {

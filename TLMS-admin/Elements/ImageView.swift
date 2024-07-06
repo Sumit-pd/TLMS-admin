@@ -16,7 +16,7 @@ struct PNGImageView: View {
                 .frame(width: width, height: height)
         } else {
             // Placeholder or error handling for non-PNG images or image not found
-            Image(systemName: "exclamationmark.triangle")
+            Image(systemName: imageName)
                 .resizable()
                 .scaledToFit()
                 .frame(width: width, height: height)

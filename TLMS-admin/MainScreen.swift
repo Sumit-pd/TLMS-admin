@@ -55,8 +55,9 @@ struct MainScreenView: View {
         NavigationView{
             VStack(spacing: 10){
                 TitleLabel(text: "Welcome To Svadhyay")
+                    .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
                     
-                Text("Countinuous Learnzing Made Easy")
+                Text("Countinuous Learnzing " + "Made Easy")
                     .font(.custom("Poppins-Light", size: 25))
                     .foregroundColor(Color(UIColor(named: "PrimaryColour")!))
                     .frame(maxWidth: 400 ,maxHeight: .infinity, alignment: .leading)
