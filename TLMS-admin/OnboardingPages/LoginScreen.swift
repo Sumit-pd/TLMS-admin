@@ -26,12 +26,15 @@ struct LoginScreen: View {
 //                        .position(x:195,y:735)// Extend to ignore safe area insets
                 
                 
+
                 VStack(alignment : .center, spacing: 30) {
+
                     
                         
                     TitleLabel(text: "Welcome To Svadhyay")
                         .padding(.top, 80)
             
+
                     PNGImageView(imageName: "laptop", width: 139, height: 157)
                     
                     VStack(spacing: 10) {
@@ -57,6 +60,7 @@ struct LoginScreen: View {
                         }
                         
                         CustomSecureField(placeholder: "Password", text: $password)
+
                     }
                             CustomButton(label: "Login", action: {
                                 userAuth.email = email
@@ -103,6 +107,7 @@ struct LoginScreen: View {
     
     
 //    var body: some View {
+
 //
 //        ZStack(alignment: .bottom){
 //
@@ -110,6 +115,15 @@ struct LoginScreen: View {
 //
 //            VStack(alignment : .center ,spacing: 30){
 //
+
+//        
+//        ZStack(alignment: .bottom){
+//            
+//            PNGImageView(imageName: "Waves", width: 395.0, height: 195.0)
+//
+//            VStack(alignment : .center ,spacing: 30){
+//                
+
 //                    TitleLabel(text: "Welcome To Swadhyay")
 //                    .padding(.top ,80)
 //                    PNGImageView(imageName: "MainScreenImage", width: 139, height: 107)
@@ -125,6 +139,7 @@ struct LoginScreen: View {
 //                    userAuth.password = password
 //                    userAuth.loginUser()
 //                })
+
 //
 //                   Spacer()
 //            }.padding(20)
@@ -138,6 +153,21 @@ struct LoginScreen: View {
 //        .ignoresSafeArea()
 //
 //
+=======
+//                    
+//                   Spacer()
+//            }.padding(20)
+//            
+//               
+//                .alert(isPresented: $showAlert) {
+//                    Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+//                }
+//            
+//        }
+//        .ignoresSafeArea()
+//
+//            
+
 //    }
 //}
 
