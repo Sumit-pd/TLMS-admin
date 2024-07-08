@@ -77,7 +77,7 @@ struct CreateAccountView: View {
                                             RoundedRectangle(cornerRadius: 12)
                                                 .stroke(Color.gray, lineWidth: 1)
                                         )
-                                        .onChange(of: first) { _, newVal in
+                                        .onChange(of: last) { _, newVal in
                                             isLastNameValid = validateName(name: last)
                                         }
                                     
@@ -100,10 +100,98 @@ struct CreateAccountView: View {
 
 
                                 CustomTextField(placeholder: "About", text: $about)
+                                    .onChange(of: first) { _, newVal in
+                                        isAboutValid = validateAbout(about: about)
+                                    }
+                                HStack {
+                                    Spacer()
+                                    if !isAboutValid && about != ""{
+                                        Text("Character Limit is 255")
+                                            .font(.caption2)
+                                            .foregroundColor(.red)
+                                            .padding(.trailing, 35)
+                                    } else {
+                                        Text("Character Limit is 255")
+                                            .font(.caption2)
+                                            .foregroundColor(.white)
+                                            .padding(.trailing, 15)
+                                    }
+                                }
+                                
                                 CustomTextField(placeholder: "Phone Number", text: $phoneNumber)
+                                    .onChange(of: first) { _, newVal in
+                                        isPhoneNumberValid = validatePhone(phone: phoneNumber)
+                                    }
+                                HStack {
+                                    Spacer()
+                                    if !isPhoneNumberValid && phoneNumber != ""{
+                                        Text("Phone number can only contain digits")
+                                            .font(.caption2)
+                                            .foregroundColor(.red)
+                                            .padding(.trailing, 35)
+                                    } else {
+                                        Text("Phone number can only contain digits")
+                                            .font(.caption2)
+                                            .foregroundColor(.white)
+                                            .padding(.trailing, 15)
+                                    }
+                                }
+
                                 CustomTextField(placeholder: "Email", text: $email)
+                                    .onChange(of: email) { _, newVal in
+                                        isEmailValid = validateEmail(email: email)
+                                    }
+                                HStack {
+                                    Spacer()
+                                    if !isEmailValid && email != ""{
+                                        Text("Invalid email format")
+                                            .font(.caption2)
+                                            .foregroundColor(.red)
+                                            .padding(.trailing, 35)
+                                    } else {
+                                        Text("Invalid email format")
+                                            .font(.caption2)
+                                            .foregroundColor(.white)
+                                            .padding(.trailing, 15)
+                                    }
+                                }
+                                
                                 CustomSecureField(placeholder: "New Password", text: $newPassword)
+                                    .onChange(of: newPassword) { _, newVal in
+                                        isPasswordValid = validatePassword(password: newPassword)
+                                    }
+                                HStack {
+                                    Spacer()
+                                    if !isPasswordValid && newPassword != ""{
+                                        Text("Password must have uppercase, digit & special charcater")
+                                            .font(.caption2)
+                                            .foregroundColor(.red)
+                                            .padding(.trailing, 35)
+                                    } else {
+                                        Text("Password must have uppercase, digit & special charcater")
+                                            .font(.caption2)
+                                            .foregroundColor(.white)
+                                            .padding(.trailing, 15)
+                                    }
+                                }
                                 CustomSecureField(placeholder: "Confirm Password", text: $confirmPassword)
+                                    .onChange(of: confirmPassword) { _, newVal in
+                                        isPasswordValid = validatePassword(password: confirmPassword)
+                                    }
+                                HStack {
+                                    Spacer()
+                                    if !isPasswordValid && confirmPassword != ""{
+                                        Text("Password must have uppercase, digit & special charcater")
+                                            .font(.caption2)
+                                            .foregroundColor(.red)
+                                            .padding(.trailing, 35)
+                                    } else {
+                                        Text("Password must have uppercase, digit & special charcater")
+                                            .font(.caption2)
+                                            .foregroundColor(.white)
+                                            .padding(.trailing, 15)
+                                    }
+                                }
 
                                 CustomButton(label: "Register", action: {
                                     register()
