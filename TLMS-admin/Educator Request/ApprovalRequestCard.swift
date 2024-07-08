@@ -12,7 +12,7 @@ struct ApprovalRequestCard: View {
                 ProfileCircleImage(imageURL: educator.profileImageURL, width: 60, height: 60)
      
                 VStack(alignment: .leading, spacing: 5) {
-                    HeadlineText(text1: educator.EducatorName)
+                    HeadlineText(text1: educator.firstName + educator.lastName)
                     SubHeadlineText(text2: educator.about)
                 }
                 Spacer()
@@ -29,7 +29,7 @@ struct ApprovalRequestCard: View {
 struct EducatorCardView_Previews: PreviewProvider {
     static var previews: some View {
         let educator = Educator(
-            EducatorName: "Dummy", about: "Beware of my presence, Coders!", email: "veronica@gmail.com", password: "1234567", phoneNumber: "7878787878", profileImageURL: "fhgfgd"
+            firstName: "Dummy",lastName: "User", about: "Beware of my presence, Coders!", email: "veronica@gmail.com", password: "1234567", phoneNumber: "7878787878", profileImageURL: "fhgfgd"
         )
         ApprovalRequestCard(educator: educator)
     }

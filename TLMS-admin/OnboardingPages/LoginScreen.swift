@@ -15,6 +15,7 @@ struct LoginScreen: View {
     @State private var showAlert = false
     @State private var alertMessage = ""
     @State private var login = false
+    @State private var isEmailValid = false
     @EnvironmentObject var userAuth: UserAuthentication
     
     var body: some View {
@@ -22,19 +23,44 @@ struct LoginScreen: View {
             ZStack(alignment:. bottom) {
            
                     PNGImageView(imageName: "Waves", width: 395, height: 195)
-                VStack(alignment : .center, spacing: 20) {
+//                        .position(x:195,y:735)// Extend to ignore safe area insets
+                
+                
+
+                VStack(alignment : .center, spacing: 30) {
+
                     
                         
                     TitleLabel(text: "Welcome To Svadhyay")
                         .padding(.top, 80)
             
-                    PNGImageView(imageName: "laptop", width: 139, height: 187)
+
+                    PNGImageView(imageName: "laptop", width: 139, height: 157)
                     
-                    VStack(spacing: 20) {
+                    VStack(spacing: 10) {
                         CustomTextField(placeholder: "Email", text: $email)
+                            .onChange(of: email) { _, newVal in
+                                isEmailValid = validateEmail(email: newVal)
+                                print(isEmailValid)
+                                    
+                            }
+                        HStack {
+                            Spacer()
+                            if !isEmailValid && email != ""{
+                                Text("Enter a valid email address")
+                                    .font(.caption2)
+                                    .foregroundColor(.red)
+                                    .padding(.trailing, 35)
+                            } else {
+                                Text("Enter a valid email address")
+                                    .font(.caption2)
+                                    .foregroundColor(.white)
+                                    .padding(.trailing, 15)
+                            }
+                        }
                         
                         CustomSecureField(placeholder: "Password", text: $password)
-                        
+
                     }
                             CustomButton(label: "Login", action: {
                                 userAuth.email = email
@@ -81,6 +107,15 @@ struct LoginScreen: View {
     
     
 //    var body: some View {
+
+//
+//        ZStack(alignment: .bottom){
+//
+//            PNGImageView(imageName: "Waves", width: 395.0, height: 195.0)
+//
+//            VStack(alignment : .center ,spacing: 30){
+//
+
 //        
 //        ZStack(alignment: .bottom){
 //            
@@ -88,6 +123,7 @@ struct LoginScreen: View {
 //
 //            VStack(alignment : .center ,spacing: 30){
 //                
+
 //                    TitleLabel(text: "Welcome To Swadhyay")
 //                    .padding(.top ,80)
 //                    PNGImageView(imageName: "MainScreenImage", width: 139, height: 107)
@@ -103,6 +139,21 @@ struct LoginScreen: View {
 //                    userAuth.password = password
 //                    userAuth.loginUser()
 //                })
+
+//
+//                   Spacer()
+//            }.padding(20)
+//
+//
+//                .alert(isPresented: $showAlert) {
+//                    Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+//                }
+//
+//        }
+//        .ignoresSafeArea()
+//
+//
+=======
 //                    
 //                   Spacer()
 //            }.padding(20)
@@ -116,6 +167,7 @@ struct LoginScreen: View {
 //        .ignoresSafeArea()
 //
 //            
+
 //    }
 //}
 

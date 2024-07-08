@@ -45,9 +45,12 @@
 		EF2511AC2C3BBB450035C58E /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2511AB2C3BBB450035C58E /* TabBar.swift */; };
 		EF2511AE2C3BBBAC0035C58E /* UIHexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2511AD2C3BBBAC0035C58E /* UIHexColor.swift */; };
 		EF2511B22C3BBF100035C58E /* FirstTimeLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2511B12C3BBF100035C58E /* FirstTimeLogin.swift */; };
+
+		EF2511BC2C3C28E60035C58E /* RegexCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2511BB2C3C28E60035C58E /* RegexCheck.swift */; };
+		EF2865F22C370F2C00C08AE8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF2865F12C370F2C00C08AE8 /* GoogleService-Info.plist */; };
+
 		EF2511B42C3BEAE60035C58E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF2511B32C3BEAE60035C58E /* GoogleService-Info.plist */; };
-		EF2511B52C3BEAE60035C58E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF2511B32C3BEAE60035C58E /* GoogleService-Info.plist */; };
-		EF2511B62C3BEAE60035C58E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF2511B32C3BEAE60035C58E /* GoogleService-Info.plist */; };
+	
 		EF2865F42C3722D000C08AE8 /* UserAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2865F32C3722D000C08AE8 /* UserAuthentication.swift */; };
 		EF2865F62C3725B300C08AE8 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2865F52C3725B300C08AE8 /* DataModel.swift */; };
 /* End PBXBuildFile section */
@@ -110,7 +113,9 @@
 		EF2511AB2C3BBB450035C58E /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		EF2511AD2C3BBBAC0035C58E /* UIHexColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHexColor.swift; sourceTree = "<group>"; };
 		EF2511B12C3BBF100035C58E /* FirstTimeLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTimeLogin.swift; sourceTree = "<group>"; };
-		EF2511B32C3BEAE60035C58E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+
+		EF2511BB2C3C28E60035C58E /* RegexCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexCheck.swift; sourceTree = "<group>"; };
+		
 		EF2865F32C3722D000C08AE8 /* UserAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthentication.swift; sourceTree = "<group>"; };
 		EF2865F52C3725B300C08AE8 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -231,6 +236,7 @@
 			children = (
 				D19D5B0A2C35423100E9AE98 /* TLMS_adminApp.swift */,
 				EF2865F32C3722D000C08AE8 /* UserAuthentication.swift */,
+				EF2511BB2C3C28E60035C58E /* RegexCheck.swift */,
 				EF25117E2C3965630035C58E /* LoginScreen.swift */,
 				EF2511A32C3B31E70035C58E /* CheckUserRole.swift */,
 				953B89982C36A8E200A4618D /* CreateEducatorAccount.swift */,
@@ -453,6 +459,7 @@
 				EF25119F2C3AD9270035C58E /* DetailedEducatorRequestView.swift in Sources */,
 				D19D5B0B2C35423100E9AE98 /* TLMS_adminApp.swift in Sources */,
 				EF25118C2C3966E50035C58E /* PasswordField.swift in Sources */,
+				EF2511BC2C3C28E60035C58E /* RegexCheck.swift in Sources */,
 				EF2865F62C3725B300C08AE8 /* DataModel.swift in Sources */,
 				EF2511892C3966560035C58E /* TitleLabel.swift in Sources */,
 				EF2511B22C3BBF100035C58E /* FirstTimeLogin.swift in Sources */,

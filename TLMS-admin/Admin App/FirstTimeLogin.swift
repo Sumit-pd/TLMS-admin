@@ -49,7 +49,7 @@ struct FirstTimeLogin: View {
             let user = Auth.auth().currentUser
             user?.updatePassword(to: confirmPassword)
             presentationMode.wrappedValue.dismiss()
-            print("Passowrd Changed")
+            print("Password Changed")
         } else {
             print("Pssword do not match")
             errorMessage = "Passwords Do not match"
