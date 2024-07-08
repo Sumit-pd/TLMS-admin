@@ -85,8 +85,8 @@ struct CreateAccountView: View {
                                 
                                 HStack {
                                     Spacer()
-                                    if !isFirstNameValid && first != "" && !isLastNameValid && last != ""{
-                                        Text("Name should only contain alphabets")
+                                    if (!isFirstNameValid && first != "") || (!isLastNameValid && last != "") || (first == last) {
+                                        Text("Name should only contain alphabets [2-20]")
                                             .font(.caption2)
                                             .foregroundColor(.red)
                                             .padding(.trailing, 35)
@@ -95,6 +95,7 @@ struct CreateAccountView: View {
                                             .font(.caption2)
                                             .foregroundColor(.white)
                                             .padding(.trailing, 15)
+                                            .opacity(0)
                                     }
                                 }
 
@@ -115,6 +116,7 @@ struct CreateAccountView: View {
                                             .font(.caption2)
                                             .foregroundColor(.white)
                                             .padding(.trailing, 15)
+                                            .opacity(0)
                                     }
                                 }
                                 
@@ -125,15 +127,16 @@ struct CreateAccountView: View {
                                 HStack {
                                     Spacer()
                                     if !isPhoneNumberValid && phoneNumber != ""{
-                                        Text("Phone number can only contain digits")
+                                        Text("Phone number can only contain 10 digits")
                                             .font(.caption2)
                                             .foregroundColor(.red)
                                             .padding(.trailing, 35)
                                     } else {
-                                        Text("Phone number can only contain digits")
+                                        Text("Phone number can only contain 10 digits")
                                             .font(.caption2)
                                             .foregroundColor(.white)
                                             .padding(.trailing, 15)
+                                            .opacity(0)
                                     }
                                 }
 
@@ -153,6 +156,7 @@ struct CreateAccountView: View {
                                             .font(.caption2)
                                             .foregroundColor(.white)
                                             .padding(.trailing, 15)
+                                            .opacity(0)
                                     }
                                 }
                                 
@@ -172,6 +176,7 @@ struct CreateAccountView: View {
                                             .font(.caption2)
                                             .foregroundColor(.white)
                                             .padding(.trailing, 15)
+                                            .opacity(0)
                                     }
                                 }
                                 CustomSecureField(placeholder: "Confirm Password", text: $confirmPassword)
@@ -190,6 +195,7 @@ struct CreateAccountView: View {
                                             .font(.caption2)
                                             .foregroundColor(.white)
                                             .padding(.trailing, 15)
+                                            .opacity(0)
                                     }
                                 }
 

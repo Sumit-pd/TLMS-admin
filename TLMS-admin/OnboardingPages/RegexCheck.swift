@@ -25,12 +25,12 @@ func validatePassword(password: String) -> Bool {
     let passwordPredicate = NSPredicate(format:"SELF MATCHES %@", passwordRegex)
     return passwordPredicate.evaluate(with: password)
 }
-    
 func validatePhone(phone: String) -> Bool {
-    let phoneRegex = "^\\d{10}$"
-    let phonePredicate = NSPredicate(format:"SELF MATCHES %@", phoneRegex)
+    let phoneRegex = "^[+]?[0-9]*\\s?(\\d{3})\\s?[-\\s]?\\d{3}[-\\s]?\\d{4}$"
+    let phonePredicate = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
     return phonePredicate.evaluate(with: phone)
 }
+
     
 func validateAbout(about: String) -> Bool {
     return about.count <= 255

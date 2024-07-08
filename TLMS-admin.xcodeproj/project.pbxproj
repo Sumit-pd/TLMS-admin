@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		32EC542E2C3C3234007F84C8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32EC542D2C3C3234007F84C8 /* GoogleService-Info.plist */; };
+		04CD06012C3C38390081D8AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04CD06002C3C38390081D8AF /* GoogleService-Info.plist */; };
 		953B89972C36A8BC00A4618D /* AdminHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B89962C36A8BB00A4618D /* AdminHomeScreen.swift */; };
 		953B89992C36A8E200A4618D /* CreateEducatorAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B89982C36A8E200A4618D /* CreateEducatorAccount.swift */; };
 		953B899B2C36A8F000A4618D /* EducatorHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B899A2C36A8F000A4618D /* EducatorHomeScreen.swift */; };
@@ -70,7 +70,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		32EC542D2C3C3234007F84C8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		04CD06002C3C38390081D8AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		953B89962C36A8BB00A4618D /* AdminHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHomeScreen.swift; sourceTree = "<group>"; };
 		953B89982C36A8E200A4618D /* CreateEducatorAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEducatorAccount.swift; sourceTree = "<group>"; };
 		953B899A2C36A8F000A4618D /* EducatorHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducatorHomeScreen.swift; sourceTree = "<group>"; };
@@ -150,7 +150,6 @@
 		D19D5AFE2C35423100E9AE98 = {
 			isa = PBXGroup;
 			children = (
-				32EC542D2C3C3234007F84C8 /* GoogleService-Info.plist */,
 				D19D5B342C35425F00E9AE98 /* .gitignore */,
 				D19D5B092C35423100E9AE98 /* TLMS-admin */,
 				D19D5B1A2C35423200E9AE98 /* TLMS-adminTests */,
@@ -236,6 +235,7 @@
 				EF25117E2C3965630035C58E /* LoginScreen.swift */,
 				EF2511A32C3B31E70035C58E /* CheckUserRole.swift */,
 				953B89982C36A8E200A4618D /* CreateEducatorAccount.swift */,
+				04CD06002C3C38390081D8AF /* GoogleService-Info.plist */,
 			);
 			path = OnboardingPages;
 			sourceTree = "<group>";
@@ -402,7 +402,7 @@
 			files = (
 				D19D5B122C35423200E9AE98 /* Preview Assets.xcassets in Resources */,
 				EF2511B42C3BEAE60035C58E /* (null) in Resources */,
-				32EC542E2C3C3234007F84C8 /* GoogleService-Info.plist in Resources */,
+				04CD06012C3C38390081D8AF /* GoogleService-Info.plist in Resources */,
 				D19D5B352C35425F00E9AE98 /* .gitignore in Resources */,
 				D19D5B0F2C35423200E9AE98 /* Assets.xcassets in Resources */,
 			);
