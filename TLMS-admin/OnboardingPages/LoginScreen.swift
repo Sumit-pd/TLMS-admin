@@ -15,37 +15,54 @@ struct LoginScreen: View {
     @State private var showAlert = false
     @State private var alertMessage = ""
     @State private var login = false
+    @State private var isEmailValid = false
     @EnvironmentObject var userAuth: UserAuthentication
     
     var body: some View {
         NavigationView {
-            ZStack(alignment:.topLeading) {
-                Color("#FFFFFF")
-                    .edgesIgnoringSafeArea(.all)
+            ZStack(alignment:. bottom) {
            
-                    PNGImageView(imageName: "Waves", width: 394, height: 194)
-                        .position(x:195,y:735)// Extend to ignore safe area insets
+                    PNGImageView(imageName: "Waves", width: 395, height: 195)
+//                        .position(x:195,y:735)// Extend to ignore safe area insets
                 
                 
-                VStack(spacing: 20) {
+                VStack(alignment : .center, spacing: 30) {
                     
                         
-                    TitleLabel(text: "Welcome To \n Svadhyay", fontSize: 20)
-                    
-
+                    TitleLabel(text: "Welcome To Svadhyay")
+                        .padding(.top, 80)
             
-                    PNGImageView(imageName: "laptop", width: 214, height: 166)
+                    PNGImageView(imageName: "laptop", width: 139, height: 157)
                     
-                    
-                    // Login Form
-                    VStack(spacing: 20) {
-                      CustomTextField(placeholder: "Email", text: $email)
-                          
-                            
-
+                    VStack(spacing: 10) {
+                        CustomTextField(placeholder: "Email", text: $email)
+                            .onChange(of: email) { _, newVal in
+                                isEmailValid = validateEmail(email: newVal)
+                                print(isEmailValid)
+                                    
+                            }
+                        HStack {
+                            Spacer()
+                            if !isEmailValid && email != ""{
+                                Text("Enter a valid email address")
+                                    .font(.caption2)
+                                    .foregroundColor(.red)
+                                    .padding(.trailing, 35)
+                            } else {
+                                Text("Enter a valid email address")
+                                    .font(.caption2)
+                                    .foregroundColor(.white)
+                                    .padding(.trailing, 15)
+                            }
+                        }
                         
-                     CustomSecureField(placeholder: "Password", text: $password)
-                        
+                        CustomSecureField(placeholder: "Password", text: $password)
+                    }
+                            CustomButton(label: "Login", action: {
+                                userAuth.email = email
+                                userAuth.password = password
+                                userAuth.loginUser()
+                            })
                         HStack {
                             Spacer()
                             Button("Forgot Password?") {
@@ -57,18 +74,6 @@ struct LoginScreen: View {
                             .font(.system(size: 15, weight: .bold, design: .default))
                             .padding(.trailing ,20)
     
-                        }
-                        
-                        VStack{
-                            Button(action : {
-                                userAuth.email = email
-                                userAuth.password = password
-                                userAuth.loginUser()
-                            }) {
-                                Text("Login")
-                                    .font(.headline)
-                                    .foregroundColor(.blue)
-                            }
                         }
                         
                         .alert(isPresented: $showAlert) {
@@ -85,34 +90,56 @@ struct LoginScreen: View {
                                     .fontWeight(.bold)
 //                                CustomButton(label: "SignUp", action: {})
                             }
-                        }
-                        
-                        // Social Login Buttons
-                        HStack(spacing: 20) {
-                            Button(action: {
-                                // Perform Apple login action
-                                print("Google login")
-                            }) {
-                                PNGImageView(imageName: "Google", width: 50, height: 50)
-                            }
                             
-                            Button(action: {
-                                // Perform Apple login action
-                                print("Apple login")
-                            }) {
-                                PNGImageView(imageName: "Apple", width: 50, height: 50)
-                            }
                         }
-                        .padding(.bottom, 20)
+            Spacer()
                     }
-                    .navigationBarHidden(true)
                 }
-                .padding(.top, 40)
+            .ignoresSafeArea()
             }
+        
         }
-        .navigationBarBackButtonHidden()
     }
-}
+    
+    
+//    var body: some View {
+//
+//        ZStack(alignment: .bottom){
+//
+//            PNGImageView(imageName: "Waves", width: 395.0, height: 195.0)
+//
+//            VStack(alignment : .center ,spacing: 30){
+//
+//                    TitleLabel(text: "Welcome To Swadhyay")
+//                    .padding(.top ,80)
+//                    PNGImageView(imageName: "MainScreenImage", width: 139, height: 107)
+//
+//                    VStack(spacing: 20) {
+//                        HeadingLabel(text: "Sign to your Admin Account")
+//                        CustomTextField(placeholder: "Email", text: $email)
+//                        CustomSecureField(placeholder: "Enter password", text: $password, placeholderOpacity: 0.3)
+//                    }
+//
+//                CustomButton(label: "Login" , action: {
+//                    userAuth.email = email
+//                    userAuth.password = password
+//                    userAuth.loginUser()
+//                })
+//
+//                   Spacer()
+//            }.padding(20)
+//
+//
+//                .alert(isPresented: $showAlert) {
+//                    Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+//                }
+//
+//        }
+//        .ignoresSafeArea()
+//
+//
+//    }
+//}
 
 struct Login_Previews: PreviewProvider {
     static var previews: some View {

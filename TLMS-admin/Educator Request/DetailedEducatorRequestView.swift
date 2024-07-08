@@ -32,7 +32,7 @@ struct DetailedEducatorRequestView: View {
                     VStack(alignment: .leading) {
                         Text("Name:")
                             .font(.headline)
-                        InfoFieldViews(text: educator.EducatorName)
+                        InfoFieldViews(text: educator.firstName + educator.lastName)
                     }
                     
                     VStack(alignment: .leading) {
@@ -76,7 +76,7 @@ struct DetailedEducatorRequestView: View {
 
 struct EducatorProfileApprovalView_Previews: PreviewProvider {
     static var previews: some View {
-        let educator = Educator(EducatorName: "Veronica", about: "Hey Noobies, Coding isn't your thing!", email: "veronica@gmail.com", password: "123456", phoneNumber: "9898090909", profileImageURL: "ProfileURL"
+        let educator = Educator(firstName: "Veronica",lastName: "Lodge", about: "Hey Noobies, Coding isn't your thing!", email: "veronica@gmail.com", password: "123456", phoneNumber: "9898090909", profileImageURL: "ProfileURL"
         )
         DetailedEducatorRequestView(educator: educator)
     }
