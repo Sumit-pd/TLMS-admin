@@ -8,6 +8,8 @@ struct CourseCreationView: View {
     @State private var courseDescription: String = ""
     @State private var selectedEducator: String = ""
     @State private var courseImage: UIImage? = nil
+    
+//    var target : Target
 
     var body: some View {
         NavigationView {
@@ -32,7 +34,7 @@ struct CourseCreationView: View {
                     .pickerStyle(MenuPickerStyle())
                     .background(Color(.systemGray6))
                     .cornerRadius(8)
-                    .frame(width: 100,height: 30)
+                    .frame(width: 150,height: 30)
                     Text("Add Course Image")
                         .font(.headline)
                     
@@ -58,7 +60,7 @@ struct CourseCreationView: View {
                         ]
                         
                         let db = Firestore.firestore()
-                        db.collection("Target").document("TargetName").collection("Courses").document(courseTitle).setData(courseData)
+                        db.collection("Target").document("TargetN").collection("Courses").document(courseTitle).setData(courseData)
                         
                     }) {
                         Text("Create Course")
@@ -108,11 +110,16 @@ struct EditableFieldView: View {
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(8)
+              
             }
         }
+     
     }
+        
 }
+    
 
 #Preview {
+//    let target = Target()
     CourseCreationView()
 }

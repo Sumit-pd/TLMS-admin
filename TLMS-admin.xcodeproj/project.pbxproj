@@ -10,12 +10,7 @@
 		953B89972C36A8BC00A4618D /* AdminHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B89962C36A8BB00A4618D /* AdminHomeScreen.swift */; };
 		953B89992C36A8E200A4618D /* CreateEducatorAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B89982C36A8E200A4618D /* CreateEducatorAccount.swift */; };
 		953B899B2C36A8F000A4618D /* EducatorHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B899A2C36A8F000A4618D /* EducatorHomeScreen.swift */; };
-		953B899D2C36A8FA00A4618D /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B899C2C36A8FA00A4618D /* MainScreen.swift */; };
-		953B89A72C36A94C00A4618D /* EducatorLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B89A62C36A94C00A4618D /* EducatorLogin.swift */; };
-		953B89A92C36A96800A4618D /* AdminLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B89A82C36A96800A4618D /* AdminLogin.swift */; };
-		BBB4DD052C373EBC00150FE5 /* NewTargetScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB4DD022C373EBC00150FE5 /* NewTargetScreen.swift */; };
 		BBB4DD062C373EBC00150FE5 /* TargetScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB4DD032C373EBC00150FE5 /* TargetScreen.swift */; };
-		BBB4DD072C373EBC00150FE5 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB4DD042C373EBC00150FE5 /* File.swift */; };
 		BBB4DD0B2C3748D400150FE5 /* CourseCreationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB4DD0A2C3748D400150FE5 /* CourseCreationScreen.swift */; };
 		D19D5B0B2C35423100E9AE98 /* TLMS_adminApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D5B0A2C35423100E9AE98 /* TLMS_adminApp.swift */; };
 		D19D5B0F2C35423200E9AE98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D19D5B0E2C35423200E9AE98 /* Assets.xcassets */; };
@@ -31,10 +26,28 @@
 		D1D98E532C3557B30087BE49 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D1D98E522C3557B30087BE49 /* FirebaseFirestoreSwift */; };
 		D1D98E552C3557B30087BE49 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D1D98E542C3557B30087BE49 /* FirebaseStorage */; };
 		EF25117D2C37C46D0035C58E /* CourseServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF25117C2C37C46D0035C58E /* CourseServices.swift */; };
+		EF25117F2C3965630035C58E /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF25117E2C3965630035C58E /* LoginScreen.swift */; };
+		EF2511812C39662D0035C58E /* HeadingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2511802C39662D0035C58E /* HeadingLabel.swift */; };
+		EF2511832C3966390035C58E /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2511822C3966390035C58E /* ImageView.swift */; };
+		EF2511852C3966400035C58E /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2511842C3966400035C58E /* MainButton.swift */; };
+		EF2511872C3966490035C58E /* TextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2511862C3966490035C58E /* TextLabel.swift */; };
+		EF2511892C3966560035C58E /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2511882C3966560035C58E /* TitleLabel.swift */; };
+		EF25118C2C3966E50035C58E /* PasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF25118B2C3966E50035C58E /* PasswordField.swift */; };
+		EF2511962C39B27D0035C58E /* FirebaseFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2511952C39B27D0035C58E /* FirebaseFetch.swift */; };
+		EF25119B2C39CD8F0035C58E /* PendingEducatorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF25119A2C39CD8F0035C58E /* PendingEducatorsView.swift */; };
+		EF25119D2C3ACED10035C58E /* ApprovalRequestCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF25119C2C3ACED10035C58E /* ApprovalRequestCard.swift */; };
+		EF25119F2C3AD9270035C58E /* DetailedEducatorRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF25119E2C3AD9270035C58E /* DetailedEducatorRequestView.swift */; };
+		EF2511A22C3B09210035C58E /* HeadlineText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2511A12C3B09210035C58E /* HeadlineText.swift */; };
+		EF2511A42C3B31E70035C58E /* CheckUserRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2511A32C3B31E70035C58E /* CheckUserRole.swift */; };
+		EF2511A62C3BB9500035C58E /* TargetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2511A52C3BB9500035C58E /* TargetViewModel.swift */; };
+		EF2511A82C3BBA740035C58E /* TargetsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2511A72C3BBA740035C58E /* TargetsCardView.swift */; };
+		EF2511AA2C3BBAD00035C58E /* CoursesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2511A92C3BBAD00035C58E /* CoursesView.swift */; };
+		EF2511AC2C3BBB450035C58E /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2511AB2C3BBB450035C58E /* TabBar.swift */; };
+		EF2511AE2C3BBBAC0035C58E /* UIHexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2511AD2C3BBBAC0035C58E /* UIHexColor.swift */; };
+		EF2511B22C3BBF100035C58E /* FirstTimeLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2511B12C3BBF100035C58E /* FirstTimeLogin.swift */; };
 		EF2865F22C370F2C00C08AE8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF2865F12C370F2C00C08AE8 /* GoogleService-Info.plist */; };
-		EF2865F42C3722D000C08AE8 /* CheckAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2865F32C3722D000C08AE8 /* CheckAuthentication.swift */; };
+		EF2865F42C3722D000C08AE8 /* UserAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2865F32C3722D000C08AE8 /* UserAuthentication.swift */; };
 		EF2865F62C3725B300C08AE8 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2865F52C3725B300C08AE8 /* DataModel.swift */; };
-		EF2865F82C372A2900C08AE8 /* PendingEducatorScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2865F72C372A2900C08AE8 /* PendingEducatorScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,12 +71,7 @@
 		953B89962C36A8BB00A4618D /* AdminHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHomeScreen.swift; sourceTree = "<group>"; };
 		953B89982C36A8E200A4618D /* CreateEducatorAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEducatorAccount.swift; sourceTree = "<group>"; };
 		953B899A2C36A8F000A4618D /* EducatorHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducatorHomeScreen.swift; sourceTree = "<group>"; };
-		953B899C2C36A8FA00A4618D /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
-		953B89A62C36A94C00A4618D /* EducatorLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducatorLogin.swift; sourceTree = "<group>"; };
-		953B89A82C36A96800A4618D /* AdminLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminLogin.swift; sourceTree = "<group>"; };
-		BBB4DD022C373EBC00150FE5 /* NewTargetScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTargetScreen.swift; sourceTree = "<group>"; };
 		BBB4DD032C373EBC00150FE5 /* TargetScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetScreen.swift; sourceTree = "<group>"; };
-		BBB4DD042C373EBC00150FE5 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		BBB4DD0A2C3748D400150FE5 /* CourseCreationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCreationScreen.swift; sourceTree = "<group>"; };
 		D19D5B072C35423100E9AE98 /* TLMS-admin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TLMS-admin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D19D5B0A2C35423100E9AE98 /* TLMS_adminApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLMS_adminApp.swift; sourceTree = "<group>"; };
@@ -76,10 +84,33 @@
 		D19D5B272C35423200E9AE98 /* TLMS_adminUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLMS_adminUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D19D5B342C35425F00E9AE98 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		EF25117C2C37C46D0035C58E /* CourseServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseServices.swift; sourceTree = "<group>"; };
+		EF25117E2C3965630035C58E /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		EF2511802C39662D0035C58E /* HeadingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadingLabel.swift; sourceTree = "<group>"; };
+		EF2511822C3966390035C58E /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		EF2511842C3966400035C58E /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
+		EF2511862C3966490035C58E /* TextLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabel.swift; sourceTree = "<group>"; };
+		EF2511882C3966560035C58E /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
+		EF25118B2C3966E50035C58E /* PasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordField.swift; sourceTree = "<group>"; };
+		EF2511902C3983240035C58E /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		EF2511912C39832D0035C58E /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		EF2511922C3983330035C58E /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		EF2511932C3983390035C58E /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		EF2511942C39839C0035C58E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		EF2511952C39B27D0035C58E /* FirebaseFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFetch.swift; sourceTree = "<group>"; };
+		EF25119A2C39CD8F0035C58E /* PendingEducatorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingEducatorsView.swift; sourceTree = "<group>"; };
+		EF25119C2C3ACED10035C58E /* ApprovalRequestCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApprovalRequestCard.swift; sourceTree = "<group>"; };
+		EF25119E2C3AD9270035C58E /* DetailedEducatorRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedEducatorRequestView.swift; sourceTree = "<group>"; };
+		EF2511A12C3B09210035C58E /* HeadlineText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineText.swift; sourceTree = "<group>"; };
+		EF2511A32C3B31E70035C58E /* CheckUserRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckUserRole.swift; sourceTree = "<group>"; };
+		EF2511A52C3BB9500035C58E /* TargetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetViewModel.swift; sourceTree = "<group>"; };
+		EF2511A72C3BBA740035C58E /* TargetsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetsCardView.swift; sourceTree = "<group>"; };
+		EF2511A92C3BBAD00035C58E /* CoursesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesView.swift; sourceTree = "<group>"; };
+		EF2511AB2C3BBB450035C58E /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		EF2511AD2C3BBBAC0035C58E /* UIHexColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHexColor.swift; sourceTree = "<group>"; };
+		EF2511B12C3BBF100035C58E /* FirstTimeLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTimeLogin.swift; sourceTree = "<group>"; };
 		EF2865F12C370F2C00C08AE8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		EF2865F32C3722D000C08AE8 /* CheckAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAuthentication.swift; sourceTree = "<group>"; };
+		EF2865F32C3722D000C08AE8 /* UserAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthentication.swift; sourceTree = "<group>"; };
 		EF2865F52C3725B300C08AE8 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
-		EF2865F72C372A2900C08AE8 /* PendingEducatorScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingEducatorScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,21 +169,16 @@
 		D19D5B092C35423100E9AE98 /* TLMS-admin */ = {
 			isa = PBXGroup;
 			children = (
-				EF2865F32C3722D000C08AE8 /* CheckAuthentication.swift */,
-				D19D5B0A2C35423100E9AE98 /* TLMS_adminApp.swift */,
-				953B899C2C36A8FA00A4618D /* MainScreen.swift */,
-				BBB4DD042C373EBC00150FE5 /* File.swift */,
-				BBB4DD022C373EBC00150FE5 /* NewTargetScreen.swift */,
-				BBB4DD032C373EBC00150FE5 /* TargetScreen.swift */,
-				BBB4DD0A2C3748D400150FE5 /* CourseCreationScreen.swift */,
-				EF25117C2C37C46D0035C58E /* CourseServices.swift */,
-				953B89A82C36A96800A4618D /* AdminLogin.swift */,
-				953B89962C36A8BB00A4618D /* AdminHomeScreen.swift */,
-				953B89A62C36A94C00A4618D /* EducatorLogin.swift */,
-				953B89982C36A8E200A4618D /* CreateEducatorAccount.swift */,
-				953B899A2C36A8F000A4618D /* EducatorHomeScreen.swift */,
-				EF2865F72C372A2900C08AE8 /* PendingEducatorScreen.swift */,
+				EF2511942C39839C0035C58E /* Info.plist */,
+				EF25118F2C3983060035C58E /* Fonts */,
+				EF25118A2C3966620035C58E /* Elements */,
+				EF25118E2C396B3E0035C58E /* OnboardingPages */,
+				EF2511A02C3AD9320035C58E /* Educator Request */,
+				EF2511AF2C3BBE960035C58E /* Admin App */,
+				EF2511B02C3BBEDE0035C58E /* Educator App */,
 				EF2865F52C3725B300C08AE8 /* DataModel.swift */,
+				EF2511952C39B27D0035C58E /* FirebaseFetch.swift */,
+				EF2511AD2C3BBBAC0035C58E /* UIHexColor.swift */,
 				D19D5B0E2C35423200E9AE98 /* Assets.xcassets */,
 				D19D5B102C35423200E9AE98 /* Preview Content */,
 			);
@@ -182,6 +208,77 @@
 				D19D5B272C35423200E9AE98 /* TLMS_adminUITestsLaunchTests.swift */,
 			);
 			path = "TLMS-adminUITests";
+			sourceTree = "<group>";
+		};
+		EF25118A2C3966620035C58E /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				EF2511802C39662D0035C58E /* HeadingLabel.swift */,
+				EF2511822C3966390035C58E /* ImageView.swift */,
+				EF2511842C3966400035C58E /* MainButton.swift */,
+				EF25118B2C3966E50035C58E /* PasswordField.swift */,
+				EF2511862C3966490035C58E /* TextLabel.swift */,
+				EF2511882C3966560035C58E /* TitleLabel.swift */,
+				EF2511A12C3B09210035C58E /* HeadlineText.swift */,
+			);
+			path = Elements;
+			sourceTree = "<group>";
+		};
+		EF25118E2C396B3E0035C58E /* OnboardingPages */ = {
+			isa = PBXGroup;
+			children = (
+				D19D5B0A2C35423100E9AE98 /* TLMS_adminApp.swift */,
+				EF2865F32C3722D000C08AE8 /* UserAuthentication.swift */,
+				EF25117E2C3965630035C58E /* LoginScreen.swift */,
+				EF2511A32C3B31E70035C58E /* CheckUserRole.swift */,
+				953B89982C36A8E200A4618D /* CreateEducatorAccount.swift */,
+			);
+			path = OnboardingPages;
+			sourceTree = "<group>";
+		};
+		EF25118F2C3983060035C58E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				EF2511902C3983240035C58E /* Poppins-Bold.ttf */,
+				EF2511912C39832D0035C58E /* Poppins-SemiBold.ttf */,
+				EF2511922C3983330035C58E /* Poppins-Medium.ttf */,
+				EF2511932C3983390035C58E /* Poppins-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		EF2511A02C3AD9320035C58E /* Educator Request */ = {
+			isa = PBXGroup;
+			children = (
+				EF25119C2C3ACED10035C58E /* ApprovalRequestCard.swift */,
+				EF25119A2C39CD8F0035C58E /* PendingEducatorsView.swift */,
+				EF25119E2C3AD9270035C58E /* DetailedEducatorRequestView.swift */,
+			);
+			path = "Educator Request";
+			sourceTree = "<group>";
+		};
+		EF2511AF2C3BBE960035C58E /* Admin App */ = {
+			isa = PBXGroup;
+			children = (
+				EF2511B12C3BBF100035C58E /* FirstTimeLogin.swift */,
+				953B89962C36A8BB00A4618D /* AdminHomeScreen.swift */,
+				EF2511A72C3BBA740035C58E /* TargetsCardView.swift */,
+				BBB4DD032C373EBC00150FE5 /* TargetScreen.swift */,
+				EF2511A52C3BB9500035C58E /* TargetViewModel.swift */,
+				BBB4DD0A2C3748D400150FE5 /* CourseCreationScreen.swift */,
+				EF2511A92C3BBAD00035C58E /* CoursesView.swift */,
+				EF2511AB2C3BBB450035C58E /* TabBar.swift */,
+				EF25117C2C37C46D0035C58E /* CourseServices.swift */,
+			);
+			path = "Admin App";
+			sourceTree = "<group>";
+		};
+		EF2511B02C3BBEDE0035C58E /* Educator App */ = {
+			isa = PBXGroup;
+			children = (
+				953B899A2C36A8F000A4618D /* EducatorHomeScreen.swift */,
+			);
+			path = "Educator App";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,21 +424,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF2511AC2C3BBB450035C58E /* TabBar.swift in Sources */,
 				BBB4DD062C373EBC00150FE5 /* TargetScreen.swift in Sources */,
-				953B899D2C36A8FA00A4618D /* MainScreen.swift in Sources */,
 				EF25117D2C37C46D0035C58E /* CourseServices.swift in Sources */,
 				953B89992C36A8E200A4618D /* CreateEducatorAccount.swift in Sources */,
-				EF2865F42C3722D000C08AE8 /* CheckAuthentication.swift in Sources */,
+				EF2511812C39662D0035C58E /* HeadingLabel.swift in Sources */,
+				EF2511AE2C3BBBAC0035C58E /* UIHexColor.swift in Sources */,
+				EF25119D2C3ACED10035C58E /* ApprovalRequestCard.swift in Sources */,
+				EF2511AA2C3BBAD00035C58E /* CoursesView.swift in Sources */,
+				EF2865F42C3722D000C08AE8 /* UserAuthentication.swift in Sources */,
+				EF25119B2C39CD8F0035C58E /* PendingEducatorsView.swift in Sources */,
+				EF2511832C3966390035C58E /* ImageView.swift in Sources */,
+				EF25117F2C3965630035C58E /* LoginScreen.swift in Sources */,
+				EF2511A82C3BBA740035C58E /* TargetsCardView.swift in Sources */,
 				953B899B2C36A8F000A4618D /* EducatorHomeScreen.swift in Sources */,
-				EF2865F82C372A2900C08AE8 /* PendingEducatorScreen.swift in Sources */,
 				953B89972C36A8BC00A4618D /* AdminHomeScreen.swift in Sources */,
-				953B89A72C36A94C00A4618D /* EducatorLogin.swift in Sources */,
+				EF2511A62C3BB9500035C58E /* TargetViewModel.swift in Sources */,
+				EF2511962C39B27D0035C58E /* FirebaseFetch.swift in Sources */,
+				EF2511A42C3B31E70035C58E /* CheckUserRole.swift in Sources */,
+				EF2511A22C3B09210035C58E /* HeadlineText.swift in Sources */,
 				BBB4DD0B2C3748D400150FE5 /* CourseCreationScreen.swift in Sources */,
-				953B89A92C36A96800A4618D /* AdminLogin.swift in Sources */,
+				EF2511852C3966400035C58E /* MainButton.swift in Sources */,
+				EF2511872C3966490035C58E /* TextLabel.swift in Sources */,
+				EF25119F2C3AD9270035C58E /* DetailedEducatorRequestView.swift in Sources */,
 				D19D5B0B2C35423100E9AE98 /* TLMS_adminApp.swift in Sources */,
+				EF25118C2C3966E50035C58E /* PasswordField.swift in Sources */,
 				EF2865F62C3725B300C08AE8 /* DataModel.swift in Sources */,
-				BBB4DD072C373EBC00150FE5 /* File.swift in Sources */,
-				BBB4DD052C373EBC00150FE5 /* NewTargetScreen.swift in Sources */,
+				EF2511892C3966560035C58E /* TitleLabel.swift in Sources */,
+				EF2511B22C3BBF100035C58E /* FirstTimeLogin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +618,7 @@
 				DEVELOPMENT_TEAM = 8SGTXTM2JK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "TLMS-admin/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -537,6 +648,7 @@
 				DEVELOPMENT_TEAM = 8SGTXTM2JK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "TLMS-admin/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

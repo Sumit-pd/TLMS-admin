@@ -10,7 +10,7 @@ import FirebaseAuth
 import SwiftUI
 
 struct AdminHomeScreen: View {
-    @EnvironmentObject var authViewModel: AuthViewModel
+    @EnvironmentObject var authViewModel: UserAuthentication
 
     var body: some View {
         
@@ -31,13 +31,13 @@ struct AdminHomeScreen: View {
             }
             .padding(.top, 200)
             
-            NavigationLink("", destination: MainView(), isActive: $authViewModel.isLoggedIn)
+            NavigationLink("", destination: CreateAccountView(), isActive: $authViewModel.isLoggedIn)
         }
     }
 }
 
 struct AdminHomeScreen_Preview: PreviewProvider {
     static var previews: some View {
-        TargetScreen()
+        FirstTimeLogin()
     }
 }

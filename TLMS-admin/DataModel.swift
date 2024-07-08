@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
+import SwiftUI
 
 struct Admin {
     var AdminID : UUID
@@ -15,9 +17,11 @@ struct Admin {
     var userRole : userRoles
 }
 
-struct Target {
+struct Target : Identifiable{
+//    var documentID : String
+    var id : UUID?
     var targetName : String
-    var courses : [Course]
+    var courses : [Course]?
 }
 
 struct Course {
@@ -27,6 +31,7 @@ struct Course {
     var courseImage : String
     var assignedEducator : Educator
     var content : Content?
+    var numberOfStudentsEnrolled : Int?
 }
 
 struct Content {
@@ -53,13 +58,26 @@ struct Question {
 // ************************************ //
 // ************************************ //
 
-struct Educator {
-    var EducatorID : UUID
-    var EducatorName : String
-    var educatorProfileImage : String
-    var email : String
-    var password : String
-    var userRole : userRoles
+struct Educator : Identifiable{
+    var id: String?
+    
+    var EducatorName: String
+    var about: String
+    var email: String
+    var password: String
+    var phoneNumber: String
+    var profileImageURL: String
+
+    func toDictionary() -> [String: Any] {
+        return [
+            "EducatorName": EducatorName,
+            "email": email,
+            "password": password,
+            "phoneNumber": phoneNumber,
+            "about": about,
+            "profileImageURL": profileImageURL
+        ]
+    }
 }
 
 enum userRoles {
