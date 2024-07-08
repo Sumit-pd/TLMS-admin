@@ -45,7 +45,9 @@
 		EF2511AC2C3BBB450035C58E /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2511AB2C3BBB450035C58E /* TabBar.swift */; };
 		EF2511AE2C3BBBAC0035C58E /* UIHexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2511AD2C3BBBAC0035C58E /* UIHexColor.swift */; };
 		EF2511B22C3BBF100035C58E /* FirstTimeLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2511B12C3BBF100035C58E /* FirstTimeLogin.swift */; };
-		EF2865F22C370F2C00C08AE8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF2865F12C370F2C00C08AE8 /* GoogleService-Info.plist */; };
+		EF2511B42C3BEAE60035C58E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF2511B32C3BEAE60035C58E /* GoogleService-Info.plist */; };
+		EF2511B52C3BEAE60035C58E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF2511B32C3BEAE60035C58E /* GoogleService-Info.plist */; };
+		EF2511B62C3BEAE60035C58E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF2511B32C3BEAE60035C58E /* GoogleService-Info.plist */; };
 		EF2865F42C3722D000C08AE8 /* UserAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2865F32C3722D000C08AE8 /* UserAuthentication.swift */; };
 		EF2865F62C3725B300C08AE8 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2865F52C3725B300C08AE8 /* DataModel.swift */; };
 /* End PBXBuildFile section */
@@ -108,7 +110,7 @@
 		EF2511AB2C3BBB450035C58E /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		EF2511AD2C3BBBAC0035C58E /* UIHexColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHexColor.swift; sourceTree = "<group>"; };
 		EF2511B12C3BBF100035C58E /* FirstTimeLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTimeLogin.swift; sourceTree = "<group>"; };
-		EF2865F12C370F2C00C08AE8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EF2511B32C3BEAE60035C58E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EF2865F32C3722D000C08AE8 /* UserAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthentication.swift; sourceTree = "<group>"; };
 		EF2865F52C3725B300C08AE8 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -147,7 +149,6 @@
 		D19D5AFE2C35423100E9AE98 = {
 			isa = PBXGroup;
 			children = (
-				EF2865F12C370F2C00C08AE8 /* GoogleService-Info.plist */,
 				D19D5B342C35425F00E9AE98 /* .gitignore */,
 				D19D5B092C35423100E9AE98 /* TLMS-admin */,
 				D19D5B1A2C35423200E9AE98 /* TLMS-adminTests */,
@@ -169,6 +170,7 @@
 		D19D5B092C35423100E9AE98 /* TLMS-admin */ = {
 			isa = PBXGroup;
 			children = (
+				EF2511B32C3BEAE60035C58E /* GoogleService-Info.plist */,
 				EF2511942C39839C0035C58E /* Info.plist */,
 				EF25118F2C3983060035C58E /* Fonts */,
 				EF25118A2C3966620035C58E /* Elements */,
@@ -397,7 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D19D5B122C35423200E9AE98 /* Preview Assets.xcassets in Resources */,
-				EF2865F22C370F2C00C08AE8 /* GoogleService-Info.plist in Resources */,
+				EF2511B42C3BEAE60035C58E /* GoogleService-Info.plist in Resources */,
 				D19D5B352C35425F00E9AE98 /* .gitignore in Resources */,
 				D19D5B0F2C35423200E9AE98 /* Assets.xcassets in Resources */,
 			);
@@ -407,6 +409,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF2511B52C3BEAE60035C58E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +417,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF2511B62C3BEAE60035C58E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
