@@ -22,7 +22,8 @@ class FirebaseFetch: ObservableObject {
                 self.pendingEducators = querySnapshot?.documents.compactMap { doc in
                     let data = doc.data()
                     return Educator(id : doc.documentID,
-                                    EducatorName: data["EducatorName"] as? String ?? "",
+                                    firstName: data["FirstName"] as? String ?? "",
+                                    lastName: data["LastName"] as? String ?? "",
                                     about: data["about"] as? String ?? "",
                                     email: data["email"] as? String ?? "",
                                     password: data["password"] as? String ?? "",
@@ -49,7 +50,8 @@ class FirebaseFetch: ObservableObject {
     func moveEducatorToApproved(educator: Educator) {
         let db = Firestore.firestore()
         let educatorData: [String: Any] = [
-            "EducatorName": educator.EducatorName,
+            "FirstName": educator.firstName,
+            "LastName": educator.lastName,
             "about": educator.about,
             "email": educator.email,
             "password": educator.password,

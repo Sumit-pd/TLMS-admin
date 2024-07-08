@@ -61,7 +61,8 @@ struct Question {
 struct Educator : Identifiable{
     var id: String?
     
-    var EducatorName: String
+    var firstName: String
+    var lastName : String
     var about: String
     var email: String
     var password: String
@@ -70,7 +71,8 @@ struct Educator : Identifiable{
 
     func toDictionary() -> [String: Any] {
         return [
-            "EducatorName": EducatorName,
+            "FirstName": firstName,
+            "LastName": lastName,
             "email": email,
             "password": password,
             "phoneNumber": phoneNumber,
