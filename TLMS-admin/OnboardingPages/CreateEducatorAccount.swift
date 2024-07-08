@@ -66,7 +66,7 @@ struct CreateAccountView: View {
                                                 .stroke(Color.gray, lineWidth: 1)
                                         )
                                         .onChange(of: first) { _, newVal in
-                                            isFirstNameValid = validateName(name: first)
+                                            isFirstNameValid = validateName(name: newVal)
                                         }
                                     
                                     TextField("Last Name", text: $last).padding()
@@ -78,7 +78,7 @@ struct CreateAccountView: View {
                                                 .stroke(Color.gray, lineWidth: 1)
                                         )
                                         .onChange(of: last) { _, newVal in
-                                            isLastNameValid = validateName(name: last)
+                                            isLastNameValid = validateName(name: newVal)
                                         }
                                     
                                 }.padding(.horizontal, 17)
@@ -101,7 +101,7 @@ struct CreateAccountView: View {
 
                                 CustomTextField(placeholder: "About", text: $about)
                                     .onChange(of: first) { _, newVal in
-                                        isAboutValid = validateAbout(about: about)
+                                        isAboutValid = validateAbout(about: newVal)
                                     }
                                 HStack {
                                     Spacer()
@@ -120,7 +120,7 @@ struct CreateAccountView: View {
                                 
                                 CustomTextField(placeholder: "Phone Number", text: $phoneNumber)
                                     .onChange(of: first) { _, newVal in
-                                        isPhoneNumberValid = validatePhone(phone: phoneNumber)
+                                        isPhoneNumberValid = validatePhone(phone: newVal)
                                     }
                                 HStack {
                                     Spacer()
@@ -139,7 +139,7 @@ struct CreateAccountView: View {
 
                                 CustomTextField(placeholder: "Email", text: $email)
                                     .onChange(of: email) { _, newVal in
-                                        isEmailValid = validateEmail(email: email)
+                                        isEmailValid = validateEmail(email: newVal)
                                     }
                                 HStack {
                                     Spacer()
@@ -158,7 +158,7 @@ struct CreateAccountView: View {
                                 
                                 CustomSecureField(placeholder: "New Password", text: $newPassword)
                                     .onChange(of: newPassword) { _, newVal in
-                                        isPasswordValid = validatePassword(password: newPassword)
+                                        isPasswordValid = validatePassword(password: newVal)
                                     }
                                 HStack {
                                     Spacer()
@@ -176,7 +176,7 @@ struct CreateAccountView: View {
                                 }
                                 CustomSecureField(placeholder: "Confirm Password", text: $confirmPassword)
                                     .onChange(of: confirmPassword) { _, newVal in
-                                        isPasswordValid = validatePassword(password: confirmPassword)
+                                        isPasswordValid = validatePassword(password: newVal)
                                     }
                                 HStack {
                                     Spacer()
