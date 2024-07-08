@@ -22,9 +22,6 @@ struct LoginScreen: View {
             ZStack(alignment:. bottom) {
            
                     PNGImageView(imageName: "Waves", width: 395, height: 195)
-//                        .position(x:195,y:735)// Extend to ignore safe area insets
-                
-                
                 VStack(alignment : .center, spacing: 20) {
                     
                         
