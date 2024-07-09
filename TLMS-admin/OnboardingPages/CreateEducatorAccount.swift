@@ -32,8 +32,9 @@ struct CreateAccountView: View {
     var body: some View {
         NavigationView {
             ZStack(alignment: .bottom) {
-                PNGImageView(imageName: "Waves", width: 394, height: 194)
-
+                
+                
+                    PNGImageView(imageName: "Waves", width: 394, height: 194)
                 VStack(spacing: 20) {
                     ScrollView {
                         VStack {
@@ -57,7 +58,7 @@ struct CreateAccountView: View {
                                 }
                             }
 
-                            VStack(spacing: 15) {
+
                                 HStack {
                                     TextField("First Name", text: $first).padding()
                                         .frame(height: 55)
@@ -233,28 +234,30 @@ struct CreateAccountView: View {
                                     Alert(title: Text("Notification"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
                                 }
 
-                                Button(action: {
-                                    navigateToPendingEdu = true
-                                }) {
-                                    Text("Pending...")
-                                }
+//                                Button(action: {
+//                                    navigateToPendingEdu = true
+//                                }) {
+//                                    Text("Pending...")
+//                                }
+//
+//                                NavigationLink(destination: PendingEducatorsView(), isActive: $navigateToPendingEdu) {
+//                                    EmptyView()
+//                                }
 
-                                NavigationLink(destination: PendingEducatorsView(), isActive: $navigateToPendingEdu) {
-                                    EmptyView()
-                                }
-                            }
                         }
                         .padding(.horizontal)
-
+                        
                         Spacer()
                     }
                 }
                 .sheet(isPresented: $showImagePicker) {
                     ImagePicker(selectedImage: $selectedImage)
+                    
                 }
+                
                 .navigationTitle("Create Account")
-                .ignoresSafeArea(edges: .bottom)
-            }
+               
+            }.ignoresSafeArea(edges: .bottom)
         }
     }
 
