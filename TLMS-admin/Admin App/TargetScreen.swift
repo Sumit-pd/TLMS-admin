@@ -40,19 +40,20 @@ struct TargetScreen: View {
                             
                         }
                     }
+//                    .padding()
                     
                     
-                    Button(action: {
-                        do {
-                            try Auth.auth().signOut()
-                            authViewModel.signOut()
-                        } catch let signOutError as NSError {
-                            print("Error signing out: %@", signOutError)
-                        }
-                    }) {
-                        Text("Sign Out")
-                            .foregroundColor(.blue)
-                    }
+//                    Button(action: {
+//                        do {
+//                            try Auth.auth().signOut()
+//                            authViewModel.signOut()
+//                        } catch let signOutError as NSError {
+//                            print("Error signing out: %@", signOutError)
+//                        }
+//                    }) {
+//                        Text("Sign Out")
+//                            .foregroundColor(.blue)
+//                    }
                     .padding()
                     
                     if viewModel.targets.isEmpty {
@@ -67,8 +68,8 @@ struct TargetScreen: View {
                             target in TargetsCardView(target: target)
                         }
                         
-                        .navigationTitle("Our Target")
-                        .navigationBarTitleDisplayMode(.inline)
+//                        .navigationTitle("Our Target")
+//                        .navigationBarTitleDisplayMode(.inline)
                     }
                 }
             }

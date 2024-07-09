@@ -5,7 +5,6 @@
 //  Created by Abcom on 08/07/24.
 //
 
-import SwiftUI
 
 import SwiftUI
 
@@ -79,7 +78,7 @@ struct CoursesView: View {
             }
         }
         .navigationBarBackButtonHidden()
-        .navigationBarTitleDisplayMode(.inline)
+//        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -118,4 +117,10 @@ struct DomainSelectionView: View {
         .background(Color.white)
         .cornerRadius(10)
     }
+}
+
+
+#Preview {
+//    let target = Target()
+    CoursesView(target: Target.init(targetName: "new"))
 }

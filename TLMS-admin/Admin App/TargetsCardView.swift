@@ -15,7 +15,7 @@ struct TargetsCardView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        NavigationLink( destination: CoursesView(target: target)){
+        NavigationLink( destination: TabBar(target: target)){
             
             HStack(alignment : .center){
                 Image(systemName: "circle.circle.fill")
