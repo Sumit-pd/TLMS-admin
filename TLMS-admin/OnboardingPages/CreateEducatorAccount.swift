@@ -19,11 +19,13 @@ struct CreateAccountView: View {
     @State private var selectedImage: UIImage? = nil
     @State private var isLoading = false
     @State private var navigateToPendingEdu = false
+    @State private var registrationDone = false
     
     @State private var isFirstNameValid = false
     @State private var isLastNameValid = false
     @State private var isEmailValid = false
-    @State private var isPasswordValid = false
+    @State private var isNewPasswordValid = false
+    @State private var isConfirmPasswordValid = false
     @State private var isAboutValid = false
     @State private var isPhoneNumberValid = false
 
@@ -85,8 +87,13 @@ struct CreateAccountView: View {
                                 
                                 HStack {
                                     Spacer()
-                                    if (!isFirstNameValid && first != "") || (!isLastNameValid && last != "") || (first == last) {
+                                    if (!isFirstNameValid && first != "") || (!isLastNameValid && last != "") {
                                         Text("Name should only contain alphabets [2-20]")
+                                            .font(.caption2)
+                                            .foregroundColor(.red)
+                                            .padding(.trailing, 35)
+                                    } else if first == last && first != "" && last != ""{
+                                        Text("Names should not match.")
                                             .font(.caption2)
                                             .foregroundColor(.red)
                                             .padding(.trailing, 35)
@@ -121,18 +128,24 @@ struct CreateAccountView: View {
                                 }
                                 
                                 CustomTextField(placeholder: "Phone Number", text: $phoneNumber)
-                                    .onChange(of: first) { _, newVal in
-                                        isPhoneNumberValid = validatePhone(phone: newVal)
+                                    .keyboardType(.numberPad)
+                                    .onChange(of: phoneNumber) { _, newVal in
+                                        isPhoneNumberValid = validatePhoneNumber(newVal)
                                     }
                                 HStack {
                                     Spacer()
-                                    if !isPhoneNumberValid && phoneNumber != ""{
-                                        Text("Phone number can only contain 10 digits")
+                                    if phoneNumber.hasPrefix("0") {
+                                        Text("Phone number can not start with 0")
+                                            .font(.caption2)
+                                            .foregroundColor(.red)
+                                            .padding(.trailing, 35)
+                                    } else if !isPhoneNumberValid && phoneNumber != ""{
+                                        Text("Phone number must contain 10 digits.")
                                             .font(.caption2)
                                             .foregroundColor(.red)
                                             .padding(.trailing, 35)
                                     } else {
-                                        Text("Phone number can only contain 10 digits")
+                                        Text("Phone number can only contain 10 digits.")
                                             .font(.caption2)
                                             .foregroundColor(.white)
                                             .padding(.trailing, 15)
@@ -162,11 +175,11 @@ struct CreateAccountView: View {
                                 
                                 CustomSecureField(placeholder: "New Password", text: $newPassword)
                                     .onChange(of: newPassword) { _, newVal in
-                                        isPasswordValid = validatePassword(password: newVal)
+                                        isNewPasswordValid = validatePassword(newVal)
                                     }
                                 HStack {
                                     Spacer()
-                                    if !isPasswordValid && newPassword != ""{
+                                    if !isNewPasswordValid && newPassword != ""{
                                         Text("Password must have uppercase, digit & special charcater")
                                             .font(.caption2)
                                             .foregroundColor(.red)
@@ -181,12 +194,17 @@ struct CreateAccountView: View {
                                 }
                                 CustomSecureField(placeholder: "Confirm Password", text: $confirmPassword)
                                     .onChange(of: confirmPassword) { _, newVal in
-                                        isPasswordValid = validatePassword(password: newVal)
+                                        isConfirmPasswordValid = validatePassword(newVal)
                                     }
                                 HStack {
                                     Spacer()
-                                    if !isPasswordValid && confirmPassword != ""{
+                                    if !isConfirmPasswordValid && confirmPassword != ""{
                                         Text("Password must have uppercase, digit & special charcater")
+                                            .font(.caption2)
+                                            .foregroundColor(.red)
+                                            .padding(.trailing, 35)
+                                    } else if newPassword != confirmPassword{
+                                        Text("Passwords do not match.")
                                             .font(.caption2)
                                             .foregroundColor(.red)
                                             .padding(.trailing, 35)
@@ -200,12 +218,19 @@ struct CreateAccountView: View {
                                 }
 
                                 CustomButton(label: "Register", action: {
-                                    register()
-                                    presentationMode.wrappedValue.dismiss()
+                                    if isFirstNameValid && isLastNameValid && isPhoneNumberValid && isEmailValid && isAboutValid && isNewPasswordValid && isConfirmPasswordValid {
+                                        register()
+                                        if registrationDone {
+                                            presentationMode.wrappedValue.dismiss()
+                                        }
+                                    } else {
+                                        alertMessage = "Enter all fields correctly"
+                                        showAlert = true
+                                    }
                                 })
                                 .padding(.bottom, 20)
                                 .alert(isPresented: $showAlert) {
-                                    Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                                    Alert(title: Text("Notification"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
                                 }
 
                                 Button(action: {
@@ -297,6 +322,7 @@ struct CreateAccountView: View {
             }
             isLoading = false
         }
+        registrationDone = true
     }
 }
 

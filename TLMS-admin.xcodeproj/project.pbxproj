@@ -50,6 +50,7 @@
 		EF2511BC2C3C28E60035C58E /* RegexCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2511BB2C3C28E60035C58E /* RegexCheck.swift */; };
 		EF2865F42C3722D000C08AE8 /* UserAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2865F32C3722D000C08AE8 /* UserAuthentication.swift */; };
 		EF2865F62C3725B300C08AE8 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2865F52C3725B300C08AE8 /* DataModel.swift */; };
+		EFC5394E2C3D1E4F009556DF /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC5394D2C3D1E4F009556DF /* ForgotPasswordView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,7 +71,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		04CD06002C3C38390081D8AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		04CD06002C3C38390081D8AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "TLMS-admin/OnboardingPages/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		953B89962C36A8BB00A4618D /* AdminHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHomeScreen.swift; sourceTree = "<group>"; };
 		953B89982C36A8E200A4618D /* CreateEducatorAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEducatorAccount.swift; sourceTree = "<group>"; };
 		953B899A2C36A8F000A4618D /* EducatorHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducatorHomeScreen.swift; sourceTree = "<group>"; };
@@ -114,6 +115,7 @@
 		EF2511BB2C3C28E60035C58E /* RegexCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexCheck.swift; sourceTree = "<group>"; };
 		EF2865F32C3722D000C08AE8 /* UserAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthentication.swift; sourceTree = "<group>"; };
 		EF2865F52C3725B300C08AE8 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		EFC5394D2C3D1E4F009556DF /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				D19D5B342C35425F00E9AE98 /* .gitignore */,
+				04CD06002C3C38390081D8AF /* GoogleService-Info.plist */,
 				D19D5B092C35423100E9AE98 /* TLMS-admin */,
 				D19D5B1A2C35423200E9AE98 /* TLMS-adminTests */,
 				D19D5B242C35423200E9AE98 /* TLMS-adminUITests */,
@@ -235,7 +238,7 @@
 				EF25117E2C3965630035C58E /* LoginScreen.swift */,
 				EF2511A32C3B31E70035C58E /* CheckUserRole.swift */,
 				953B89982C36A8E200A4618D /* CreateEducatorAccount.swift */,
-				04CD06002C3C38390081D8AF /* GoogleService-Info.plist */,
+				EFC5394D2C3D1E4F009556DF /* ForgotPasswordView.swift */,
 			);
 			path = OnboardingPages;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 				EF2511BC2C3C28E60035C58E /* RegexCheck.swift in Sources */,
 				EF2865F62C3725B300C08AE8 /* DataModel.swift in Sources */,
 				EF2511892C3966560035C58E /* TitleLabel.swift in Sources */,
+				EFC5394E2C3D1E4F009556DF /* ForgotPasswordView.swift in Sources */,
 				EF2511B22C3BBF100035C58E /* FirstTimeLogin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

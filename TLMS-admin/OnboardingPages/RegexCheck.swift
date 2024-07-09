@@ -9,7 +9,7 @@
 import SwiftUI
 
 func validateName(name: String) -> Bool {
-    let nameRegex = "^[a-zA-Z]{2,20}$"
+    let nameRegex = "^[a-zA-Z ]{1,20}$"
     let namePredicate = NSPredicate(format:"SELF MATCHES %@", nameRegex)
     return namePredicate.evaluate(with: name)
 }
@@ -20,17 +20,17 @@ func validateEmail(email: String) -> Bool {
     return emailPredicate.evaluate(with: email)
 }
     
-func validatePassword(password: String) -> Bool {
-    let passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*])[A-Za-z\\d!@#$%^&*]{8,20}$"
-    let passwordPredicate = NSPredicate(format:"SELF MATCHES %@", passwordRegex)
-    return passwordPredicate.evaluate(with: password)
-}
-func validatePhone(phone: String) -> Bool {
-    let phoneRegex = "^[+]?[0-9]*\\s?(\\d{3})\\s?[-\\s]?\\d{3}[-\\s]?\\d{4}$"
-    let phonePredicate = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
-    return phonePredicate.evaluate(with: phone)
+func validatePassword(_ password: String) -> Bool {
+    let passwordRegex = "^(?=.*[A-Z])(?=.*\\d)(?=.*[^A-Za-z\\d]).{8,}$"
+    let predicate = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
+    return predicate.evaluate(with: password)
 }
 
+func validatePhoneNumber(_ phoneNumber: String) -> Bool {
+    let phoneRegex = "^[1-9][0-9]{9}$"
+    let predicate = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
+    return predicate.evaluate(with: phoneNumber)
+}
     
 func validateAbout(about: String) -> Bool {
     return about.count <= 255
