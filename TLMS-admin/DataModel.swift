@@ -19,7 +19,7 @@ struct Admin {
 
 struct Target : Identifiable{
 //    var documentID : String
-    var id : UUID?
+    var id : UUID = UUID()
     var targetName : String
     var courses : [Course]?
 }
@@ -68,6 +68,8 @@ struct Educator : Identifiable{
     var password: String
     var phoneNumber: String
     var profileImageURL: String
+    var profileImage : UIImage?
+    var assignedCourses : [Course]?
 
     func toDictionary() -> [String: Any] {
         return [

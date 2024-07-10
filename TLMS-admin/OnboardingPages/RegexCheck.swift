@@ -31,6 +31,12 @@ func validatePhoneNumber(_ phoneNumber: String) -> Bool {
     let predicate = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
     return predicate.evaluate(with: phoneNumber)
 }
+
+func validateTitle(title: String) -> Bool {
+    let nameRegex = "^[a-zA-Z0-9 ]{1,30}$"
+    let namePredicate = NSPredicate(format:"SELF MATCHES %@", nameRegex)
+    return namePredicate.evaluate(with: title)
+}
     
 func validateAbout(about: String) -> Bool {
     return about.count <= 255

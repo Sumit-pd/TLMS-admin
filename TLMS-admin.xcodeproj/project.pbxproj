@@ -269,11 +269,9 @@
 			children = (
 				EF2511B12C3BBF100035C58E /* FirstTimeLogin.swift */,
 				953B89962C36A8BB00A4618D /* AdminHomeScreen.swift */,
-				EF2511A72C3BBA740035C58E /* TargetsCardView.swift */,
-				BBB4DD032C373EBC00150FE5 /* TargetScreen.swift */,
-				EF2511A52C3BB9500035C58E /* TargetViewModel.swift */,
-				BBB4DD0A2C3748D400150FE5 /* CourseCreationScreen.swift */,
 				EF2511A92C3BBAD00035C58E /* CoursesView.swift */,
+				BBB4DD0A2C3748D400150FE5 /* CourseCreationScreen.swift */,
+				EFC5394F2C3D2B81009556DF /* Targets */,
 				EF2511AB2C3BBB450035C58E /* TabBar.swift */,
 				EF25117C2C37C46D0035C58E /* CourseServices.swift */,
 			);
@@ -286,6 +284,16 @@
 				953B899A2C36A8F000A4618D /* EducatorHomeScreen.swift */,
 			);
 			path = "Educator App";
+			sourceTree = "<group>";
+		};
+		EFC5394F2C3D2B81009556DF /* Targets */ = {
+			isa = PBXGroup;
+			children = (
+				EF2511A72C3BBA740035C58E /* TargetsCardView.swift */,
+				BBB4DD032C373EBC00150FE5 /* TargetScreen.swift */,
+				EF2511A52C3BB9500035C58E /* TargetViewModel.swift */,
+			);
+			path = Targets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

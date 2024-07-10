@@ -24,7 +24,7 @@ struct TabBar: View {
                     }
                     .tag(0) // Tag for NotificationView
 
-                CoursesView(target: target)
+                CoursesView(targetName: "")
                     .tabItem {
                         Image(systemName: "book")
                         Text("Courses")

@@ -14,7 +14,7 @@ struct CoursesView: View {
     @State private var showModal = false
     @State private var navigateToCoursesCreation = false
 
-    var target : Target
+    var targetName : String
 
     var body: some View {
         NavigationView {
@@ -46,7 +46,7 @@ struct CoursesView: View {
                         showModal.toggle() // Toggle modal visibility
                     }) {
                         HStack {
-                            Text(target.targetName)
+                            Text(targetName)
                                 .font(.headline)
                                 .fontWeight(.bold)
                                 .foregroundColor(.black)
@@ -56,7 +56,7 @@ struct CoursesView: View {
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination : CourseCreationView(), isActive: $navigateToCoursesCreation) {
+                    NavigationLink(destination : CourseCreationView(targetName: targetName), isActive: $navigateToCoursesCreation) {
                         
                         
                         Button(action: {
@@ -74,7 +74,7 @@ struct CoursesView: View {
             .navigationBarHidden(false)
             .edgesIgnoringSafeArea(.bottom) // Ensure content extends behind the tab bar
             .sheet(isPresented: $showModal) {
-                DomainSelectionView(target : target, showModal: $showModal)
+                DomainSelectionView(targetName : targetName, showModal: $showModal)
                     .presentationDetents([.height(200)]) // Adjust the height based on the content
             }
         }
@@ -84,7 +84,7 @@ struct CoursesView: View {
 }
 
 struct DomainSelectionView: View {
-    @State var target : Target
+    @State var targetName : String
     @Binding var showModal: Bool
 
     var body: some View {
@@ -92,7 +92,7 @@ struct DomainSelectionView: View {
             Button(action: {
                 showModal.toggle()
             }) {
-                Text(target.targetName)
+                Text(targetName)
                     .padding()
                     .frame(maxWidth: .infinity)
                     .foregroundColor(.black)

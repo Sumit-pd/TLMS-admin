@@ -7,6 +7,8 @@ import FirebaseStorage
 @MainActor
 class FirebaseFetch: ObservableObject {
     @Published public var pendingEducators: [Educator] = []
+    @Published public var educators: [Educator] = []
+    @Published public var searchText: String = ""
 
     init() {
         fetchPendingEducators()
@@ -32,7 +34,6 @@ class FirebaseFetch: ObservableObject {
                     )
                 } ?? []
             }
-            
         }
     }
     
@@ -76,6 +77,41 @@ class FirebaseFetch: ObservableObject {
                         self.removeEducator(educator: educator)
                     }
                 }
+            }
+        }
+    }
+    
+    func fetchEducators() {
+        let db = Firestore.firestore()
+        db.collection("Educators").getDocuments { snapshot, error in
+            if let error = error {
+                print("Error fetching educators: \(error.localizedDescription)")
+                return
+            }
+
+            self.educators = snapshot?.documents.compactMap { doc -> Educator? in
+                let data = doc.data()
+                let id = doc.documentID
+                let firstName = data["FirstName"] as? String ?? ""
+                let lastName = data["LastName"] as? String ?? ""
+                let profileImageURL = data["profileImageURL"] as? String ?? ""
+                return Educator(id : doc.documentID,
+                                firstName: data["FirstName"] as? String ?? "",
+                                lastName: data["LastName"] as? String ?? "",
+                                about: data["about"] as? String ?? "",
+                                email: data["email"] as? String ?? "",
+                                password: data["password"] as? String ?? "",
+                                phoneNumber: data["phoneNumber"] as? String ?? "",
+                                profileImageURL: data["profileImageURL"] as? String ?? ""
+                )
+            } ?? []
+        }
+        
+        var filteredEducators: [Educator] {
+            if searchText.isEmpty {
+                return educators
+            } else {
+                return educators.filter { $0.firstName.lowercased().contains(searchText.lowercased()) }
             }
         }
     }
