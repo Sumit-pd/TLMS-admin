@@ -127,7 +127,7 @@ struct CourseCreationView: View {
                     .cornerRadius(8)
                     .frame(height: 30)
 
-                    CustomButton(label: "Create Courses", action: {
+                    CustomButton(label: "Create Course", action: {
                         uploadCourseImage { url in
                             let courseData: [String: Any] = [
                                 "Title": courseTitle,

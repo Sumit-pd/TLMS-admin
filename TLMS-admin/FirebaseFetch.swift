@@ -51,7 +51,7 @@ class FirebaseFetch: ObservableObject {
         
     func moveEducatorToApproved(educator: Educator) {
         let db = Firestore.firestore()
-        let educatorData: [String: Any] = [
+        var educatorData: [String: Any] = [
             "FirstName": educator.firstName,
             "LastName": educator.lastName,
             "about": educator.about,
@@ -70,7 +70,7 @@ class FirebaseFetch: ObservableObject {
                     print("Error retrieving user UID.")
                     return
                 }
-                
+                educatorData["id"] = uid
                 db.collection("Educators").document(uid).setData(educatorData) { error in
                     if let error = error {
                         print("Error adding document: \(error)")
