@@ -65,7 +65,7 @@ struct CoursesView: View {
             .navigationBarHidden(false)
             .edgesIgnoringSafeArea(.bottom) // Ensure content extends behind the tab bar
             .sheet(isPresented: $showModal) {
-                DomainSelectionView(targetName : targetName, showModal: $showModal)
+                DomainSelectionView(showModal: $showModal)
                     .presentationDetents([.height(200)]) // Adjust the height based on the content
             }
         }
@@ -75,38 +75,46 @@ struct CoursesView: View {
 }
 
 struct DomainSelectionView: View {
-    @State var targetName : String
+    @State var targets : [String] = []
     @Binding var showModal: Bool
+    @State var courseService  = CourseServices()
 
     var body: some View {
         VStack {
-            Button(action: {
-                showModal.toggle()
-            }) {
-                Text(targetName)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(.black)
+            ForEach(targets, id: \.self) {
+                target in
+                Button(action: {
+                    showModal.toggle()
+                }) {
+                    Text(target)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(.black)
+                }
             }
-            Button(action: {
-                showModal.toggle()
-            }) {
-                Text("Another Domain")
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(.black)
-            }
-            Button(action: {
-                showModal.toggle()
-            }) {
-                Text("Yet Another Domain")
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(.black)
-            }
+        }
+        .onAppear() {
+            allTargets()
         }
         .padding()
         .background(Color.white)
         .cornerRadius(10)
     }
+    
+    func allTargets() {
+        courseService.fetchTargets { fetchedTargets in
+            print("Fetched Targets : \(fetchedTargets)")
+            self.targets = fetchedTargets
+        }
+    }
+
 }
+//
+//Button(action: {
+//    showModal.toggle()
+//}) {
+//    Text(targetName)
+//        .padding()
+//        .frame(maxWidth: .infinity)
+//        .foregroundColor(.black)
+//}

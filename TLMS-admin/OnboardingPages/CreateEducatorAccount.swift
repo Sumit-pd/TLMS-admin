@@ -233,15 +233,15 @@ struct CreateAccountView: View {
                                     Alert(title: Text("Notification"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
                                 }
 
-//                                Button(action: {
-//                                    navigateToPendingEdu = true
-//                                }) {
-//                                    Text("Pending...")
-//                                }
-//
-//                                NavigationLink(destination: PendingEducatorsView(), isActive: $navigateToPendingEdu) {
-//                                    EmptyView()
-//                                }
+                                Button(action: {
+                                    navigateToPendingEdu = true
+                                }) {
+                                    Text("Pending...")
+                                }
+
+                                NavigationLink(destination: PendingEducatorsView(), isActive: $navigateToPendingEdu) {
+                                    EmptyView()
+                                }
 
                         }
                         .padding(.horizontal)
