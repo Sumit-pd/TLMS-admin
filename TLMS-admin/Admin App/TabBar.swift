@@ -11,39 +11,45 @@ struct TabBar: View {
     @State private var selectedTabIndex = 1 // Default to CoursesView (index 1)
     var target : Target
     var body: some View {
-        VStack {
-            CustomTabBarAppearance() // Apply custom tab bar appearance
-                .frame(height: 0) // Hide the actual tab bar
-                .hidden()
-
-            TabView(selection: $selectedTabIndex) {
-                NotificationView()
-                    .tabItem {
-                        Image(systemName: "bell")
-                        Text("Notification")
-                    }
-                    .tag(0) // Tag for NotificationView
-
-                CoursesView(target: target)
-                    .tabItem {
-                        Image(systemName: "book")
-                        Text("Courses")
-                    }
-                    .tag(1) // Tag for CoursesView
-
-                ProfileView()
-                    .tabItem {
-                        Image(systemName: "person.3.fill")
-                        Text("Educators")
-                    }
-                    .tag(2) // Tag for ProfileView
-            }
-            .onAppear {
-                selectedTabIndex = 1 // Set CoursesView as default on screen appear
-            }
+        NavigationStack{
+            VStack {
+                CustomTabBarAppearance() // Apply custom tab bar appearance
+                    .frame(height: 0) // Hide the actual tab bar
+                    .hidden()
+                
+                TabView(selection: $selectedTabIndex) {
+                    NotificationView()
+                        .tabItem {
+                            Image(systemName: "bell")
+                            Text("Notification")
+                        }
+                        .tag(0) // Tag for NotificationView
+                    
+                    CoursesView(targetName: "")
+                        .tabItem {
+                            Image(systemName: "book")
+                            Text("Courses")
+                        }
+                        .tag(1) // Tag for CoursesView
+                    
+                    ProfileView()
+                        .tabItem {
+                            Image(systemName: "person.3.fill")
+                            Text("Educators")
+                        }
+                        .tag(2) // Tag for ProfileView
+                }
+                .onAppear {
+                    selectedTabIndex = 1 // Set CoursesView as default on screen appear
+                }
+                .navigationBarBackButtonHidden(true)}
+            
         }
+        
+        .navigationBarHidden(true)
     }
-}
+    }
+
 
 struct CustomTabBarAppearance: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
@@ -86,5 +92,8 @@ struct ProfileView: View {
     var body: some View {
         Text("Educators")
     }
+}
+#Preview {
+    TabBar(target: Target(targetName: "Karan"))
 }
 

@@ -39,7 +39,7 @@ struct LoginScreen: View {
 
                     PNGImageView(imageName: "laptop", width: 139, height: 157)
                     
-                    VStack(spacing: 10) {
+                    VStack() {
                         CustomTextField(placeholder: "Email", text: $email)
                             .onChange(of: email) { _, newVal in
                                 isEmailValid = validateEmail(email: newVal)
@@ -64,23 +64,25 @@ struct LoginScreen: View {
                         CustomSecureField(placeholder: "Password", text: $password)
 
                     }
+                    
+                    HStack {
+                        Spacer()
+                        Button("Forgot Password?") {
+                            navigateToForgotPassword = true
+                        }
+                        .foregroundColor(.blue)
+                     
+//                        .padding(.horizontal)
+                        .font(.system(size: 15, weight: .bold, design: .default))
+                        .padding(.trailing ,20)
+
+                    }
                             CustomButton(label: "Login", action: {
                                 userAuth.email = email
                                 userAuth.password = password
                                 userAuth.loginUser()
                             })
-                        HStack {
-                            Spacer()
-                            Button("Forgot Password?") {
-                                navigateToForgotPassword = true
-                            }
-                            .foregroundColor(.blue)
-                         
-                            .padding(.horizontal)
-                            .font(.system(size: 15, weight: .bold, design: .default))
-                            .padding(.trailing ,20)
-    
-                        }
+                        
                         
                         .alert(isPresented: $showAlert) {
                             Alert(title: Text("Login Action"), message: Text(alertMessage), dismissButton: .default(Text("OK")))

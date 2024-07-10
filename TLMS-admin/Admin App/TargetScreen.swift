@@ -1,19 +1,14 @@
-//
-//  ContentView.swift
-//  tlms_target_creation
-//
-//  Created by Divyansh Kaushik on 04/07/24.
-//
-
 import SwiftUI
 import FirebaseAuth
 
 struct TargetScreen: View {
     
     @EnvironmentObject var authViewModel : UserAuthentication
+    @State var courseService = CourseServices()
+    @State var targets : [String] = []
     @State private var isPresentingNewTarget = false
     @State private var isSelected = false
-    @StateObject private var viewModel = TargetViewModel()
+    @State var isRefreshing = false
     var body: some View {
         NavigationView {
             ScrollView {
@@ -40,23 +35,28 @@ struct TargetScreen: View {
                             
                         }
                     }
-//                    .padding()
                     
-                    
-//                    Button(action: {
-//                        do {
-//                            try Auth.auth().signOut()
-//                            authViewModel.signOut()
-//                        } catch let signOutError as NSError {
-//                            print("Error signing out: %@", signOutError)
-//                        }
-//                    }) {
-//                        Text("Sign Out")
-//                            .foregroundColor(.blue)
-//                    }
+                    HStack {
+                        Button(action: {
+                            do {
+                                try Auth.auth().signOut()
+                                authViewModel.signOut()
+                            } catch let signOutError as NSError {
+                                print("Error signing out: %@", signOutError)
+                            }
+                        }) {
+                            Text("Sign Out")
+                                .foregroundColor(.blue)
+                        }
                     .padding()
+                        Button(action : {
+                            isRefreshing.toggle()
+                        }) {
+                            Image(systemName: "arrow.circlepath")
+                        }
+                    }
                     
-                    if viewModel.targets.isEmpty {
+                    if targets.isEmpty {
                         Text("No Target")
                             .opacity(0.5)
                             .foregroundColor(Color(hex: "#6C5DD4")!)
@@ -64,27 +64,43 @@ struct TargetScreen: View {
                             .fontWeight(.bold)
                             .padding(.top, 200)
                     } else {
-                        ForEach(viewModel.targets) {
-                            target in TargetsCardView(target: target)
+                        ForEach(targets, id: \.self) { target in
+                            TargetsCardView(targetName: target)
                         }
                         
-//                        .navigationTitle("Our Target")
-//                        .navigationBarTitleDisplayMode(.inline)
+                        .navigationTitle("Our Target")
+                        .navigationBarTitleDisplayMode(.inline)
                     }
+                }
+                .onChange(of : isRefreshing) {
+                    allTargets()
+                }
+                .onAppear {
+                    allTargets()
                 }
             }
         }
-            .sheet(isPresented: $isPresentingNewTarget, content: {
-                NewTargetScreen(viewModel: viewModel)
-            })
-                }
-            }
+        
+        .sheet(isPresented: $isPresentingNewTarget, content: {
+            NewTargetScreen()
+        })
+        
+    }
     
-            
+    
+    func allTargets() {
+        courseService.fetchTargets { fetchedTargets in
+            print("Fetched Targets : \(fetchedTargets)")
+            self.targets = fetchedTargets
+        }
+    }
+}
     
 
 struct NewTargetScreen: View {
-    @ObservedObject var viewModel: TargetViewModel
+    
+    @State var courseService = CourseServices()
+    
     @State private var TargetTitle: String = ""
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
@@ -98,7 +114,14 @@ struct NewTargetScreen: View {
                 Spacer()
                 Button(action: {
                     if !TargetTitle.isEmpty {
-                        viewModel.addTarget(title: TargetTitle)
+                        courseService.uploadTarget(targetName: TargetTitle) {
+                            success in
+                            if success {
+                                print("Successfully created a target.")
+                            } else {
+                                print("Couldn't create a target.")
+                            }
+                        }
                         presentationMode.wrappedValue.dismiss()
                     }
                 }) {
@@ -131,7 +154,7 @@ struct NewTargetScreen: View {
 //Button(action : {
 //    print("Course Creation")
 //    navigateToCourseCreation.toggle()
-//    
+//
 //}) {
 //    Text("Create a Course")
 //}
