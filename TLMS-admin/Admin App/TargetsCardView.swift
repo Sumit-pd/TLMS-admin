@@ -1,21 +1,13 @@
-//
-//  TargetsCardView.swift
-//  TLMS-admin
-//
-//  Created by Abcom on 08/07/24.
-//
-
-import SwiftUI
-
 import SwiftUI
 
 struct TargetsCardView: View {
-    @State var target : Target
-    @StateObject private var viewModel = TargetViewModel()
+    
+    @State var courseService  = CourseServices()
+    @State var targetName : String
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        NavigationLink( destination: TabBar(target: target)){
+        NavigationLink( destination: CoursesView(targetName: targetName)){
             
             HStack(alignment : .center){
                 Image(systemName: "circle.circle.fill")
@@ -26,7 +18,7 @@ struct TargetsCardView: View {
                 
                 Spacer()
                 
-                Text(target.targetName)
+                Text(targetName)
                     .foregroundColor(.black)
                     .font(.custom("Poppins-Medium", size: 20))
                     .font(.title2)
@@ -34,7 +26,7 @@ struct TargetsCardView: View {
                 
                 Spacer()
                 Button(action: {
-                    viewModel.removeTarget(target: target)
+                    //****//
                 }) {
                     Image(systemName: "trash")
                         .foregroundColor(.black)
@@ -55,12 +47,8 @@ struct TargetsCardView: View {
     
 }
 
-
-// Provide a valid preview implementation
-struct GoalCard_Previews: PreviewProvider {
+struct TargetCard_Previews: PreviewProvider {
     static var previews: some View {
-        let target = Target(targetName: "Dummy target")
-        TargetsCardView(target: target)
+        TargetsCardView(targetName: "Dummy")
     }
 }
-

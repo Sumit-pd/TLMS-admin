@@ -20,7 +20,6 @@ struct CreateAccountView: View {
     @State private var isLoading = false
     @State private var navigateToPendingEdu = false
     @State private var registrationDone = false
-    
     @State private var isFirstNameValid = false
     @State private var isLastNameValid = false
     @State private var isEmailValid = false
