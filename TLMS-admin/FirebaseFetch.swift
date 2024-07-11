@@ -59,7 +59,8 @@ class FirebaseFetch: ObservableObject {
             "password": educator.password,
             "phoneNumber": educator.phoneNumber,
             "profileImageURL": educator.profileImageURL,
-            "role" : "educator"
+            "role" : "educator",
+            "assignedCoursesID" : []
         ]
         
         Auth.auth().createUser(withEmail: educator.email, password: educator.password) {

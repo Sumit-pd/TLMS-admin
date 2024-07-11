@@ -25,14 +25,35 @@ struct Target : Identifiable{
     var courses : [Course]?
 }
 
-struct Course {
+struct Course : Identifiable{
+    var id: String?
+    
     var courseID : UUID
     var courseName : String
     var courseDescription : String
-    var courseImage : String
+    var courseImageURL : String?
+    var courseImage : UIImage?
+    var releaseDate : Date?
     var assignedEducator : Educator
     var content : Content?
     var numberOfStudentsEnrolled : Int?
+    var likeCount : Int?
+    var target : String
+    
+    func toDictionary() -> [String:Any]{
+        return [
+            "courseID" : courseID,
+            "courseName" : courseName,
+            "courseDescription" : courseDescription,
+            "courseThumbnailURL" : courseImage,
+            "releaseDate" : releaseDate,
+            "assignedEducator" : assignedEducator.id,
+            "target" : target,
+            "content" : content,
+            "likeCount" : likeCount,
+            "numberOfEnrollments" : numberOfStudentsEnrolled
+        ]
+    }
 }
 
 struct Content {
