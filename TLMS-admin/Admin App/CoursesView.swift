@@ -9,30 +9,32 @@ struct CoursesView: View {
     var body: some View {
         NavigationView {
             ZStack(alignment: .bottom) {
-                VStack {
+                VStack (){
                     GeometryReader { geometry in
-                        VStack {
-                            if viewModel.courses.isEmpty {
-                                Text("No Courses")
-                                    .font(.title)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(Color(.black))
-                                    .opacity(0)
-                                    .position(x: geometry.size.width / 2, y: geometry.size.height * 0.4)
-                            } else {
-                                ForEach(viewModel.courses) { course in
-                                    VStack(alignment: .leading, spacing: 15) {
-                                        Text(course.courseName)
-                                            .font(.headline)
-                                        Text(course.courseDescription)
-                                            .font(.subheadline)
+                        ScrollView{
+                            VStack(){
+                                if viewModel.courses.isEmpty {
+                                    Text("No Courses")
+                                        .font(.title)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(Color(.black))
+                                        .opacity(0)
+                                        .position(x: geometry.size.width / 2, y: geometry.size.height * 0.4)
+                                } else {
+                                    ForEach(viewModel.courses){
+                                        course in
+                                        CourseCardView(course: course)
+                                        //                                        .padding(.bottom, 10)
+                                    }
+                                    .onAppear(){
+                                        viewModel.fetchCourses(targetName: selectedTarget)
                                     }
                                 }
                             }
                         }
                     }
                 }
-                .padding(.horizontal)
+//                .padding(.horizontal)
 
                 Image("homescreenWave")
                     .resizable()
