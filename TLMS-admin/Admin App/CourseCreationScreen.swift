@@ -13,6 +13,9 @@ struct CourseCreationView: View {
     @State private var isDescription: Bool = false
     @State private var showEducatorPicker: Bool = false
     @State private var showImagePicker: Bool = false
+    @State var courseService = CourseServices()
+    @Environment(\.presentationMode) var presentationMode
+    
     var targetName: String
 
     var body: some View {
@@ -87,7 +90,7 @@ struct CourseCreationView: View {
                         }
                     }
 
-                    // Add Release Date Picker
+
                     Text("Release Date")
                         .font(.headline)
                     DatePicker("Select Date", selection: $releaseDate, displayedComponents: .date)
@@ -97,7 +100,6 @@ struct CourseCreationView: View {
                         .cornerRadius(8)
                         
 
-                    // Assign Educator at the bottom
                     Text("Assign Educator")
                         .font(.headline)
 
@@ -107,10 +109,7 @@ struct CourseCreationView: View {
                         HStack {
                             if let educator = selectedEducator {
                                 HStack (spacing: 10){
-                                    Image(uiImage: educator.profileImage ?? UIImage(systemName: "person.crop.circle.fill")!)
-                                        .resizable()
-                                        .frame(width: 30, height: 30)
-                                        .clipShape(Circle())
+                                    ProfileCircleImage(imageURL: educator.profileImageURL, width: 35, height: 35)
                                     Text(educator.firstName + " " + educator.lastName)
                                         .font(.subheadline)
                                         .background(Color(.white))
@@ -129,17 +128,15 @@ struct CourseCreationView: View {
 
                     CustomButton(label: "Create Course", action: {
                         uploadCourseImage { url in
-                            let courseData: [String: Any] = [
-                                "Title": courseTitle,
-                                "Description": courseDescription,
-                                "Educator": selectedEducator?.firstName ?? "",
-                                "CoverImage": url?.absoluteString ?? "",
-                                "ReleaseDate": Timestamp(date: releaseDate)
-                            ]
-
-                            let db = Firestore.firestore()
-                            db.collection("Targets").document(targetName).collection("Courses").document(courseTitle).setData(courseData)
+                            let courseData: Course = Course(courseID: UUID(), courseName: courseTitle, courseDescription: courseDescription, courseImageURL: url!.absoluteString, releaseDate: releaseDate, assignedEducator: selectedEducator!, target: targetName)
+                            courseService.createCourse(course: courseData) { error in
+                                if let _ = error {
+                                    print("Error uploading the course.")
+                                }
+                            }
+                            
                         }
+                        presentationMode.wrappedValue.dismiss()
                     })
                 }
                 .padding(20)
@@ -149,7 +146,6 @@ struct CourseCreationView: View {
             .sheet(isPresented: $showEducatorPicker) {
                 EducatorPickerView(selectedEducator: $selectedEducator)
             }
-//        }
     }
 
     private func uploadCourseImage(completion: @escaping (URL?) -> Void) {
@@ -240,10 +236,7 @@ struct EducatorPickerView: View {
                             presentationMode.wrappedValue.dismiss()
                         }) {
                             HStack {
-                                Image(uiImage: educator.profileImage ?? UIImage(systemName: "person.crop.circle.fill")!)
-                                    .resizable()
-                                    .frame(width: 40, height: 40)
-                                    .clipShape(Circle())
+                                ProfileCircleImage(imageURL: educator.profileImageURL, width: 40, height: 40)
                                 Text(educator.firstName+" "+educator.lastName)
                                     .font(.headline)
                                 Spacer()

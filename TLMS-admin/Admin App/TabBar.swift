@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TabBar: View {
     @State private var selectedTabIndex = 1 // Default to CoursesView (index 1)
-    var target : Target
+    var target : String
     var body: some View {
         NavigationStack{
             VStack {
@@ -25,7 +25,7 @@ struct TabBar: View {
                         }
                         .tag(0) // Tag for NotificationView
                     
-                    CoursesView(targetName: "")
+                    CoursesView(selectedTarget: target)
                         .tabItem {
                             Image(systemName: "book")
                             Text("Courses")
@@ -94,6 +94,6 @@ struct ProfileView: View {
     }
 }
 #Preview {
-    TabBar(target: Target(targetName: "Karan"))
+    TabBar(target: "HAHA! ")
 }
 

@@ -7,7 +7,7 @@ struct TargetsCardView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        NavigationLink( destination: CoursesView(targetName: targetName)){
+        NavigationLink( destination: CoursesView(selectedTarget: targetName)){
             
             HStack(alignment : .center){
                 Image(systemName: "circle.circle.fill")

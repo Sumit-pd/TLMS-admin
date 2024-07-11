@@ -40,7 +40,6 @@
 		EF25119F2C3AD9270035C58E /* DetailedEducatorRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF25119E2C3AD9270035C58E /* DetailedEducatorRequestView.swift */; };
 		EF2511A22C3B09210035C58E /* HeadlineText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2511A12C3B09210035C58E /* HeadlineText.swift */; };
 		EF2511A42C3B31E70035C58E /* CheckUserRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2511A32C3B31E70035C58E /* CheckUserRole.swift */; };
-		EF2511A62C3BB9500035C58E /* TargetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2511A52C3BB9500035C58E /* TargetViewModel.swift */; };
 		EF2511A82C3BBA740035C58E /* TargetsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2511A72C3BBA740035C58E /* TargetsCardView.swift */; };
 		EF2511AA2C3BBAD00035C58E /* CoursesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2511A92C3BBAD00035C58E /* CoursesView.swift */; };
 		EF2511AC2C3BBB450035C58E /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2511AB2C3BBB450035C58E /* TabBar.swift */; };
@@ -106,7 +105,6 @@
 		EF25119E2C3AD9270035C58E /* DetailedEducatorRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedEducatorRequestView.swift; sourceTree = "<group>"; };
 		EF2511A12C3B09210035C58E /* HeadlineText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineText.swift; sourceTree = "<group>"; };
 		EF2511A32C3B31E70035C58E /* CheckUserRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckUserRole.swift; sourceTree = "<group>"; };
-		EF2511A52C3BB9500035C58E /* TargetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetViewModel.swift; sourceTree = "<group>"; };
 		EF2511A72C3BBA740035C58E /* TargetsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetsCardView.swift; sourceTree = "<group>"; };
 		EF2511A92C3BBAD00035C58E /* CoursesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesView.swift; sourceTree = "<group>"; };
 		EF2511AB2C3BBB450035C58E /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
@@ -271,7 +269,6 @@
 				953B89962C36A8BB00A4618D /* AdminHomeScreen.swift */,
 				EF2511A72C3BBA740035C58E /* TargetsCardView.swift */,
 				BBB4DD032C373EBC00150FE5 /* TargetScreen.swift */,
-				EF2511A52C3BB9500035C58E /* TargetViewModel.swift */,
 				BBB4DD0A2C3748D400150FE5 /* CourseCreationScreen.swift */,
 				EF2511A92C3BBAD00035C58E /* CoursesView.swift */,
 				EF2511AB2C3BBB450035C58E /* TabBar.swift */,
@@ -447,7 +444,6 @@
 				EF2511A82C3BBA740035C58E /* TargetsCardView.swift in Sources */,
 				953B899B2C36A8F000A4618D /* EducatorHomeScreen.swift in Sources */,
 				953B89972C36A8BC00A4618D /* AdminHomeScreen.swift in Sources */,
-				EF2511A62C3BB9500035C58E /* TargetViewModel.swift in Sources */,
 				EF2511962C39B27D0035C58E /* FirebaseFetch.swift in Sources */,
 				EF2511A42C3B31E70035C58E /* CheckUserRole.swift in Sources */,
 				EF2511A22C3B09210035C58E /* HeadlineText.swift in Sources */,
