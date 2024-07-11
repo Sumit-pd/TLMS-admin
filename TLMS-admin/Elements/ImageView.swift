@@ -71,3 +71,38 @@ struct ProfileCircleImage: View {
         }
     }
 }
+
+
+struct CoursethumbnailImage: View {
+    var imageURL: String?
+    var width : CGFloat?
+    var height : CGFloat?
+
+    var body: some View {
+        if let urlString = imageURL, let url = URL(string: urlString) {
+            AsyncImage(url: url) { image in
+                image
+                    .resizable()
+                    .cornerRadius(12)
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: width, height: height)
+                    .padding(.bottom, 8)
+            }
+                    placeholder: {
+                        ProgressView()
+                            .frame(width: 60, height: 60)
+                    }
+                    
+            
+                    
+        } else {
+            Image(systemName: "person.circle.fill")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 60, height: 60)
+                .foregroundColor(.gray)
+                .clipShape(Circle())
+                .padding(.vertical, 8)
+        }
+    }
+}

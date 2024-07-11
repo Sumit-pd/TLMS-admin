@@ -27,7 +27,6 @@ struct Target : Identifiable{
 
 struct Course : Identifiable{
     var id: String?
-    
     var courseID : UUID
     var courseName : String
     var courseDescription : String

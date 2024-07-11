@@ -8,7 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		04CD06012C3C38390081D8AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04CD06002C3C38390081D8AF /* GoogleService-Info.plist */; };
+
+		3294FD442C3FA3DA00F81BC5 /* CourseCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3294FD432C3FA3DA00F81BC5 /* CourseCardView.swift */; };
+
 		3C13CB552C3FFC04008C680D /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C13CB542C3FFC04008C680D /* HomeScreen.swift */; };
+
 		953B89972C36A8BC00A4618D /* AdminHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B89962C36A8BB00A4618D /* AdminHomeScreen.swift */; };
 		953B89992C36A8E200A4618D /* CreateEducatorAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B89982C36A8E200A4618D /* CreateEducatorAccount.swift */; };
 		953B899B2C36A8F000A4618D /* EducatorHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B899A2C36A8F000A4618D /* EducatorHomeScreen.swift */; };
@@ -72,7 +76,11 @@
 
 /* Begin PBXFileReference section */
 		04CD06002C3C38390081D8AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "TLMS-admin/OnboardingPages/GoogleService-Info.plist"; sourceTree = "<group>"; };
+
+		3294FD432C3FA3DA00F81BC5 /* CourseCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCardView.swift; sourceTree = "<group>"; };
+
 		3C13CB542C3FFC04008C680D /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+
 		953B89962C36A8BB00A4618D /* AdminHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHomeScreen.swift; sourceTree = "<group>"; };
 		953B89982C36A8E200A4618D /* CreateEducatorAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEducatorAccount.swift; sourceTree = "<group>"; };
 		953B899A2C36A8F000A4618D /* EducatorHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducatorHomeScreen.swift; sourceTree = "<group>"; };
@@ -284,6 +292,7 @@
 				EF2511A92C3BBAD00035C58E /* CoursesView.swift */,
 				EF2511AB2C3BBB450035C58E /* TabBar.swift */,
 				EF25117C2C37C46D0035C58E /* CourseServices.swift */,
+				3294FD432C3FA3DA00F81BC5 /* CourseCardView.swift */,
 			);
 			path = "Admin App";
 			sourceTree = "<group>";
@@ -451,6 +460,7 @@
 				EF2865F42C3722D000C08AE8 /* UserAuthentication.swift in Sources */,
 				EF25119B2C39CD8F0035C58E /* PendingEducatorsView.swift in Sources */,
 				EF2511832C3966390035C58E /* ImageView.swift in Sources */,
+				3294FD442C3FA3DA00F81BC5 /* CourseCardView.swift in Sources */,
 				EF25117F2C3965630035C58E /* LoginScreen.swift in Sources */,
 				EF2511A82C3BBA740035C58E /* TargetsCardView.swift in Sources */,
 				953B899B2C36A8F000A4618D /* EducatorHomeScreen.swift in Sources */,
