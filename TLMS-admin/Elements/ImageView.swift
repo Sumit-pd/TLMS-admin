@@ -86,7 +86,7 @@ struct CoursethumbnailImage: View {
                     .cornerRadius(12)
                     .aspectRatio(contentMode: .fill)
                     .frame(width: width, height: height)
-                    .padding(.bottom, 8)
+                 
             }
                     placeholder: {
                         ProgressView()
@@ -95,14 +95,40 @@ struct CoursethumbnailImage: View {
                     
             
                     
+      }
+
+    }
+}
+
+
+struct EducatorImage: View {
+    var imageName: String
+    var width: CGFloat
+    var height: CGFloat
+    
+    var body: some View {
+        // Load the image and apply constraints
+        if let uiImage = UIImage(named: imageName),
+           uiImage.isPNG() {
+            ZStack(alignment: .bottom){
+                Image("greenboard")
+                    .resizable()
+                    .scaledToFit()
+                    
+                HStack{
+                    Image(imageName)
+                        .resizable()
+                        .scaledToFit()
+                    Spacer()
+                }
+            }.frame(width: width, height: height)
         } else {
-            Image(systemName: "person.circle.fill")
+            
+            Image(systemName: "exclamationmark.triangle")
                 .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 60, height: 60)
-                .foregroundColor(.gray)
-                .clipShape(Circle())
-                .padding(.vertical, 8)
+                .scaledToFit()
+                .frame(width: width, height: height)
+                .foregroundColor(.red)
         }
     }
 }

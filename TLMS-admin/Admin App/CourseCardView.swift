@@ -8,10 +8,15 @@
 import SwiftUI
 
 struct CourseCardView: View {
-    var course : Course
+    
     var body: some View {
-        ZStack(alignment: .bottom){
-            CoursethumbnailImage(imageURL: course.courseImageURL, width: 354, height: 195)
+        ZStack(alignment : .bottom){
+
+            Image("SwiftLogo")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 354, height: 195)
+                   
             RoundedRectangle(cornerRadius: 12)
                 .fill(
                                 LinearGradient(
@@ -32,15 +37,17 @@ struct CourseCardView: View {
                 .frame(height: 80)
             HStack(){
                 VStack(alignment: .leading){
-                    Text(course.courseName)
-                        .font(.custom("Poppins-SemiBold", size: 24))
+                    Text("Swift UI")
+                        .font(.custom("Poppins-SemiBold", size: 20))
                         .foregroundColor(.white)
-                       
+                        .frame(maxWidth: 180)
+                        .truncationMode(.tail)
                     
-                    Text(course.assignedEducator.firstName)
+                    Text("By vasoli Bhai")
                         .font(.custom("Poppins-Regular", size: 16))
                         .foregroundColor(.white)
                         .frame(maxWidth: 100)
+                        .truncationMode(.tail)
                 }
                 
                 Spacer()
@@ -58,12 +65,14 @@ struct CourseCardView: View {
                                        )
                                }
             }.padding(15)
+            .frame(width: 354, height: 80)
             
-        }.frame(width: 354)
+            
+        }.frame(width: 354, height: 195)
         
     }
 }
 
 #Preview {
-    CourseCardView(course: Course(courseID: UUID(), courseName: "fjsdkf", courseDescription: "thie si ", assignedEducator: Educator(firstName: "vasoli", lastName: "Bhai", about: "theihr", email: "vasoli@gmail.com", password: "Faharimran@12", phoneNumber: "1234567890", profileImageURL: "sfasd"), target: "sdfds"))
+    CourseCardView()
 }

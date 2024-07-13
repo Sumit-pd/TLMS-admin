@@ -10,6 +10,7 @@ import SwiftUI
 struct TabBar: View {
     @State private var selectedTabIndex = 1 // Default to CoursesView (index 1)
     var target : String
+    
     var body: some View {
         NavigationStack{
             VStack {
@@ -82,11 +83,11 @@ struct CustomTabBarAppearance: UIViewControllerRepresentable {
     }
 }
 
-struct NotificationView: View {
-    var body: some View {
-        Text("Notifications")
-    }
-}
+//struct NotificationView: View {
+//    var body: some View {
+//        Text("Notifications")
+//    }
+//}
 
 struct ProfileView: View {
     var body: some View {

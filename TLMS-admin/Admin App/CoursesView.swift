@@ -9,10 +9,10 @@ struct CoursesView: View {
     var body: some View {
         NavigationView {
             ZStack(alignment: .bottom) {
-                VStack (){
+                VStack (alignment: .center){
                     GeometryReader { geometry in
                         ScrollView{
-                            VStack(){
+//                            VStack(alignment: .center){
                                 if viewModel.courses.isEmpty {
                                     Text("No Courses")
                                         .font(.title)
@@ -23,18 +23,18 @@ struct CoursesView: View {
                                 } else {
                                     ForEach(viewModel.courses){
                                         course in
-                                        CourseCardView(course: course)
-                                        //                                        .padding(.bottom, 10)
+                                        CourseCardView()
+                                       
                                     }
                                     .onAppear(){
                                         viewModel.fetchCourses(targetName: selectedTarget)
                                     }
                                 }
-                            }
+//                            }
                         }
                     }
                 }
-//                .padding(.horizontal)
+                .padding(.horizontal)
 
                 Image("homescreenWave")
                     .resizable()
