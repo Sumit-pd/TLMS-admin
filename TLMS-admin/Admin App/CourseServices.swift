@@ -69,10 +69,11 @@ class CourseServices : ObservableObject {
             "courseID": courseID,
             "courseName": course.courseName,
             "courseDescription": course.courseDescription,
-            "courseImageURL": course.courseImageURL,
-            "assignedEducator": course.assignedEducator.id, // Assuming Educator has an id property
+            "courseImageURL": course.courseImageURL!,
+            "assignedEducator": course.assignedEducator.id!, // Assuming Educator has an id property
             "releaseDate": Timestamp(date: course.releaseDate!),
-            "target": course.target
+            "target": course.target,
+            "state" : course.state
         ] as [String : Any]
         
         courseRef.setData(courseData) { error in
@@ -118,75 +119,18 @@ class CourseServices : ObservableObject {
                       let courseImageURL = data["courseImageURL"] as? String,
                       let assignedEducatorID = data["assignedEducator"] as? String,
                       let releaseDate = (data["releaseDate"] as? Timestamp)?.dateValue(),
-                      let target = data["target"] as? String else {
+                      let target = data["target"] as? String,
+                      let state = data["state"] as? String else {
                     dispatchGroup.leave()
                     continue
                 }
                 
                 self.fetchEducatorByID(assignedEducatorID) { educator in
                     if let educator = educator {
-                        let course = Course(courseID: courseID, courseName: courseName, courseDescription: courseDescription, courseImageURL: courseImageURL, releaseDate: releaseDate, assignedEducator: educator, target: target)
+                        let course = Course(courseID: courseID, courseName: courseName, courseDescription: courseDescription, courseImageURL: courseImageURL, releaseDate: releaseDate, assignedEducator: educator, target: target, state: state)
                         courses.append(course)
                     }
                     dispatchGroup.leave()
-                }
-            }
-            
-            dispatchGroup.notify(queue: .main) {
-                completion(courses, nil)
-            }
-        }
-    }
-
-    
-    
-    func fetchAssignedCoursesForEducator(educatorID: String, completion: @escaping ([Course]?, Error?) -> Void) {
-        let db = Firestore.firestore()
-        let educatorRef = db.collection("Educators").document(educatorID)
-        
-        educatorRef.getDocument { document, error in
-            if let error = error {
-                completion(nil, error)
-                return
-            }
-            
-            guard let document = document, document.exists,
-                  let assignedCourses = document.data()?["assignedCourses"] as? [String] else {
-                completion(nil, nil)
-                return
-            }
-            
-            var courses: [Course] = []
-            let dispatchGroup = DispatchGroup()
-            
-            for courseID in assignedCourses {
-                dispatchGroup.enter()
-                let courseRef = db.collection("Courses").document(courseID)
-                courseRef.getDocument { [self] courseDocument, error in
-                    if let courseDocument = courseDocument, courseDocument.exists {
-                        let data = courseDocument.data()
-                        guard let courseIDString = data?["courseID"] as? String,
-                              let courseID = UUID(uuidString: courseIDString),
-                              let courseName = data?["courseName"] as? String,
-                              let courseDescription = data?["courseDescription"] as? String,
-                              let courseImageURL = data?["courseImageURL"] as? String,
-                              let assignedEducatorID = data?["assignedEducator"] as? String,
-                              let releaseDate = (data?["releaseDate"] as? Timestamp)?.dateValue(),
-                              let target = data?["target"] as? String else {
-                            dispatchGroup.leave()
-                            return
-                        }
-                        
-                        self.fetchEducatorByID(assignedEducatorID) { educator in
-                            if let educator = educator {
-                                let course = Course(courseID: courseID, courseName: courseName, courseDescription: courseDescription, courseImageURL: courseImageURL, releaseDate: releaseDate, assignedEducator: educator, target: target)
-                                courses.append(course)
-                            }
-                            dispatchGroup.leave()
-                        }
-                    } else {
-                        dispatchGroup.leave()
-                    }
                 }
             }
             
@@ -226,6 +170,11 @@ class CourseServices : ObservableObject {
             completion(educator)
         }
     }
-
-
+    
+    func updateCourseState(course: Course, newState: String, completion: @escaping (Error?) -> Void) {
+        let db = Firestore.firestore()
+        db.collection("Courses").document(course.courseName).updateData(["state": newState]) { error in
+            completion(error)
+        }
+    }
 }

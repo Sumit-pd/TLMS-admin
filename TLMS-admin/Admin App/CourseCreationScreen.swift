@@ -128,7 +128,7 @@ struct CourseCreationView: View {
 
                     CustomButton(label: "Create Course", action: {
                         uploadCourseImage { url in
-                            let courseData: Course = Course(courseID: UUID(), courseName: courseTitle, courseDescription: courseDescription, courseImageURL: url!.absoluteString, releaseDate: releaseDate, assignedEducator: selectedEducator!, target: targetName)
+                            let courseData: Course = Course(courseID: UUID(), courseName: courseTitle, courseDescription: courseDescription, courseImageURL: url!.absoluteString, releaseDate: releaseDate, assignedEducator: selectedEducator!, target: targetName, state: "created")
                             courseService.createCourse(course: courseData) { error in
                                 if let _ = error {
                                     print("Error uploading the course.")

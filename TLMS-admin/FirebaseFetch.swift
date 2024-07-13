@@ -8,7 +8,9 @@ import FirebaseStorage
 class FirebaseFetch: ObservableObject {
     @Published public var pendingEducators: [Educator] = []
     @Published public var educators: [Educator] = []
-        @Published public var searchText: String = ""
+    @Published public var searchText: String = ""
+    @Published var isLoading = true
+    @Published var assignedCourses: [Course] = []
 
     init() {
         fetchPendingEducators()
@@ -118,5 +120,92 @@ class FirebaseFetch: ObservableObject {
         }
      
         
+    
+    func fetchAssignedCourses(educatorID: String) {
+        let db = Firestore.firestore()
+        let educatorRef = db.collection("Educators").document(educatorID)
+        
+        self.assignedCourses.removeAll()
+        
+        educatorRef.getDocument { document, error in
+            if let error = error {
+                print("Error fetching educator: \(error.localizedDescription)")
+                self.isLoading = false
+                return
+            }
+            
+            guard let document = document, document.exists,
+                  let data = document.data(),
+                  let assignedCourseIDs = data["assignedCourses"] as? [String] else {
+                self.isLoading = false
+                return
+            }
+            
+            let coursesRef = db.collection("Courses")
+            let dispatchGroup = DispatchGroup()
+            
+            for courseID in assignedCourseIDs {
+                dispatchGroup.enter()
+                
+                coursesRef.whereField("courseID", isEqualTo: courseID).getDocuments { snapshot, error in
+                    if let error = error {
+                        print("Error fetching course: \(error.localizedDescription)")
+                        dispatchGroup.leave()
+                        return
+                    }
+                    
+                    guard let documents = snapshot?.documents, let document = documents.first else {
+                        dispatchGroup.leave()
+                        return
+                    }
+                    
+                    let data = document.data()
+                    let courseIDString = data["courseID"] as? String ?? ""
+                    guard let courseID = UUID(uuidString: courseIDString) else {
+                        dispatchGroup.leave()
+                        return
+                    }
+                    let courseName = data["courseName"] as? String ?? ""
+                    let courseDescription = data["courseDescription"] as? String ?? ""
+                    let courseImageURL = data["courseImageURL"] as? String
+                    let releaseDate = (data["releaseDate"] as? Timestamp)?.dateValue()
+                    let assignedEducatorData = data["assignedEducator"] as? [String: Any] ?? [:]
+                    let assignedEducator = Educator(
+                        firstName: assignedEducatorData["firstName"] as? String ?? "",
+                        lastName: assignedEducatorData["lastName"] as? String ?? "",
+                        about: assignedEducatorData["about"] as? String ?? "",
+                        email: assignedEducatorData["email"] as? String ?? "",
+                        password: assignedEducatorData["password"] as? String ?? "",
+                        phoneNumber: assignedEducatorData["phoneNumber"] as? String ?? "",
+                        profileImageURL: assignedEducatorData["profileImageURL"] as? String ?? ""
+                    )
+                    let target = data["target"] as? String ?? ""
+                    let state = data["state"] as? String ?? ""
+                    
+                    let course = Course(
+                        courseID: courseID,
+                        courseName: courseName,
+                        courseDescription: courseDescription,
+                        courseImageURL: courseImageURL,
+                        releaseDate: releaseDate,
+                        assignedEducator: assignedEducator,
+                        target: target,
+                        state: state
+                    )
+                    
+                    DispatchQueue.main.async {
+                        print("Fetched course: \(course.courseName), \(course.courseID.uuidString)")
+                        self.assignedCourses.append(course)
+                        dispatchGroup.leave()
+                    }
+                }
+            }
+            
+            dispatchGroup.notify(queue: .main) {
+                print("All courses fetched.")
+                self.isLoading = false
+            }
+        }
+    }
 }
 

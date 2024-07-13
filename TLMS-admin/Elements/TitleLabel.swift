@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import FirebaseAuth
 import SwiftUI
 
 // Custom TitleLabel struct
@@ -26,3 +26,6 @@ struct TitleLabel: View {
             .multilineTextAlignment(.leading)
     }
 }
+
+
+

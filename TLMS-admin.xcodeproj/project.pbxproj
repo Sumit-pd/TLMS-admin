@@ -8,11 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		04CD06012C3C38390081D8AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04CD06002C3C38390081D8AF /* GoogleService-Info.plist */; };
-
 		3294FD442C3FA3DA00F81BC5 /* CourseCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3294FD432C3FA3DA00F81BC5 /* CourseCardView.swift */; };
-
-		3C13CB552C3FFC04008C680D /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C13CB542C3FFC04008C680D /* HomeScreen.swift */; };
-
 		953B89972C36A8BC00A4618D /* AdminHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B89962C36A8BB00A4618D /* AdminHomeScreen.swift */; };
 		953B89992C36A8E200A4618D /* CreateEducatorAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B89982C36A8E200A4618D /* CreateEducatorAccount.swift */; };
 		953B899B2C36A8F000A4618D /* EducatorHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B899A2C36A8F000A4618D /* EducatorHomeScreen.swift */; };
@@ -54,6 +50,8 @@
 		EF2511BC2C3C28E60035C58E /* RegexCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2511BB2C3C28E60035C58E /* RegexCheck.swift */; };
 		EF2865F42C3722D000C08AE8 /* UserAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2865F32C3722D000C08AE8 /* UserAuthentication.swift */; };
 		EF2865F62C3725B300C08AE8 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2865F52C3725B300C08AE8 /* DataModel.swift */; };
+		EF7E94F22C4128540001C917 /* NotificationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7E94F12C4128540001C917 /* NotificationCard.swift */; };
+		EF7E94F42C4128820001C917 /* NotificationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7E94F32C4128820001C917 /* NotificationPage.swift */; };
 		EFC5394E2C3D1E4F009556DF /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC5394D2C3D1E4F009556DF /* ForgotPasswordView.swift */; };
 /* End PBXBuildFile section */
 
@@ -76,11 +74,7 @@
 
 /* Begin PBXFileReference section */
 		04CD06002C3C38390081D8AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "TLMS-admin/OnboardingPages/GoogleService-Info.plist"; sourceTree = "<group>"; };
-
 		3294FD432C3FA3DA00F81BC5 /* CourseCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCardView.swift; sourceTree = "<group>"; };
-
-		3C13CB542C3FFC04008C680D /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
-
 		953B89962C36A8BB00A4618D /* AdminHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHomeScreen.swift; sourceTree = "<group>"; };
 		953B89982C36A8E200A4618D /* CreateEducatorAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEducatorAccount.swift; sourceTree = "<group>"; };
 		953B899A2C36A8F000A4618D /* EducatorHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducatorHomeScreen.swift; sourceTree = "<group>"; };
@@ -123,6 +117,8 @@
 		EF2511BB2C3C28E60035C58E /* RegexCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexCheck.swift; sourceTree = "<group>"; };
 		EF2865F32C3722D000C08AE8 /* UserAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthentication.swift; sourceTree = "<group>"; };
 		EF2865F52C3725B300C08AE8 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		EF7E94F12C4128540001C917 /* NotificationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCard.swift; sourceTree = "<group>"; };
+		EF7E94F32C4128820001C917 /* NotificationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPage.swift; sourceTree = "<group>"; };
 		EFC5394D2C3D1E4F009556DF /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,20 +153,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3C13CB532C3FF95E008C680D /* Educator  */ = {
-			isa = PBXGroup;
-			children = (
-				3C13CB542C3FFC04008C680D /* HomeScreen.swift */,
-			);
-			path = "Educator ";
-			sourceTree = "<group>";
-		};
 		D19D5AFE2C35423100E9AE98 = {
 			isa = PBXGroup;
 			children = (
 				D19D5B342C35425F00E9AE98 /* .gitignore */,
 				04CD06002C3C38390081D8AF /* GoogleService-Info.plist */,
-				3C13CB532C3FF95E008C680D /* Educator  */,
 				D19D5B092C35423100E9AE98 /* TLMS-admin */,
 				D19D5B1A2C35423200E9AE98 /* TLMS-adminTests */,
 				D19D5B242C35423200E9AE98 /* TLMS-adminUITests */,
@@ -301,6 +288,8 @@
 			isa = PBXGroup;
 			children = (
 				953B899A2C36A8F000A4618D /* EducatorHomeScreen.swift */,
+				EF7E94F32C4128820001C917 /* NotificationPage.swift */,
+				EF7E94F12C4128540001C917 /* NotificationCard.swift */,
 			);
 			path = "Educator App";
 			sourceTree = "<group>";
@@ -458,6 +447,7 @@
 				EF25119D2C3ACED10035C58E /* ApprovalRequestCard.swift in Sources */,
 				EF2511AA2C3BBAD00035C58E /* CoursesView.swift in Sources */,
 				EF2865F42C3722D000C08AE8 /* UserAuthentication.swift in Sources */,
+				EF7E94F22C4128540001C917 /* NotificationCard.swift in Sources */,
 				EF25119B2C39CD8F0035C58E /* PendingEducatorsView.swift in Sources */,
 				EF2511832C3966390035C58E /* ImageView.swift in Sources */,
 				3294FD442C3FA3DA00F81BC5 /* CourseCardView.swift in Sources */,
@@ -469,6 +459,7 @@
 				EF2511A42C3B31E70035C58E /* CheckUserRole.swift in Sources */,
 				EF2511A22C3B09210035C58E /* HeadlineText.swift in Sources */,
 				BBB4DD0B2C3748D400150FE5 /* CourseCreationScreen.swift in Sources */,
+				EF7E94F42C4128820001C917 /* NotificationPage.swift in Sources */,
 				EF2511852C3966400035C58E /* MainButton.swift in Sources */,
 				EF2511872C3966490035C58E /* TextLabel.swift in Sources */,
 				EF25119F2C3AD9270035C58E /* DetailedEducatorRequestView.swift in Sources */,
@@ -476,7 +467,6 @@
 				EF25118C2C3966E50035C58E /* PasswordField.swift in Sources */,
 				EF2511BC2C3C28E60035C58E /* RegexCheck.swift in Sources */,
 				EF2865F62C3725B300C08AE8 /* DataModel.swift in Sources */,
-				3C13CB552C3FFC04008C680D /* HomeScreen.swift in Sources */,
 				EF2511892C3966560035C58E /* TitleLabel.swift in Sources */,
 				EFC5394E2C3D1E4F009556DF /* ForgotPasswordView.swift in Sources */,
 				EF2511B22C3BBF100035C58E /* FirstTimeLogin.swift in Sources */,
