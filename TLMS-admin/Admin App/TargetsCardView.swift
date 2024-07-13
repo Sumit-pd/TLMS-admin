@@ -1,10 +1,12 @@
 import SwiftUI
+import FirebaseFirestore
 
 struct TargetsCardView: View {
     
     @State var courseService  = CourseServices()
     @State var targetName : String
     @Environment(\.presentationMode) var presentationMode
+    var onUpdate: () -> Void
     
     var body: some View {
         NavigationLink( destination: CoursesView(selectedTarget: targetName)){
@@ -26,7 +28,17 @@ struct TargetsCardView: View {
                 
                 Spacer()
                 Button(action: {
-                    //****//
+                    let db = Firestore.firestore()
+                    db.collection("Targets").document(targetName).delete() { error in
+                        if let error = error {
+                            print("Error removing document: \(error)")
+                        } else {
+                            courseService.fetchTargets() { error in
+                                print("Error!")
+                            }
+                            onUpdate()
+                        }
+                    }
                 }) {
                     Image(systemName: "trash")
                         .foregroundColor(.black)
@@ -49,6 +61,6 @@ struct TargetsCardView: View {
 
 struct TargetCard_Previews: PreviewProvider {
     static var previews: some View {
-        TargetsCardView(targetName: "Dummy")
+        TargetsCardView(targetName: "Dummy", onUpdate: {})
     }
 }

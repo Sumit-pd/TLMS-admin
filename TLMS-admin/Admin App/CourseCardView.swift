@@ -65,5 +65,5 @@ struct CourseCardView: View {
 }
 
 #Preview {
-    CourseCardView(course: Course(courseID: UUID(), courseName: "fjsdkf", courseDescription: "thie si ", assignedEducator: Educator(firstName: "vasoli", lastName: "Bhai", about: "theihr", email: "vasoli@gmail.com", password: "Faharimran@12", phoneNumber: "1234567890", profileImageURL: "sfasd"), target: "sdfds"))
+    CourseCardView(course: Course(courseID: UUID(), courseName: "fjsdkf", courseDescription: "thie si ", assignedEducator: Educator(firstName: "vasoli", lastName: "Bhai", about: "theihr", email: "vasoli@gmail.com", password: "Faharimran@12", phoneNumber: "1234567890", profileImageURL: "sfasd"), target: "sdfds", state: "dummy"))
 }

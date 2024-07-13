@@ -65,9 +65,10 @@ struct TargetScreen: View {
                             .padding(.top, 200)
                     } else {
                         ForEach(targets, id: \.self) { target in
-                            TargetsCardView(targetName: target)
+                            TargetsCardView(targetName: target, onUpdate: {
+                                allTargets()
+                            })
                         }
-                        
                         .navigationTitle("Our Target")
                         .navigationBarTitleDisplayMode(.inline)
                     }
@@ -149,15 +150,3 @@ struct NewTargetScreen: View {
 #Preview {
     TargetScreen()
 }
-
-
-//Button(action : {
-//    print("Course Creation")
-//    navigateToCourseCreation.toggle()
-//
-//}) {
-//    Text("Create a Course")
-//}
-//NavigationLink(destination: CourseCreationView(), isActive: $navigateToCourseCreation) {
-//    EmptyView()
-//}

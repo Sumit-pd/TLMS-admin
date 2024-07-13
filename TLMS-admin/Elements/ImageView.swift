@@ -83,10 +83,9 @@ struct CoursethumbnailImage: View {
             AsyncImage(url: url) { image in
                 image
                     .resizable()
-                    .cornerRadius(12)
-                    .aspectRatio(contentMode: .fill)
                     .frame(width: width, height: height)
-                    .padding(.bottom, 8)
+                    .aspectRatio(contentMode: .fill)
+                    .cornerRadius(12)
             }
                     placeholder: {
                         ProgressView()
@@ -104,5 +103,29 @@ struct CoursethumbnailImage: View {
                 .clipShape(Circle())
                 .padding(.vertical, 8)
         }
+    }
+}
+
+
+
+extension Color {
+    init(hexc: String) {
+        let scanner = Scanner(string: hexc)
+        scanner.scanLocation = hexc.hasPrefix("#") ? 1 : 0
+
+        var rgbValue: UInt64 = 0
+        scanner.scanHexInt64(&rgbValue)
+
+        let r = (rgbValue & 0xff0000) >> 16
+        let g = (rgbValue & 0x00ff00) >> 8
+        let b = rgbValue & 0x0000ff
+
+        self.init(
+            .sRGB,
+            red: Double(r) / 0xff,
+            green: Double(g) / 0xff,
+            blue: Double(b) / 0xff,
+            opacity: 1
+        )
     }
 }

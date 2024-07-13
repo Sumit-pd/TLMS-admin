@@ -26,7 +26,7 @@ struct Target : Identifiable{
 }
 
 struct Course : Identifiable{
-    var id: String?
+    var id: String {courseID.uuidString}
     var courseID : UUID
     var courseName : String
     var courseDescription : String
@@ -38,21 +38,22 @@ struct Course : Identifiable{
     var numberOfStudentsEnrolled : Int?
     var likeCount : Int?
     var target : String
+    var state : String     //Created, Empty, Filled, Published
     
-    func toDictionary() -> [String:Any]{
-        return [
-            "courseID" : courseID,
-            "courseName" : courseName,
-            "courseDescription" : courseDescription,
-            "courseThumbnailURL" : courseImage,
-            "releaseDate" : releaseDate,
-            "assignedEducator" : assignedEducator.id,
-            "target" : target,
-            "content" : content,
-            "likeCount" : likeCount,
-            "numberOfEnrollments" : numberOfStudentsEnrolled
-        ]
-    }
+//    func toDictionary() -> [String:Any]{
+//        return [
+//            "courseID" : courseID,
+//            "courseName" : courseName,
+//            "courseDescription" : courseDescription,
+//            "courseThumbnailURL" : courseImage,
+//            "releaseDate" : releaseDate,
+//            "assignedEducator" : assignedEducator.id,
+//            "target" : target,
+//            "content" : content,
+//            "likeCount" : likeCount,
+//            "numberOfEnrollments" : numberOfStudentsEnrolled
+//        ]
+//    }
 }
 
 struct Content {
@@ -84,6 +85,7 @@ struct Educator : Identifiable{
     
     var firstName: String
     var lastName : String
+    var fullName : String {firstName+" "+lastName}
     var about: String
     var email: String
     var password: String
