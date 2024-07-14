@@ -9,7 +9,7 @@ struct TargetsCardView: View {
     var onUpdate: () -> Void
     
     var body: some View {
-        NavigationLink( destination: CoursesView(selectedTarget: targetName)){
+        NavigationLink( destination: TabBar(target: targetName)){
             
             HStack(alignment : .center){
                 Image(systemName: "circle.circle.fill")

@@ -107,6 +107,39 @@ struct CoursethumbnailImage: View {
 }
 
 
+struct EducatorImage: View {
+    var imageName: String
+    var width: CGFloat
+    var height: CGFloat
+    
+    var body: some View {
+        // Load the image and apply constraints
+        if let uiImage = UIImage(named: imageName),
+           uiImage.isPNG() {
+            ZStack(alignment: .bottom){
+                Image("greenboard")
+                    .resizable()
+                    .scaledToFit()
+                    
+                HStack{
+                    Image(imageName)
+                        .resizable()
+                        .scaledToFit()
+                    Spacer()
+                }
+            }.frame(width: width, height: height)
+        } else {
+            
+            Image(systemName: "exclamationmark.triangle")
+                .resizable()
+                .scaledToFit()
+                .frame(width: width, height: height)
+                .foregroundColor(.red)
+        }
+    }
+}
+
+
 
 extension Color {
     init(hexc: String) {
