@@ -13,7 +13,7 @@ struct EducatorListView : View {
     @ObservedObject var firebaseFetch = FirebaseFetch()
     
     var body: some View {
-        VStack (){
+        VStack () {
             GeometryReader { geometry in
                 ScrollView{
                     VStack(){

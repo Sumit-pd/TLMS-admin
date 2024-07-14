@@ -43,6 +43,24 @@ struct NotificationView: View {
                     }
                     
                 } else if selectedSegment == 1 {
+                    VStack () {
+                        GeometryReader { geometry in
+                            ScrollView{
+                                VStack(){
+                                    if firebaseFetch.pendingEducators.isEmpty {
+                                        Text("No Educators")
+                                            .font(.title)
+                                            .fontWeight(.bold)
+                                            .foregroundColor(Color(.black))
+                                            .opacity(0)
+                                            .position(x: geometry.size.width / 2, y: geometry.size.height * 0.4)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else {
                     ScrollView {
                         VStack(alignment: .leading, spacing: 10) {
                             ForEach(firebaseFetch.pendingEducators) { educator in
@@ -57,15 +75,16 @@ struct NotificationView: View {
                             firebaseFetch.fetchPendingEducators()
                         }
                     }
-                    
                 }
+                
             }
-            .navigationTitle("Notifications")
-            
         }
+        .navigationTitle("Notifications")
         
     }
+    
 }
+
 #Preview {
     NotificationView()
 }
