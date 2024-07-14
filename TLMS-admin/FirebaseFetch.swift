@@ -18,6 +18,7 @@ class FirebaseFetch: ObservableObject {
     
     func fetchPendingEducators() {
         let db = Firestore.firestore()
+        self.pendingEducators = []
         
         db.collection("Pending-Educators").getDocuments { querySnapshot, error in
             if let error = error {
