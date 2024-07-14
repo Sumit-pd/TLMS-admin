@@ -1,15 +1,9 @@
-//
-//  TabBar.swift
-//  TLMS-admin
-//
-//  Created by Abcom on 08/07/24.
-//
-
 import SwiftUI
 
 struct TabBar: View {
     @State private var selectedTabIndex = 1 // Default to CoursesView (index 1)
     var target : String
+    
     var body: some View {
         NavigationStack{
             VStack {
@@ -32,7 +26,7 @@ struct TabBar: View {
                         }
                         .tag(1) // Tag for CoursesView
                     
-                    ProfileView()
+                    EducatorListView()
                         .tabItem {
                             Image(systemName: "person.3.fill")
                             Text("Educators")
@@ -82,11 +76,11 @@ struct CustomTabBarAppearance: UIViewControllerRepresentable {
     }
 }
 
-struct NotificationView: View {
-    var body: some View {
-        Text("Notifications")
-    }
-}
+//struct NotificationView: View {
+//    var body: some View {
+//        Text("Notifications")
+//    }
+//}
 
 struct ProfileView: View {
     var body: some View {
@@ -96,4 +90,3 @@ struct ProfileView: View {
 #Preview {
     TabBar(target: "HAHA! ")
 }
-
