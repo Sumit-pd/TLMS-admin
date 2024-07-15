@@ -32,6 +32,13 @@ struct TabBar: View {
                             Text("Educators")
                         }
                         .tag(2) // Tag for ProfileView
+                    
+                    StatsView()
+                        .tabItem {
+                            Image(systemName: "chart.bar.xaxis")
+                            Text("Courses")
+                        }
+                        .tag(3)
                 }
                 .onAppear {
                     selectedTabIndex = 1 // Set CoursesView as default on screen appear

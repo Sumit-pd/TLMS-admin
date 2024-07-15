@@ -10,6 +10,7 @@ import SwiftUI
 struct CourseCardView: View {
     var course : Course
     var body: some View {
+        
         ZStack(alignment: .bottom){
             CoursethumbnailImage(imageURL: course.courseImageURL, width: 354, height: 195)
             RoundedRectangle(cornerRadius: 12)
@@ -29,8 +30,8 @@ struct CourseCardView: View {
                                     endPoint: .bottomTrailing
                                 )
                 ).opacity(0.9)
-                .frame(height: 80)
-            HStack(){
+                .frame(width: 354,height: 80)
+            HStack(alignment: .center){
                 VStack(alignment: .leading){
                     Text(course.courseName)
                         .font(.custom("Poppins-SemiBold", size: 24))
@@ -40,7 +41,9 @@ struct CourseCardView: View {
                     Text(course.assignedEducator.firstName)
                         .font(.custom("Poppins-Regular", size: 16))
                         .foregroundColor(.white)
-                        .frame(maxWidth: 100)
+                        .frame(maxWidth: 100, alignment: .leading)
+                        .background(.red)
+                        
                 }
                 
                 Spacer()
@@ -57,7 +60,8 @@ struct CourseCardView: View {
                                                .stroke(Color.white, lineWidth: 0.8)
                                        )
                                }
-            }.padding(15)
+            }.frame(width: 335, height: 80)
+            .padding(.top,15)
             
         }.frame(width: 354)
         

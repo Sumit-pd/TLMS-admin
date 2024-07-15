@@ -13,31 +13,35 @@ struct EducatorListView : View {
     @ObservedObject var firebaseFetch = FirebaseFetch()
     
     var body: some View {
-        VStack () {
-            GeometryReader { geometry in
-                ScrollView{
-                    VStack(){
-                        if firebaseFetch.educators.isEmpty {
-                            Text("No Educators")
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .foregroundColor(Color(.black))
-                                .opacity(0)
-                                .position(x: geometry.size.width / 2, y: geometry.size.height * 0.4)
-                        } else {
-                            ForEach(firebaseFetch.educators){ educator in
-                                EducatorsListCard(educator: educator)
-                            }
-                            .onAppear(){
-                                print(firebaseFetch.educators)
+        NavigationView{
+            VStack () {
+                GeometryReader { geometry in
+                    ScrollView{
+                        VStack(){
+                            if firebaseFetch.educators.isEmpty {
+                                Text("No Educators")
+                                    .font(.title)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color(.black))
+                                    .opacity(0)
+                                    .position(x: geometry.size.width / 2, y: geometry.size.height * 0.4)
+                            } else {
+                                ForEach(firebaseFetch.educators){ educator in
+                                    EducatorsListCard(educator: educator)
+                                }
+                                .onAppear(){
+                                    print(firebaseFetch.educators)
+                                }
                             }
                         }
                     }
                 }
             }
-        }
-        .onAppear() {
-            firebaseFetch.fetchEducators()
+            .onAppear() {
+                firebaseFetch.fetchEducators()
+            }
+            .navigationTitle("Educators")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
