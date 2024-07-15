@@ -42,7 +42,7 @@ struct CourseCardView: View {
                         .font(.custom("Poppins-Regular", size: 16))
                         .foregroundColor(.white)
                         .frame(maxWidth: 100, alignment: .leading)
-                        .background(.red)
+                        
                         
                 }
                 

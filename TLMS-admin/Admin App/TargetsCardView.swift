@@ -5,6 +5,7 @@ struct TargetsCardView: View {
     
     @State var courseService  = CourseServices()
     @State var targetName : String
+//    var course : Course
     @Environment(\.presentationMode) var presentationMode
     var onUpdate: () -> Void
     
@@ -45,13 +46,13 @@ struct TargetsCardView: View {
                 }
                 
             }
-            .scenePadding()
             
+            .padding(20)
             .frame(width: 345,height: 86,alignment: .center)
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
                     .stroke(.black, lineWidth: 1))
-            .padding()
+            
             
         }
         
@@ -61,6 +62,6 @@ struct TargetsCardView: View {
 
 struct TargetCard_Previews: PreviewProvider {
     static var previews: some View {
-        TargetsCardView(targetName: "Dummy", onUpdate: {})
+        TargetsCardView(targetName: "gjgj", onUpdate: {})
     }
 }

@@ -8,12 +8,11 @@ struct TargetScreen: View {
     @State var targets : [String] = []
     @State private var isPresentingNewTarget = false
     @State private var isSelected = false
+//    var course: Course
     @State var isRefreshing = false
     var body: some View {
         NavigationView {
-            ScrollView {
-                
-                VStack{
+            VStack(){
                     HStack(alignment: .center){
                         TitleLabel(text: "Target")
                         Spacer()
@@ -34,52 +33,36 @@ struct TargetScreen: View {
                                 .fontWeight(.bold)
                             
                         }
-                    }
-                    
-                    HStack {
-                        Button(action: {
-                            do {
-                                try Auth.auth().signOut()
-                                authViewModel.signOut()
-                            } catch let signOutError as NSError {
-                                print("Error signing out: %@", signOutError)
+                    }.padding(20)
+
+                    ScrollView{
+                        if targets.isEmpty {
+                            Text("No Target")
+                                .opacity(0.5)
+                                .foregroundColor(Color(hex: "#6C5DD4")!)
+                                .font(.custom("headline", size: 24))
+                                .fontWeight(.bold)
+                                .padding(.top, 200)
+                        } else {
+                            ForEach(targets, id: \.self) { target in
+                                TargetsCardView(targetName: target, onUpdate: {
+                                    allTargets()
+                                })
                             }
-                        }) {
-                            Text("Sign Out")
-                                .foregroundColor(.blue)
-                        }
-                    .padding()
-                        Button(action : {
-                            isRefreshing.toggle()
-                        }) {
-                            Image(systemName: "arrow.circlepath")
+                            .navigationTitle("Our Target")
+                            .navigationBarTitleDisplayMode(.inline)
                         }
                     }
-                    
-                    if targets.isEmpty {
-                        Text("No Target")
-                            .opacity(0.5)
-                            .foregroundColor(Color(hex: "#6C5DD4")!)
-                            .font(.custom("headline", size: 24))
-                            .fontWeight(.bold)
-                            .padding(.top, 200)
-                    } else {
-                        ForEach(targets, id: \.self) { target in
-                            TargetsCardView(targetName: target, onUpdate: {
-                                allTargets()
-                            })
-                        }
-                        .navigationTitle("Our Target")
-                        .navigationBarTitleDisplayMode(.inline)
+//                    .padding()
+                    .onChange(of : isRefreshing) {
+                        allTargets()
                     }
-                }
-                .onChange(of : isRefreshing) {
-                    allTargets()
-                }
-                .onAppear {
-                    allTargets()
-                }
-            }
+                    .onAppear {
+                        allTargets()
+                    }
+                    }
+                
+            
         }
         
         .sheet(isPresented: $isPresentingNewTarget, content: {

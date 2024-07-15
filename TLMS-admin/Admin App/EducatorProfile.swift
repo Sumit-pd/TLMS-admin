@@ -57,7 +57,6 @@ struct AssignedCourseCardView: View {
         ZStack(alignment: .bottom){
             Image("css")
                 .resizable()
-            //                .scaledToFit()
                 .frame(width: 354,height: 200)
                 .cornerRadius(12)
             

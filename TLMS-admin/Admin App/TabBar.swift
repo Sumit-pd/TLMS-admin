@@ -3,6 +3,7 @@ import SwiftUI
 struct TabBar: View {
     @State private var selectedTabIndex = 1 // Default to CoursesView (index 1)
     var target : String
+//    var course: Course
     
     var body: some View {
         NavigationStack{
@@ -94,6 +95,6 @@ struct ProfileView: View {
         Text("Educators")
     }
 }
-#Preview {
-    TabBar(target: "HAHA! ")
-}
+//#Preview {
+//    TabBar(target: "HAHA! ")
+//}
