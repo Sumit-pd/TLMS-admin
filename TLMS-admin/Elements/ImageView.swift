@@ -72,6 +72,45 @@ struct ProfileCircleImage: View {
     }
 }
 
+struct EducatorProfileImage: View {
+    var imageURL: String?
+    var widthimg : CGFloat?
+    var heightimg: CGFloat?
+    var widthblank : CGFloat?
+    var heightblank: CGFloat?
+
+    var body: some View {
+        if let urlString = imageURL, let url = URL(string: urlString) {
+            AsyncImage(url: url) { image in
+                ZStack{
+                    image
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: widthimg, height: heightimg)
+                    
+                    Image("blank")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: widthblank, height: heightblank)
+                }
+            }
+                    placeholder: {
+                        ProgressView()
+                            .frame(width: 60, height: 60)
+                    }
+                    .padding(.vertical, 8)
+        } else {
+            Image(systemName: "person.circle.fill")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 60, height: 60)
+                .foregroundColor(.gray)
+                .clipShape(Circle())
+                .padding(.vertical, 8)
+        }
+    }
+}
+
 
 struct CoursethumbnailImage: View {
     var imageURL: String?
