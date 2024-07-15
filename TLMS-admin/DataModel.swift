@@ -39,27 +39,23 @@ struct Course : Identifiable{
     var likeCount : Int?
     var target : String
     var state : String     //Created, Empty, Filled, Published
-    
-//    func toDictionary() -> [String:Any]{
-//        return [
-//            "courseID" : courseID,
-//            "courseName" : courseName,
-//            "courseDescription" : courseDescription,
-//            "courseThumbnailURL" : courseImage,
-//            "releaseDate" : releaseDate,
-//            "assignedEducator" : assignedEducator.id,
-//            "target" : target,
-//            "content" : content,
-//            "likeCount" : likeCount,
-//            "numberOfEnrollments" : numberOfStudentsEnrolled
-//        ]
-//    }
 }
 
 struct Content {
     var quiz : Quiz
-    var notes : [String]
-    var videos : [String]
+    var modules : [Module]
+    var certificateURL : String?
+}
+
+struct Module: Identifiable {
+    let id = UUID()
+    var title: String
+    var notesFileName: String?
+    var notesUploadProgress: Double
+    var videoFileName: String?
+    var videoUploadProgress: Double
+    var notesURL : URL?
+    var videoURL : URL?
 }
 
 struct Quiz {
