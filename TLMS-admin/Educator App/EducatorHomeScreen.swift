@@ -67,7 +67,7 @@ struct EducatorHomeScreen: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 15) {
                             ForEach(firebaseFetch.assignedCourses.filter{$0.state == "processing"}){ course in
-                                CourseCard(title: course.courseName, author: course.assignedEducator.firstName, imageName: course.courseImageURL!)
+                                CourseCard(course : course)
                             }
                         }
                         .padding(.horizontal)
@@ -115,26 +115,28 @@ struct EnrollmentCard: View {
         .padding()
         .background(color.opacity(0.1))
         .cornerRadius(10)
+        
     }
 }
 
 
 
 struct CourseCard: View {
-    var title: String
-    var author: String
-    var imageName: String
+    var course : Course
     
     var body: some View {
-        VStack(alignment: .leading) {
-            CoursethumbnailImage(imageURL: imageName, width: 150, height: 130)
-                .aspectRatio(contentMode: .fill)
-                .cornerRadius(10)
-            Text(title)
-                .font(.body)
-            Spacer()
+        NavigationLink(destination: CourseUpload(course: course)) {
+            VStack(alignment: .leading) {
+                CoursethumbnailImage(imageURL: course.courseImageURL, width: 150, height: 130)
+                    .aspectRatio(contentMode: .fill)
+                    .cornerRadius(10)
+                Text(course.courseName)
+                    .font(.body)
+                    .foregroundColor(.black)
+                Spacer()
+            }
+            .frame(width: 150)
         }
-        .frame(width: 150)
     }
 }
 

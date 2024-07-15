@@ -57,6 +57,7 @@
 		EF7E94F82C4452770001C917 /* EducatorAccept.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7E94F72C4452770001C917 /* EducatorAccept.swift */; };
 		EF7E94FA2C44529E0001C917 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7E94F92C44529E0001C917 /* NotificationView.swift */; };
 		EF7E94FC2C4453580001C917 /* EducatorProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7E94FB2C4453580001C917 /* EducatorProfile.swift */; };
+		EF7E95002C44EE730001C917 /* CourseUploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7E94FF2C44EE730001C917 /* CourseUploadView.swift */; };
 		EFC5394E2C3D1E4F009556DF /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC5394D2C3D1E4F009556DF /* ForgotPasswordView.swift */; };
 /* End PBXBuildFile section */
 
@@ -129,6 +130,7 @@
 		EF7E94F72C4452770001C917 /* EducatorAccept.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducatorAccept.swift; sourceTree = "<group>"; };
 		EF7E94F92C44529E0001C917 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		EF7E94FB2C4453580001C917 /* EducatorProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducatorProfile.swift; sourceTree = "<group>"; };
+		EF7E94FF2C44EE730001C917 /* CourseUploadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseUploadView.swift; sourceTree = "<group>"; };
 		EFC5394D2C3D1E4F009556DF /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -304,6 +306,7 @@
 			children = (
 				953B899A2C36A8F000A4618D /* EducatorHomeScreen.swift */,
 				EF7E94F32C4128820001C917 /* NotificationPage.swift */,
+				EF7E94FF2C44EE730001C917 /* CourseUploadView.swift */,
 				EF7E94F12C4128540001C917 /* NotificationCard.swift */,
 			);
 			path = "Educator App";
@@ -457,6 +460,7 @@
 				BBB4DD062C373EBC00150FE5 /* TargetScreen.swift in Sources */,
 				EF7E94F82C4452770001C917 /* EducatorAccept.swift in Sources */,
 				EF25117D2C37C46D0035C58E /* CourseServices.swift in Sources */,
+				EF7E95002C44EE730001C917 /* CourseUploadView.swift in Sources */,
 				953B89992C36A8E200A4618D /* CreateEducatorAccount.swift in Sources */,
 				EF2511812C39662D0035C58E /* HeadingLabel.swift in Sources */,
 				EF2511AE2C3BBBAC0035C58E /* UIHexColor.swift in Sources */,
