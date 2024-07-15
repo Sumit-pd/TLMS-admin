@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		04CD06012C3C38390081D8AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04CD06002C3C38390081D8AF /* GoogleService-Info.plist */; };
+		326433012C44E31D00BC1713 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326433002C44E31D00BC1713 /* StatsView.swift */; };
 		3294FD442C3FA3DA00F81BC5 /* CourseCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3294FD432C3FA3DA00F81BC5 /* CourseCardView.swift */; };
 		953B89972C36A8BC00A4618D /* AdminHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B89962C36A8BB00A4618D /* AdminHomeScreen.swift */; };
 		953B89992C36A8E200A4618D /* CreateEducatorAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B89982C36A8E200A4618D /* CreateEducatorAccount.swift */; };
@@ -78,6 +79,7 @@
 
 /* Begin PBXFileReference section */
 		04CD06002C3C38390081D8AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "TLMS-admin/OnboardingPages/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		326433002C44E31D00BC1713 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		3294FD432C3FA3DA00F81BC5 /* CourseCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCardView.swift; sourceTree = "<group>"; };
 		953B89962C36A8BB00A4618D /* AdminHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHomeScreen.swift; sourceTree = "<group>"; };
 		953B89982C36A8E200A4618D /* CreateEducatorAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEducatorAccount.swift; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 				EF7E94F72C4452770001C917 /* EducatorAccept.swift */,
 				EF7E94F92C44529E0001C917 /* NotificationView.swift */,
 				EF7E94FB2C4453580001C917 /* EducatorProfile.swift */,
+				326433002C44E31D00BC1713 /* StatsView.swift */,
 			);
 			path = "Admin App";
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				EF2865F42C3722D000C08AE8 /* UserAuthentication.swift in Sources */,
 				EF7E94F22C4128540001C917 /* NotificationCard.swift in Sources */,
 				EF25119B2C39CD8F0035C58E /* PendingEducatorsView.swift in Sources */,
+				326433012C44E31D00BC1713 /* StatsView.swift in Sources */,
 				EF2511832C3966390035C58E /* ImageView.swift in Sources */,
 				3294FD442C3FA3DA00F81BC5 /* CourseCardView.swift in Sources */,
 				EF25117F2C3965630035C58E /* LoginScreen.swift in Sources */,

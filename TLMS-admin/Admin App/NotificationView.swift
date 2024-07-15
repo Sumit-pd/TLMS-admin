@@ -17,7 +17,7 @@ struct NotificationView: View {
     private let segments = ["Updates", "Educators"]
     
     var body: some View {
-        NavigationStack{
+        NavigationView{
             VStack {
                 Picker("Select Segment", selection: $selectedSegment) {
                     ForEach(0..<segments.count) { index in
@@ -36,6 +36,7 @@ struct NotificationView: View {
                                 UpdateCardView(course: course, educator: educator)
                             }
                         }
+                        .frame(width: 354, height: 100)
                         .background(Color("color 3"))
                         .cornerRadius(12)
                         .shadow(color: .black.opacity(0.08), radius: 10, x: 0, y: 5)
@@ -77,9 +78,10 @@ struct NotificationView: View {
                     }
                 }
                 
-            }
+            }.navigationTitle("Notifications")
+                .navigationBarTitleDisplayMode(.inline)
         }
-        .navigationTitle("Notifications")
+        
         
     }
     

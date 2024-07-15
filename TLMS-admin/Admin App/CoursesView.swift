@@ -9,9 +9,8 @@ struct CoursesView: View {
     var body: some View {
         NavigationView {
             ZStack(alignment: .bottom) {
-                VStack (){
+//                VStack (){
                     GeometryReader { geometry in
-                        ScrollView{
                             VStack(){
                                 if viewModel.courses.isEmpty {
                                     Text("No Courses")
@@ -21,19 +20,24 @@ struct CoursesView: View {
                                         .opacity(0)
                                         .position(x: geometry.size.width / 2, y: geometry.size.height * 0.4)
                                 } else {
-                                    ForEach(viewModel.courses){
-                                        course in
-                                        CourseCardView(course: course)
-                                        //                                        .padding(.bottom, 10)
-                                    }
-                                    .onAppear(){
-                                        viewModel.fetchCourses(targetName: selectedTarget)
+                                    ScrollView{
+                                        VStack(alignment: .center, spacing: 10){
+                                            ForEach(viewModel.courses){
+                                                course in
+                                                CourseCardView(course: course)
+                                                
+                                            }
+                                            .onAppear(){
+                                                viewModel.fetchCourses(targetName: selectedTarget)
+                                        }
+                                        }.padding(20)
+                                        
                                     }
                                 }
                             }
-                        }
+                        
                     }
-                }
+                
 //                .padding(.horizontal)
 
                 Image("homescreenWave")
