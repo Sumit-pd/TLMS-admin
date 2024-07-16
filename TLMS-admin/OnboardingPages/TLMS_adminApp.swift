@@ -19,6 +19,7 @@ struct TLMS_adminApp: App {
     var body: some Scene {
         WindowGroup {
             CheckUserRole()
+//            SlideScreenView()
                 .environmentObject(userAuth)
                 .onAppear {
                     userAuth.checkUserStatus()

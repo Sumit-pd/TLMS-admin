@@ -26,7 +26,7 @@ struct CheckUserRole: View {
                     Text("Unknown role")
                 }
             } else {
-                LoginScreen()
+                SlideScreenView()
             }
         }
         .alert(isPresented: $userAuth.showAlert) {
