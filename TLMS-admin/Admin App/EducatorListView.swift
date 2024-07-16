@@ -1,10 +1,3 @@
-//
-//  EducatorListView.swift
-//  TLMS-admin
-//
-//  Created by Abcom on 15/07/24.
-//
-
 import SwiftUI
 
 
@@ -57,27 +50,40 @@ struct EducatorListView : View {
                         
                     }
                 } else if  selectedSegment == 1 {
-                    ScrollView {
-                        VStack(spacing: 10) {
-                            ForEach(courses) { course in
-                                UpdateCardView(course: course, educator: educator)
+                    GeometryReader { geometry in
+                        ScrollView{
+                            VStack(spacing: 5){
+                                if firebaseFetch.learners.isEmpty {
+                                    Text("No Learners")
+                                        .font(.title)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(Color(.black))
+                                        .opacity(0)
+                                        .position(x: geometry.size.width / 2, y: geometry.size.height * 0.4)
+                                } else {
+                                    ForEach(firebaseFetch.learners){ learner in
+                                        LearnerListCard(learner: learner)
+                                    }   .frame(width: 354, height: 100)
+                                        .background(Color("color 3"))
+                                        .cornerRadius(12)
+                                        .shadow(color: .black.opacity(0.08), radius: 10, x: 0, y: 5)
+                                        .padding(10)
+                                        .onAppear(){
+                                            print(firebaseFetch.learners)
+                                        }
+                                }
                             }
-                        }
-                        .frame(width: 354, height: 100)
-                        .background(Color("color 3"))
-                        .cornerRadius(12)
-                        .shadow(color: .black.opacity(0.08), radius: 10, x: 0, y: 5)
-                        .padding(10)
+                            //
+                        }.padding(10)
+                        
                     }
-                    
-                    
-                    
                 }
             }
             .onAppear() {
                 firebaseFetch.fetchEducators()
+                firebaseFetch.fetchLearners()
             }
-            .navigationTitle("Educators")
+//            .navigationTitle("")
             .navigationBarTitleDisplayMode(.inline)
         }
     }
@@ -116,7 +122,38 @@ struct EducatorsListCard: View {
     
 }
 
+struct LearnerListCard: View {
+    
+    @ObservedObject var firebaseFetch = FirebaseFetch()
+    
+    var learner : Learner
+    
+    var body: some View {
+        NavigationLink(destination: EducatorProfile()){
+            HStack(spacing: 10){
+                ProfileCircleImage(imageURL: learner.firstName!, width: 60, height: 60)
+
+                VStack(alignment: .leading){
+                    Text(learner.firstName! + " " + learner.lastName!)
+                        .font(.custom("Poppins-Medium", size: 18))
+                    Text("Since \(learner.joinedDate!)")
+                        .lineLimit(2)
+                        .font(.custom("Poppins-Regular", size: 16))
+                        .foregroundColor(.secondary)
+                    
+                }
+                Spacer()
+                Image(systemName: "chevron.right")
+            }
+            .padding(20)
+            .frame(width: 354, height: 100)
+        }
+        .navigationTitle("Learners")
+        //            .navigationBarBackButtonHidden()
+    }
+    
+}
+
 #Preview {
     EducatorsListCard(educator: Educator(id: "Dummyq", firstName: "rhdgsvdgr", lastName: "hdvsx", about: "hregsdvz", email: "htdfbvsc", password: "grdsc", phoneNumber: "bfdvcsxa", profileImageURL: "ngbdvs"))
 }
-

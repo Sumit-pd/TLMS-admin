@@ -49,6 +49,7 @@ struct SlideScreenView: View {
                                 })
                             }
                         }
+                       
                     }
                     .tabViewStyle(PageTabViewStyle())
                     
@@ -56,7 +57,9 @@ struct SlideScreenView: View {
                 
                 .padding(.top,40)
 
-                .navigationBarBackButtonHidden(true)}
+                .navigationBarBackButtonHidden(true)
+                }
+            .ignoresSafeArea()
             .onDisappear {
                 NotificationCenter.default.removeObserver(
                     self,
