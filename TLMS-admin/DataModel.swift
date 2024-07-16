@@ -1,10 +1,3 @@
-//
-//  DataModel.swift
-//  TLMS-admin
-//
-//  Created by Abcom on 04/07/24.
-//
-
 import Foundation
 import FirebaseFirestoreSwift
 import SwiftUI
@@ -100,6 +93,18 @@ struct Educator : Identifiable{
             "profileImageURL": profileImageURL
         ]
     }
+}
+
+struct Learner  : Identifiable{
+    var id: String?
+    var email: String?
+    var firstName: String?
+    var lastName: String?
+    var completedCourses: [String]?
+    var enrolledCourses: [String]?
+    var goal: String?
+    var joinedDate: String?
+    var likedCourses: [String]?
 }
 
 enum userRoles {

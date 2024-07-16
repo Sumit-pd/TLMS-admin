@@ -8,6 +8,8 @@ import FirebaseStorage
 class FirebaseFetch: ObservableObject {
     @Published public var pendingEducators: [Educator] = []
     @Published public var educators: [Educator] = []
+    @Published public var learners: [Learner] = []
+    @Published public var courses: [Course] = []
     @Published public var searchText: String = ""
     @Published var isLoading = true
     @Published var assignedCourses: [Course] = []
@@ -120,7 +122,72 @@ class FirebaseFetch: ObservableObject {
             }
         }
      
-        
+    
+    func fetchLearners() {
+        let db = Firestore.firestore()
+        db.collection("Learners").getDocuments { snapshot, error in
+            if let error = error {
+                print("Error fetching educators: \(error.localizedDescription)")
+                return
+            }
+            
+            self.learners = snapshot?.documents.compactMap { doc -> Learner? in
+                let data = doc.data()
+                let id = doc.documentID
+                let firstName = data["FirstName"] as? String ?? ""
+                let lastName = data["LastName"] as? String ?? ""
+                return Learner(id : doc.documentID,
+                               email: data["Email"] as? String ?? "",
+                               firstName: data["FirstName"] as? String ?? "",
+                               lastName: data["LastName"] as? String ?? "",
+                               joinedDate: data["joinedData"] as? String ?? ""
+                )
+            } ?? []
+        }
+    }
+
+    
+    func fetchCourses() {
+        let db = Firestore.firestore()
+        db.collection("Courses").getDocuments { snapshot, error in
+            if let error = error {
+                print("Error fetching educators: \(error.localizedDescription)")
+                return
+            }
+            
+            self.courses = snapshot?.documents.compactMap { doc -> Course? in
+                let data = doc.data()
+                let id = doc.documentID
+                let courseName = data["courseName"] as? String ?? ""
+                let courseDescription = data["courseDescription"] as? String ?? ""
+                let courseImageURL = data["courseImageURL"] as? String
+                let releaseDate = (data["releaseDate"] as? Timestamp)?.dateValue()
+                let assignedEducatorData = data["assignedEducator"] as? [String: Any] ?? [:]
+                let assignedEducator = Educator(
+                    firstName: assignedEducatorData["firstName"] as? String ?? "",
+                    lastName: assignedEducatorData["lastName"] as? String ?? "",
+                    about: assignedEducatorData["about"] as? String ?? "",
+                    email: assignedEducatorData["email"] as? String ?? "",
+                    password: assignedEducatorData["password"] as? String ?? "",
+                    phoneNumber: assignedEducatorData["phoneNumber"] as? String ?? "",
+                    profileImageURL: assignedEducatorData["profileImageURL"] as? String ?? ""
+                )
+                let target = data["target"] as? String ?? ""
+                let state = data["state"] as? String ?? ""
+                
+                return Course(
+                    courseID: UUID(),
+                    courseName: courseName,
+                    courseDescription: courseDescription,
+                    courseImageURL: courseImageURL,
+                    releaseDate: releaseDate,
+                    assignedEducator: assignedEducator,
+                    target: target,
+                    state: state
+                )
+            } ?? []
+        }
+    }
     
     func fetchAssignedCourses(educatorID: String) {
         let db = Firestore.firestore()
@@ -209,4 +276,3 @@ class FirebaseFetch: ObservableObject {
         }
     }
 }
-

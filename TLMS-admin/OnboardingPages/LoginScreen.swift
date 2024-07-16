@@ -21,7 +21,7 @@ struct LoginScreen: View {
     
     
     var body: some View {
-        NavigationView{
+        
             ZStack(alignment:. bottom) {
                 
                 PNGImageView(imageName: "Waves", width: 395, height: 195)
@@ -104,7 +104,7 @@ struct LoginScreen: View {
             .ignoresSafeArea()
             
             .navigationBarBackButtonHidden(true)
-        }
+        
     }
     }
     
