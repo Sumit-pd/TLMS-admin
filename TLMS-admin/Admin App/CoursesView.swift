@@ -5,7 +5,7 @@ struct CoursesView: View {
     @State private var navigateToCoursesCreation = false
     @StateObject private var viewModel = CoursesListViewModel()
     @State var selectedTarget: String
-
+    @State var shouldShowOnboard : Bool = true
     var body: some View {
         NavigationView {
             ZStack(alignment: .bottom) {
@@ -139,9 +139,6 @@ struct DomainSelectionView: View {
         }
     }
 }
-
-
-
 
 class CoursesListViewModel: ObservableObject {
     @Published var courses: [Course] = []

@@ -21,22 +21,16 @@ struct LoginScreen: View {
     
     
     var body: some View {
-        NavigationView {
+        NavigationView{
             ZStack(alignment:. bottom) {
-           
-                    PNGImageView(imageName: "Waves", width: 395, height: 195)
-//                        .0// Extend to ignore safe area insets
                 
+                PNGImageView(imageName: "Waves", width: 395, height: 195)
                 
-
                 VStack(alignment : .center, spacing: 30) {
-
                     
-                        
-                    TitleLabel(text: "Welcome To Svadhyay")
+                    TitleLabel(text: "Welcome \nTo Svadhyay")
                         .padding(.top, 80)
-            
-
+                    
                     PNGImageView(imageName: "laptop", width: 139, height: 157)
                     
                     VStack() {
@@ -44,7 +38,7 @@ struct LoginScreen: View {
                             .onChange(of: email) { _, newVal in
                                 isEmailValid = validateEmail(email: newVal)
                                 print(isEmailValid)
-                                    
+                                
                             }
                         HStack {
                             Spacer()
@@ -62,7 +56,7 @@ struct LoginScreen: View {
                         }
                         
                         CustomSecureField(placeholder: "Password", text: $password)
-
+                        
                     }
                     
                     HStack {
@@ -71,46 +65,49 @@ struct LoginScreen: View {
                             navigateToForgotPassword = true
                         }
                         .foregroundColor(.blue)
-                     
-//                        .padding(.horizontal)
+                        
+                        //                        .padding(.horizontal)
                         .font(.system(size: 15, weight: .bold, design: .default))
                         .padding(.trailing ,20)
-
+                        
                     }
-                            CustomButton(label: "Login", action: {
-                                userAuth.email = email
-                                userAuth.password = password
-                                userAuth.loginUser()
-                            })
-                        
-                        
-                        .alert(isPresented: $showAlert) {
-                            Alert(title: Text("Login Action"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                    CustomButton(label: "Login", action: {
+                        userAuth.email = email
+                        userAuth.password = password
+                        userAuth.loginUser()
+                    })
+                    
+                    
+                    .alert(isPresented: $showAlert) {
+                        Alert(title: Text("Login Action"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                    }
+                    
+                    // Sign Up Option
+                    HStack {
+                        Text("Register as Educator?")
+                            .font(.system(size: 15, weight: .regular, design: .default))
+                        NavigationLink(destination: CreateAccountView()) {
+                            Text("Sign Up")
+                                .font(.system(size: 15, weight: .bold, design: .default))
+                                .fontWeight(.bold)
+                            //                                CustomButton(label: "SignUp", action: {})
+                        }
+                        NavigationLink(destination : ForgotPasswordView(), isActive: $navigateToForgotPassword) {
+                            EmptyView()
                         }
                         
-                        // Sign Up Option
-                        HStack {
-                            Text("Register as Educator?")
-                                .font(.system(size: 15, weight: .regular, design: .default))
-                            NavigationLink(destination: CreateAccountView()) {
-                                Text("Sign Up")
-                                    .font(.system(size: 15, weight: .bold, design: .default))
-                                    .fontWeight(.bold)
-//                                CustomButton(label: "SignUp", action: {})
-                            }
-                            NavigationLink(destination : ForgotPasswordView(), isActive: $navigateToForgotPassword) {
-                                EmptyView()
-                            }
-                            
-                        }
-            Spacer()
                     }
+                    Spacer()
                 }
-            .ignoresSafeArea()
+                
             }
-        
+            .ignoresSafeArea()
+            
+            .navigationBarBackButtonHidden(true)
         }
     }
+    }
+    
     
 struct Login_Previews: PreviewProvider {
     static var previews: some View {

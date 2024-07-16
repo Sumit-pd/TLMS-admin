@@ -22,7 +22,7 @@ struct TitleLabel: View {
             .foregroundColor(.black)
             .frame(maxWidth: 350, alignment: .leading) // Optional: Full width alignment
             .background(Color.clear) // Optional: Background color
-            .lineLimit(nil)
+            .lineLimit(2)
             .multilineTextAlignment(.leading)
     }
 }

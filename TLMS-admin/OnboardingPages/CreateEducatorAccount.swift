@@ -29,10 +29,8 @@ struct CreateAccountView: View {
     @State private var isPhoneNumberValid = false
 
     var body: some View {
-        NavigationView {
+        
             ZStack(alignment: .bottom) {
-                
-                
                     PNGImageView(imageName: "Waves", width: 394, height: 194)
                 VStack(spacing: 20) {
                     ScrollView {
@@ -233,15 +231,15 @@ struct CreateAccountView: View {
                                     Alert(title: Text("Notification"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
                                 }
 
-                                Button(action: {
-                                    navigateToPendingEdu = true
-                                }) {
-                                    Text("Pending...")
-                                }
-
-                                NavigationLink(destination: PendingEducatorsView(), isActive: $navigateToPendingEdu) {
-                                    EmptyView()
-                                }
+//                                Button(action: {
+//                                    navigateToPendingEdu = true
+//                                }) {
+//                                    Text("Pending...")
+//                                }
+//
+//                                NavigationLink(destination: PendingEducatorsView(), isActive: $navigateToPendingEdu) {
+//                                    EmptyView()
+//                                }
 
                         }
                         .padding(.horizontal)
@@ -257,7 +255,7 @@ struct CreateAccountView: View {
                 .navigationTitle("Create Account")
                
             }.ignoresSafeArea(edges: .bottom)
-        }
+        
     }
 
     func register() {
