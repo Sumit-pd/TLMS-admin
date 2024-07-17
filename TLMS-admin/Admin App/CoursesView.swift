@@ -9,7 +9,7 @@ struct CoursesView: View {
     var body: some View {
         NavigationView {
             ZStack(alignment: .bottom) {
-//                VStack (){
+
                     GeometryReader { geometry in
                             VStack(){
                                 if viewModel.courses.isEmpty {
@@ -38,7 +38,7 @@ struct CoursesView: View {
                         
                     }
                 
-//                .padding(.horizontal)
+
 
                 Image("homescreenWave")
                     .resizable()

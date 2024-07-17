@@ -10,6 +10,8 @@
 		04CD06012C3C38390081D8AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04CD06002C3C38390081D8AF /* GoogleService-Info.plist */; };
 		326433012C44E31D00BC1713 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326433002C44E31D00BC1713 /* StatsView.swift */; };
 		326433032C457E0700BC1713 /* SlideScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326433022C457E0700BC1713 /* SlideScreenView.swift */; };
+		326433072C45873A00BC1713 /* backgroundfile.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 326433062C45873A00BC1713 /* backgroundfile.m4v */; };
+		326433092C47B96900BC1713 /* PublishCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326433082C47B96800BC1713 /* PublishCourse.swift */; };
 		3294FD442C3FA3DA00F81BC5 /* CourseCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3294FD432C3FA3DA00F81BC5 /* CourseCardView.swift */; };
 		953B89972C36A8BC00A4618D /* AdminHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B89962C36A8BB00A4618D /* AdminHomeScreen.swift */; };
 		953B89992C36A8E200A4618D /* CreateEducatorAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B89982C36A8E200A4618D /* CreateEducatorAccount.swift */; };
@@ -83,6 +85,8 @@
 		04CD06002C3C38390081D8AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "TLMS-admin/OnboardingPages/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		326433002C44E31D00BC1713 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		326433022C457E0700BC1713 /* SlideScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideScreenView.swift; sourceTree = "<group>"; };
+		326433062C45873A00BC1713 /* backgroundfile.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; name = backgroundfile.m4v; path = ../../../backgroundfile.m4v; sourceTree = "<group>"; };
+		326433082C47B96800BC1713 /* PublishCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishCourse.swift; sourceTree = "<group>"; };
 		3294FD432C3FA3DA00F81BC5 /* CourseCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCardView.swift; sourceTree = "<group>"; };
 		953B89962C36A8BB00A4618D /* AdminHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHomeScreen.swift; sourceTree = "<group>"; };
 		953B89982C36A8E200A4618D /* CreateEducatorAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEducatorAccount.swift; sourceTree = "<group>"; };
@@ -300,6 +304,8 @@
 				EF7E94FB2C4453580001C917 /* EducatorProfile.swift */,
 				326433002C44E31D00BC1713 /* StatsView.swift */,
 				326433022C457E0700BC1713 /* SlideScreenView.swift */,
+				326433082C47B96800BC1713 /* PublishCourse.swift */,
+				326433062C45873A00BC1713 /* backgroundfile.m4v */,
 			);
 			path = "Admin App";
 			sourceTree = "<group>";
@@ -473,6 +479,7 @@
 				EF2511AA2C3BBAD00035C58E /* CoursesView.swift in Sources */,
 				EF7E94FA2C44529E0001C917 /* NotificationView.swift in Sources */,
 				EF2865F42C3722D000C08AE8 /* UserAuthentication.swift in Sources */,
+				326433092C47B96900BC1713 /* PublishCourse.swift in Sources */,
 				EF7E94F22C4128540001C917 /* NotificationCard.swift in Sources */,
 				EF25119B2C39CD8F0035C58E /* PendingEducatorsView.swift in Sources */,
 				326433012C44E31D00BC1713 /* StatsView.swift in Sources */,

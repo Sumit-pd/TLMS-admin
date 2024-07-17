@@ -4,8 +4,6 @@ struct NotificationView: View {
     @State private var check = false
     @State private var selectedSegment = 0
     @ObservedObject var firebaseFetch = FirebaseFetch()
-//    var courses : [Course] = [Course(courseID: UUID(), courseName: "Swift UII", courseDescription: "New Course fatched", assignedEducator: Educator.init(firstName: "Fahar", lastName: "Imran", about: "this is howe we do it there is no other way ", email: "fahar123@gmail.com", password: "Fahar@123", phoneNumber: "9809874564", profileImageURL: ""), target: "new", state: "created")]
-//    var educator : Educator = Educator(firstName: "Fahar", lastName: "Imran", about: "this is howe we do it there is no other way ", email: "fahar123@gmail.com", password: "Fahar@123", phoneNumber: "9809874564", profileImageURL: "")
     
     private let segments = ["Updates", "Educators"]
     
@@ -25,25 +23,27 @@ struct NotificationView: View {
                 if selectedSegment == 0 {
                     ScrollView {
                         VStack(spacing: 10) {
-                            ForEach(firebaseFetch.courses.filter{ $0.state == "processing"} ) { course in
+                            ForEach(firebaseFetch.courses.filter{ $0.state == "completed"} ) { course in
                                 UpdateCardView(course: course)
-                                    .padding()
+                                  
                             }
+                            .frame(width: 354, height: 100)
+                                .background(Color("color 3"))
+                                .cornerRadius(12)
+                                .shadow(color: .black.opacity(0.08), radius: 10, x: 0, y: 5)
+                                .padding(10)
+                                .onAppear(){
+                                    firebaseFetch.fetchCourses()
+                                }
                         }
-                        .background(Color("color 3"))
-                        .cornerRadius(12)
-                        .shadow(color: .black.opacity(0.08), radius: 10, x: 0, y: 5)
-                        .padding(10)
-                        .onAppear() {
-                            firebaseFetch.fetchCourses()
-                        }
-                    }
+
+                    }.padding(10)
                     
                 } else if selectedSegment == 1 {
-                    VStack () {
+                   
                         GeometryReader { geometry in
                             ScrollView{
-                                VStack(){
+                                VStack(spacing: 5){
                                     if firebaseFetch.pendingEducators.isEmpty {
                                         Text("No Educators")
                                             .font(.title)
@@ -52,29 +52,33 @@ struct NotificationView: View {
                                             .opacity(0)
                                             .position(x: geometry.size.width / 2, y: geometry.size.height * 0.4)
                                     } else {
-                                            VStack(alignment: .leading, spacing: 10) {
+                                            
                                                 ForEach(firebaseFetch.pendingEducators) { educator in
                                                     EducatorperCardView(educator: educator)
-                                                }
-                                            }
-                                            .background(Color("color 3"))
-                                            .cornerRadius(12)
-                                            .shadow(color: .black.opacity(0.08), radius: 10, x: 0, y: 5)
-                                            .padding(10)
-                                            
+                                                  } .frame(width: 354, height: 100)
+                                                    .background(Color("color 3"))
+                                                    .cornerRadius(12)
+                                                    .shadow(color: .black.opacity(0.08), radius: 10, x: 0, y: 5)
+                                                    .padding(10)
+                                                    .onAppear(){
+                                                        print(firebaseFetch.fetchPendingEducators)
+                                                    }
                                     }
                                 }
-                            }
-                            .onAppear() {
-                                firebaseFetch.fetchPendingEducators()
-                            }
+                            }.padding(10)
+                            
                         }
-                    }
+                    
                 }
                 
                 
-            }.navigationTitle("Notifications")
-                .navigationBarTitleDisplayMode(.inline)
+            }
+            .onAppear() {
+                firebaseFetch.fetchPendingEducators()
+                firebaseFetch.fetchCourses()
+            }
+            .navigationTitle("Notifications")
+            .navigationBarTitleDisplayMode(.inline)
         }
         
         
@@ -92,17 +96,20 @@ struct EducatorperCardView: View {
         NavigationLink(destination: EducatorAccept(educator: educator)) {
             HStack(spacing: 10){
                 ProfileCircleImage(imageURL: educator.profileImageURL, width: 60, height: 60)
-                VStack(alignment: .leading, spacing: 5){
+                VStack(alignment: .leading){
                     Text(educator.fullName)
                         .font(.custom("Poppins-Medium", size: 18))
                     Text(educator.about)
+                        .lineLimit(2)
                         .font(.custom("Poppins-Regular", size: 16))
+                        .foregroundColor(.secondary)
                 }
                 Spacer()
                 Image(systemName: "chevron.right")
                     .foregroundColor(.black)
             }
-            .padding(15)
+            .padding(10)
+            .frame(width: 354, height: 100)
         }
     }
 }
@@ -110,21 +117,27 @@ struct EducatorperCardView: View {
 struct UpdateCardView: View {
     var course : Course
     var body: some View {
-           
-                HStack(spacing: 10){
-//                    PNGImageView(imageName: "SwiftLogo", width: 100, height: 120)
-                    CoursethumbnailImage(imageURL: course.courseImageURL, width: 120, height: 100)
-                    VStack(alignment: .leading, spacing: 5){
-                        Text(course.courseName)
-                            .font(.custom("Poppins-Medium", size: 18))
-                        Text(course.assignedEducator.firstName + " " + course.assignedEducator.lastName)
-                            .font(.custom("Poppins-Regular", size: 16))
-                    }
-                    Spacer()
-                    Image(systemName: "chevron.right")
-                        .foregroundColor(.black)
-                }
-                    .padding(15)
+        NavigationLink(destination: PublishCourse(course: course)){
+            
+        HStack(spacing: 10){
+            CoursethumbnailImage(imageURL: course.courseImageURL, width: 100, height: 80)
+            VStack(alignment: .leading){
+                Text(course.courseName)
+                    .font(.custom("Poppins-Medium", size: 18))
+                Text(course.assignedEducator.firstName + " " + course.assignedEducator.lastName)
+                    .lineLimit(2)
+                    .font(.custom("Poppins-Regular", size: 16))
+                    .foregroundColor(.secondary)
+            }
+            Spacer()
+            Image(systemName: "chevron.right")
+                .foregroundColor(.black)
+        }
+        .padding(10)
+        .frame(width: 354, height: 100)
+    }
+        
     }
         
 }
+
