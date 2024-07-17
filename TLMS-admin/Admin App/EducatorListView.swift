@@ -1,12 +1,10 @@
 import SwiftUI
 
-
 struct EducatorListView : View {
     @State private var check = false
     @State private var selectedSegment = 0
     private let segments = ["Educators", "Learners"]
-    var courses : [Course] = [Course(courseID: UUID(), courseName: "Swift UII", courseDescription: "New Course fatched", assignedEducator: Educator.init(firstName: "Fahar", lastName: "Imran", about: "this is howe we do it there is no other way ", email: "fahar123@gmail.com", password: "Fahar@123", phoneNumber: "9809874564", profileImageURL: ""), target: "new", state: "created")]
-    var educator : Educator = Educator(firstName: "Fahar", lastName: "Imran", about: "this is howe we do it there is no other way ", email: "fahar123@gmail.com", password: "Fahar@123", phoneNumber: "9809874564", profileImageURL: "")
+    
     @ObservedObject var firebaseFetch = FirebaseFetch()
     
     var body: some View {
@@ -45,7 +43,7 @@ struct EducatorListView : View {
                                         }
                                 }
                             }
-                            //
+                            
                         }.padding(10)
                         
                     }
@@ -73,7 +71,7 @@ struct EducatorListView : View {
                                         }
                                 }
                             }
-                            //
+                            
                         }.padding(10)
                         
                     }
@@ -113,11 +111,11 @@ struct EducatorsListCard: View {
                 Spacer()
                 Image(systemName: "chevron.right")
             }
-            .padding(20)
+            .padding(10)
             .frame(width: 354, height: 100)
         }
         .navigationTitle("Educators")
-        //            .navigationBarBackButtonHidden()
+
     }
     
 }
@@ -145,7 +143,7 @@ struct LearnerListCard: View {
                 Spacer()
                 Image(systemName: "chevron.right")
             }
-            .padding(20)
+            .padding(10)
             .frame(width: 354, height: 100)
         }
         .navigationTitle("Learners")
