@@ -1,33 +1,28 @@
 import SwiftUI
+import AVKit
+import UIKit
 import PhotosUI
-import FirebaseFirestore
-import FirebaseStorage
-import FirebaseAuth
+import Firebase
 
-
-struct CourseUpload: View {
-    @State var course: Course
+struct CourseUploadFile: View {
+    @ObservedObject var firebaseFetch = FirebaseFetch()
+    @State var courseService = CourseServices()
+    @Environment(\.presentationMode) var presentationMode
     @State private var selection = 0
     @State private var module = 1
-    @State private var modules: [Module] = [
-        Module(
-            title: "Module 1: Greetings and Introduction",
-            notesFileName: nil,
-            notesUploadProgress: 0.0,
-            videoFileName: nil,
-            videoUploadProgress: 0.0,
-            notesURL: nil,
-            videoURL: nil
-        )
-    ]
-    @State private var isUploading = false
+    @State private var modules: [Module] = [Module(title: "Module 1: Greetings and Introduction", notesFileName: nil, notesUploadProgress: 0.0, videoFileName: nil, videoUploadProgress: 0.0)]
+    @State private var showingVideoPicker = false
+    @State private var videoURL: URL?
+    @State private var showingDocumentPicker = false
+    @State private var documentURL: URL?
+    @State var course : Course
 
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack {
                     HStack {
-                        ProfileCircleImage(imageURL: course.courseImageURL, width: 40, height: 40)
+                        Image(systemName: "person.fill")
                         Text(course.courseName)
                     }
                     Picker(selection: $selection, label: Text("Picker")) {
@@ -35,6 +30,7 @@ struct CourseUpload: View {
                         Text("Quiz").tag(1)
                     }
                     .pickerStyle(SegmentedPickerStyle())
+                    .colorMultiply(.purple)
                     .padding(10)
 
                     HStack {
@@ -54,32 +50,36 @@ struct CourseUpload: View {
                     .padding(10)
 
                     ForEach(modules.indices, id: \.self) { index in
-                        ModuleContent(module: $modules[index])
+                        ModuleContent(module: $modules[index], course: course)
                             .background(Color.purple.opacity(0.05))
                             .cornerRadius(10)
                             .padding(.horizontal, 10)
                             .padding(.vertical, 5)
-                        
+
                         if index < modules.count - 1 {
                             Divider()
                                 .padding(.horizontal, 10)
                         }
                     }
-                    
-                    Button(action: { uploadCourseModules() }) {
-                        if isUploading {
-                            ProgressView()
-                        } else {
-                            Text("Mark as complete")
-                        }
+
+                    Button(action: {}) {
+                        Text("Save as Draft")
                     }
                     .font(.system(size: 12))
                     .frame(width: 330, height: 25)
-                    .foregroundColor(.white)
                     .padding(.horizontal, 5)
                     .padding(8)
-                    .background(Color.purple)
-                    .cornerRadius(10)
+                    .foregroundColor(.black)
+                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.purple, lineWidth: 0.8))
+                    .padding(.top, 20)
+
+                    CustomButton(label: "Mark as Complete", action: {
+                        courseService.updateCourseState(course: course, newState: "completed") {
+                            error in
+                            print("Error")
+                        }
+                        presentationMode.wrappedValue.dismiss()
+                    })
                 }
                 .padding(10)
             }
@@ -88,138 +88,15 @@ struct CourseUpload: View {
 
     func addNewModule() {
         module += 1
-        let newModule = Module(
-            title: "Module \(module)",
-            notesFileName: nil,
-            notesUploadProgress: 0.0,
-            videoFileName: nil,
-            videoUploadProgress: 0.0
-        )
+        let newModule = Module(title: "Module \(module)", notesFileName: nil, notesUploadProgress: 0.0, videoFileName: nil, videoUploadProgress: 0.0)
         modules.append(newModule)
     }
-    
-    func uploadCourseModules() {
-        isUploading = true
-        
-        let db = Firestore.firestore()
-        let courseRef = db.collection("Courses").document(course.courseName)
-        let storageRef = Storage.storage().reference()
-
-        let dispatchGroup = DispatchGroup()
-        
-        for moduleIndex in modules.indices {
-            dispatchGroup.enter()
-            
-            let module = modules[moduleIndex]
-            let moduleRef = courseRef.collection("Modules").document(module.title)
-
-            var moduleData: [String: Any] = [
-                "title": module.title,
-                "notesFileName": module.notesFileName ?? "",
-                "videoFileName": module.videoFileName ?? ""
-            ]
-            
-            let filesToUpload = [module.notesURL, module.videoURL].compactMap { $0 }
-            
-            if filesToUpload.isEmpty {
-                moduleRef.setData(moduleData) { error in
-                    if let error = error {
-                        print("Error setting module data: \(error.localizedDescription)")
-                    }
-                    dispatchGroup.leave()
-                }
-            } else {
-                var uploadCount = filesToUpload.count
-                
-                if let notesURL = module.notesURL {
-                    let notesFileRef = storageRef.child("course_files/\(course.courseID.uuidString)/\(notesURL.lastPathComponent)")
-                    uploadFile(to: notesFileRef, fileURL: notesURL) { url in
-                        guard let url = url else {
-                            dispatchGroup.leave()
-                            return
-                        }
-                        print("Generated URL : - \(url)")
-                        moduleData["notesFileURL"] = url.absoluteString
-                        uploadCount -= 1
-                        if uploadCount == 0 {
-                            moduleRef.setData(moduleData) { error in
-                                if let error = error {
-                                    print("Error setting module data: \(error.localizedDescription)")
-                                }
-                                dispatchGroup.leave()
-                            }
-                        }
-                    }
-                }
-
-                if let videoURL = module.videoURL {
-                    let videoFileRef = storageRef.child("course_files/\(course.courseID.uuidString)/\(videoURL.lastPathComponent)")
-                    uploadFile(to: videoFileRef, fileURL: videoURL) { url in
-                        guard let url = url else {
-                            dispatchGroup.leave()
-                            return
-                        }
-                        moduleData["videoFileURL"] = url.absoluteString
-                        uploadCount -= 1
-                        if uploadCount == 0 {
-                            moduleRef.setData(moduleData) { error in
-                                if let error = error {
-                                    print("Error setting module data: \(error.localizedDescription)")
-                                }
-                                dispatchGroup.leave()
-                            }
-                        }
-                    }
-                }
-
-            }
-        }
-        
-        dispatchGroup.notify(queue: .main) {
-            isUploading = false
-            print("All modules uploaded.")
-        }
-    }
-
-    func uploadFile(to storageRef: StorageReference, fileURL: URL, completion: @escaping (URL?) -> Void) {
-        print(fileURL)
-        print(storageRef)
-        let uploadTask = storageRef.putFile(from: fileURL, metadata: nil) { metadata, error in
-            if let error = error {
-                print("Error uploading file: \(error.localizedDescription)")
-                completion(nil)
-                return
-            }
-            
-            storageRef.downloadURL { url, error in
-                if let error = error {
-                    print("Error getting download URL: \(error.localizedDescription)")
-                    completion(nil)
-                } else {
-                    print("Download completed successfully.")
-                    completion(url)
-                }
-            }
-        }
-
-        uploadTask.observe(.progress) { snapshot in
-            let progress = Double(snapshot.progress?.completedUnitCount ?? 0) / Double(snapshot.progress?.totalUnitCount ?? 0)
-            DispatchQueue.main.async {
-                if let index = modules.firstIndex(where: { $0.notesFileName == fileURL.lastPathComponent || $0.videoFileName == fileURL.lastPathComponent }) {
-                    if fileURL.lastPathComponent == modules[index].notesFileName {
-                        modules[index].notesUploadProgress = progress
-                    } else if fileURL.lastPathComponent == modules[index].videoFileName {
-                        modules[index].videoUploadProgress = progress
-                    }
-                }
-            }
-        }
-    }
-
 }
 
+// Define the ModuleContent view
 struct ModuleContent: View {
     @Binding var module: Module
+    var course : Course
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -229,48 +106,44 @@ struct ModuleContent: View {
                 .padding(.bottom, 20)
                 .padding(.horizontal, 10)
 
-            FileUploadView(title: "Upload Notes", fileName: $module.notesFileName, fileURL: $module.notesURL, uploadProgress: $module.notesUploadProgress, fileType: .pdf)
+            FileUploadView(title: "Upload Notes", fileName: $module.notesFileName, uploadProgress: $module.notesUploadProgress, fileType: .pdf, course: course, module : module)
                 .padding(.bottom, 20)
 
-            FileUploadView(title: "Upload Video", fileName: $module.videoFileName, fileURL: $module.videoURL, uploadProgress: $module.videoUploadProgress, fileType: .video)
+            FileUploadView(title: "Upload Video", fileName: $module.videoFileName, uploadProgress: $module.videoUploadProgress, fileType: .video, course: course, module : module)
         }
         .padding()
     }
 }
 
+// Define the FileType enum
 enum FileType {
     case pdf
     case video
 }
 
+// Define the FileUploadView view
 struct FileUploadView: View {
     var title: String
     @Binding var fileName: String?
-    @Binding var fileURL: URL?
     @Binding var uploadProgress: Double
     var fileType: FileType
-    
+    var course : Course
+    var module : Module
+
     @State private var showFilePicker = false
-    @State private var isUploading = false
-    
+
     var body: some View {
         VStack(alignment: .leading) {
             Text(title)
                 .font(.headline)
                 .padding(.bottom, 10)
-            
+
             if let fileName = fileName {
                 HStack {
                     Text(fileName)
-                        .foregroundColor(isUploading ? .gray : .green)
                     Spacer()
-                    if isUploading {
-                        ProgressView(value: uploadProgress)
-                            .progressViewStyle(LinearProgressViewStyle())
-                    } else {
-                        Image(systemName: "checkmark.circle.fill")
-                            .foregroundColor(.green)
-                    }
+                    ProgressView(value: uploadProgress)
+                        .progressViewStyle(LinearProgressViewStyle())
                 }
                 .padding()
                 .background(Color.gray.opacity(0.2))
@@ -296,100 +169,244 @@ struct FileUploadView: View {
         }
         .sheet(isPresented: $showFilePicker) {
             if fileType == .pdf {
-                DocumentPicker(fileName: $fileName, fileURL: $fileURL)
+                DocumentPicker(fileName: $fileName, uploadProgress: $uploadProgress, course: course, module : module)
             } else {
-                VideoPicker(fileName: $fileName, fileURL: $fileURL)
+                VideoPicker(fileName: $fileName, uploadProgress: $uploadProgress, course: course, module : module)
             }
         }
     }
 }
 
-
 struct DocumentPicker: UIViewControllerRepresentable {
     @Binding var fileName: String?
-    @Binding var fileURL: URL?
-    
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
+    @Binding var uploadProgress: Double
+    var course : Course
+    var module : Module
 
-    func makeUIViewController(context: Context) -> UIDocumentPickerViewController {
-        let picker = UIDocumentPickerViewController(forOpeningContentTypes: [.pdf])
-        picker.delegate = context.coordinator
-        return picker
-    }
-
-    func updateUIViewController(_ uiViewController: UIDocumentPickerViewController, context: Context) { }
-
-    class Coordinator: NSObject, UIDocumentPickerDelegate, UINavigationControllerDelegate {
+    class Coordinator: NSObject, UINavigationControllerDelegate, UIDocumentPickerDelegate {
         var parent: DocumentPicker
 
-        init(_ parent: DocumentPicker) {
+        init(parent: DocumentPicker) {
             self.parent = parent
         }
 
         func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
             guard let selectedFileURL = urls.first else { return }
-            parent.fileName = selectedFileURL.lastPathComponent
-            parent.fileURL = selectedFileURL
+
+            let fileSize = try? selectedFileURL.resourceValues(forKeys: [.fileSizeKey]).fileSize ?? 0
+
+            if let fileSize = fileSize, fileSize <= 2 * 1024 * 1024 {
+                parent.fileName = selectedFileURL.lastPathComponent
+                parent.uploadDocument(url: selectedFileURL)
+            } else {
+                // Handle file size exceeding limit
+                parent.fileName = "File size exceeds 2MB limit"
+            }
+        }
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(parent: self)
+    }
+
+    func makeUIViewController(context: Context) -> UIDocumentPickerViewController {
+        let picker = UIDocumentPickerViewController(forOpeningContentTypes: [UTType.pdf])
+        picker.delegate = context.coordinator
+        return picker
+    }
+
+    func updateUIViewController(_ uiViewController: UIDocumentPickerViewController, context: Context) {}
+
+    func uploadDocument(url: URL) {
+        let uploadURL = URL(string: "http://192.168.21.66/upload.php")!
+        var request = URLRequest(url: uploadURL)
+        request.httpMethod = "POST"
+
+        let boundary = UUID().uuidString
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+
+        var body = Data()
+        body.append("--\(boundary)\r\n".data(using: .utf8)!)
+        body.append("Content-Disposition: form-data; name=\"fileToUpload\"; filename=\"\(url.lastPathComponent)\"\r\n".data(using: .utf8)!)
+        body.append("Content-Type: application/pdf\r\n\r\n".data(using: .utf8)!)
+        body.append(try! Data(contentsOf: url))
+        body.append("\r\n".data(using: .utf8)!)
+        body.append("--\(boundary)--\r\n".data(using: .utf8)!)
+
+        URLSession.shared.uploadTask(with: request, from: body) { data, response, error in
+            guard let data = data, error == nil else {
+                print("Upload error: \(String(describing: error))")
+                return
+            }
+
+            let responseString = String(data: data, encoding: .utf8)
+            print("Response: \(responseString ?? "No response")")
+
+            DispatchQueue.main.async {
+                self.simulateUpload()
+            }
+        }.resume()
+    }
+
+    func simulateUpload() {
+        uploadProgress = 0.0
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+            uploadProgress += 0.05
+            if uploadProgress >= 1.0 {
+                timer.invalidate()
+                uploadDocumentToFirebase()
+            }
+        }
+    }
+
+    func uploadDocumentToFirebase() {
+        let db = Firestore.firestore()
+        let moduleName = "Module \(UUID().uuidString)"
+        
+        db.collection("Courses").document(course.courseName).collection("Modules").document(module.title).setData([
+            "notesFileName": fileName ?? ""
+        ], merge: true) { error in
+            if let error = error {
+                print("Error writing document: \(error)")
+            } else {
+                print("Document successfully written!")
+            }
         }
     }
 }
 
 struct VideoPicker: UIViewControllerRepresentable {
     @Binding var fileName: String?
-    @Binding var fileURL: URL?
-    
+    @Binding var uploadProgress: Double
+    var course : Course
+    var module : Module
+
+    class Coordinator: NSObject, UINavigationControllerDelegate, PHPickerViewControllerDelegate {
+        var parent: VideoPicker
+
+        init(parent: VideoPicker) {
+            self.parent = parent
+        }
+
+        func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+            picker.dismiss(animated: true, completion: nil)
+
+            guard let provider = results.first?.itemProvider else { return }
+
+            if provider.hasItemConformingToTypeIdentifier(UTType.movie.identifier) {
+                provider.loadFileRepresentation(forTypeIdentifier: UTType.movie.identifier) { (url, error) in
+                    guard let url = url else { return }
+
+                    // Copy the file to a temporary directory
+                    let tempDirectory = FileManager.default.temporaryDirectory
+                    let tempURL = tempDirectory.appendingPathComponent(url.lastPathComponent)
+
+                    do {
+                        if FileManager.default.fileExists(atPath: tempURL.path) {
+                            try FileManager.default.removeItem(at: tempURL)
+                        }
+                        try FileManager.default.copyItem(at: url, to: tempURL)
+
+                        DispatchQueue.main.async {
+                            self.parent.fileName = tempURL.lastPathComponent
+                            self.parent.uploadVideo(url: tempURL)
+                        }
+                    } catch {
+                        print("Error copying file: \(error)")
+                    }
+                }
+            }
+        }
+    }
+
     func makeCoordinator() -> Coordinator {
-        Coordinator(self)
+        Coordinator(parent: self)
     }
 
     func makeUIViewController(context: Context) -> PHPickerViewController {
         var config = PHPickerConfiguration()
         config.filter = .videos
+        config.selectionLimit = 1
         let picker = PHPickerViewController(configuration: config)
         picker.delegate = context.coordinator
         return picker
     }
 
-    func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) { }
+    func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) {}
 
-    class Coordinator: NSObject, PHPickerViewControllerDelegate {
-        var parent: VideoPicker
+    func uploadVideo(url: URL) {
+        let uploadURL = URL(string: "http://192.168.21.66/upload.php")!
+        var request = URLRequest(url: uploadURL)
+        request.httpMethod = "POST"
 
-        init(_ parent: VideoPicker) {
-            self.parent = parent
+        let boundary = UUID().uuidString
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+
+        var body = Data()
+        body.append("--\(boundary)\r\n".data(using: .utf8)!)
+        body.append("Content-Disposition: form-data; name=\"fileToUpload\"; filename=\"\(url.lastPathComponent)\"\r\n".data(using: .utf8)!)
+        body.append("Content-Type: video/mp4\r\n\r\n".data(using: .utf8)!)
+        body.append(try! Data(contentsOf: url))
+        body.append("\r\n".data(using: .utf8)!)
+        body.append("--\(boundary)--\r\n".data(using: .utf8)!)
+
+        URLSession.shared.uploadTask(with: request, from: body) { data, response, error in
+            guard let data = data, error == nil else {
+                print("Upload error: \(String(describing: error))")
+                return
+            }
+
+            let responseString = String(data: data, encoding: .utf8)
+            print("Response: \(responseString ?? "No response")")
+
+            DispatchQueue.main.async {
+                self.simulateUpload()
+            }
+        }.resume()
+    }
+
+    func simulateUpload() {
+        uploadProgress = 0.0
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+            uploadProgress += 0.05
+            if uploadProgress >= 1.0 {
+                timer.invalidate()
+                uploadVideoToFirebase()
+            }
         }
+    }
 
-        func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-            picker.dismiss(animated: true)
-            
-            guard let provider = results.first?.itemProvider, provider.hasItemConformingToTypeIdentifier(UTType.movie.identifier) else { return }
-            
-            provider.loadFileRepresentation(forTypeIdentifier: UTType.movie.identifier) { (url, error) in
-                guard let url = url else { return }
-                let fileName = url.lastPathComponent
-                let tempDir = FileManager.default.temporaryDirectory
-                let tempFile = tempDir.appendingPathComponent(fileName)
-                
-                do {
-                    try FileManager.default.copyItem(at: url, to: tempFile)
-                    DispatchQueue.main.async {
-                        self.parent.fileName = fileName
-                        self.parent.fileURL = tempFile
-                    }
-                } catch {
-                    print("Failed to copy file to temp directory: \(error.localizedDescription)")
-                }
+    func uploadVideoToFirebase() {
+        let db = Firestore.firestore()
+        let moduleName = "Module \(UUID().uuidString)"
+        
+        db.collection("Courses").document(course.courseName).collection("Modules").document(module.title).setData([
+            "videoFileName": fileName ?? ""
+        ], merge: true) { error in
+            if let error = error {
+                print("Error writing document: \(error)")
+            } else {
+                print("Document successfully written!")
             }
         }
     }
 }
 
+// Define the Module struct
+struct Module: Identifiable {
+    let id = UUID()
+    var title: String
+    var notesFileName: String?
+    var notesUploadProgress: Double
+    var videoFileName: String?
+    var videoUploadProgress: Double
+}
 
 
+// Define the CourseUpload_Previews struct
 struct CourseUpload_Previews: PreviewProvider {
     static var previews: some View {
-        CourseUpload(course: Course(courseID: UUID(), courseName: "rsvd", courseDescription: "sgfs", assignedEducator: Educator(firstName: "bfvdrg", lastName: "Bfdvsc", about: "Bdfvdc", email: "Bfdvsc", password: "Gbfvdcsz", phoneNumber: "BFvd", profileImageURL: "bfdvs"), target: "bdsvac", state: "Bfsdvzcs"))
+        let course = Course(courseID: UUID(), courseName: "Swift Fundamentals", courseDescription: "Discover SwiftUI's power in our immersive course! fcec ercerc reerc rfv fve", assignedEducator: Educator(firstName: "rgsdvc", lastName: "thegrsec", about: "trebsvec", email: "tbrsvdac", password: "tbdvsc", phoneNumber: "trbrvsda", profileImageURL: "brvsdc"), target: "tbvsdc", state: "bfvsd")
+        CourseUploadFile(course: course)
     }
 }

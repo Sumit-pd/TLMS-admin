@@ -55,7 +55,7 @@ struct EducatorHomeScreen: View {
                     
                     // Enrollments
                     HStack {
-                        EnrollmentCard(title: "Total Courses", count: 15, color: Color(hexc: "A69EE5"), icon: "book.fill")
+                        EnrollmentCard(title: "Total Courses", count: firebaseFetch.assignedCourses.filter({$0.state != "created"}).count, color: Color(hexc: "A69EE5"), icon: "book.fill")
                         EnrollmentCard(title: "Ongoing Courses", count: firebaseFetch.assignedCourses.filter({$0.state == "processing"}).count, color: Color(hexc: "98CCF2"), icon: "play.rectangle.fill")
                     }
                     .padding(.horizontal)
@@ -125,7 +125,7 @@ struct CourseCard: View {
     var course : Course
     
     var body: some View {
-        NavigationLink(destination: CourseUpload(course: course)) {
+        NavigationLink(destination: CourseUploadFile(course : course)) {
             VStack(alignment: .leading) {
                 CoursethumbnailImage(imageURL: course.courseImageURL, width: 150, height: 130)
                     .aspectRatio(contentMode: .fill)
@@ -211,5 +211,3 @@ struct ContentView_Previews: PreviewProvider {
         EducatorHomeScreen()
     }
 }
-
-

@@ -44,6 +44,30 @@ class CourseServices : ObservableObject {
             
         }
     }
+
+    func fetchModules(course : Course, completion: @escaping ([String]) -> Void) {
+        let db = Firestore.firestore()
+        let ref = db.collection("Courses").document(course.courseName).collection("Modules")
+        
+        ref.getDocuments { (querySnapshot, error) in
+            if let _ = error {
+                print("Error fetching the target names.")
+                completion([])
+                return
+            }
+            
+            guard let documents = querySnapshot?.documents else {
+                print("Documents couldn't be fetched.")
+                completion([])
+                return
+            }
+            
+            let moduleNames = documents.map {$0.documentID}
+            print(moduleNames)
+            completion(moduleNames)
+            
+        }
+    }
     
 //    func uploadCourseToTarget(targetName: String, courseName: String, courseDetails: [String: Any], completion: @escaping (Bool) -> Void) {
 //        let db = Firestore.firestore()

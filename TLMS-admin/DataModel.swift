@@ -40,17 +40,6 @@ struct Content {
     var certificateURL : String?
 }
 
-struct Module: Identifiable {
-    let id = UUID()
-    var title: String
-    var notesFileName: String?
-    var notesUploadProgress: Double
-    var videoFileName: String?
-    var videoUploadProgress: Double
-    var notesURL : URL?
-    var videoURL : URL?
-}
-
 struct Quiz {
     var questions : [Question]
     var maxScore : Int {
