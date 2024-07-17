@@ -6,6 +6,7 @@ import FirebaseFirestore
 
 class CourseServices : ObservableObject {
     
+    
     func uploadTarget(targetName : String, completion: @escaping (Bool) -> Void) {
         let db = Firestore.firestore()
         let ref = db.collection("Targets").document(targetName)
@@ -63,7 +64,7 @@ class CourseServices : ObservableObject {
             }
             
             let moduleNames = documents.map {$0.documentID}
-            print(moduleNames)
+            print("Fetched Modules : ", moduleNames)
             completion(moduleNames)
             
         }

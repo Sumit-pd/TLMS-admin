@@ -23,7 +23,7 @@ struct NotificationView: View {
                 if selectedSegment == 0 {
                     ScrollView {
                         VStack(spacing: 10) {
-                            ForEach(firebaseFetch.courses.filter{ $0.state == "processing"} ) { course in
+                            ForEach(firebaseFetch.courses.filter{ $0.state == "completed"} ) { course in
                                 UpdateCardView(course: course)
                                   
                             }
@@ -117,7 +117,8 @@ struct EducatorperCardView: View {
 struct UpdateCardView: View {
     var course : Course
     var body: some View {
-        NavigationLink(destination: EducatorProfile()){
+        NavigationLink(destination: PublishCourse(course: course)){
+            
         HStack(spacing: 10){
             CoursethumbnailImage(imageURL: course.courseImageURL, width: 100, height: 80)
             VStack(alignment: .leading){
