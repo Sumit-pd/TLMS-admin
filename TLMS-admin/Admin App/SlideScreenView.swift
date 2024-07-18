@@ -2,34 +2,28 @@ import SwiftUI
 import AVKit
 
 struct SlideScreenView: View {
-    // @State private var avplayer: AVPlayer
+
+    
+
+    static let url = Bundle.main.url(forResource: "backgroundfile", withExtension: "m4v")!
+    @State private var avplayer: AVPlayer
+
     @State private var isNavigating = false
     
     init() {
-        // avplayer = AVPlayer(url: SlideScreenView.url)
+
+      
+
+        avplayer = AVPlayer(url: SlideScreenView.url)
+
     }
     
     var body: some View {
         NavigationView {
             ZStack(alignment: .bottom) {
-                // Uncomment and configure the video player if needed
-                /*
-                VideoPlayer(player: avplayer)
-                    .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                            avplayer.play()
-                        }
-                        
-                        NotificationCenter.default.addObserver(
-                            forName: .AVPlayerItemDidPlayToEndTime,
-                            object: avplayer.currentItem,
-                            queue: .main
-                        ) { _ in
-                            avplayer.seek(to: .zero)
-                            avplayer.play()
-                        }
-                    }
-                */
+
+               
+
                 
                 VStack {
                     Spacer()
@@ -64,11 +58,13 @@ struct SlideScreenView: View {
             }
             .ignoresSafeArea()
             .onDisappear {
-                // NotificationCenter.default.removeObserver(
-                //     self,
-                //     name: .AVPlayerItemDidPlayToEndTime,
-                //     object: avplayer.currentItem
-                // )
+
+                NotificationCenter.default.removeObserver(
+                    self,
+                    name: .AVPlayerItemDidPlayToEndTime,
+                    object: avplayer.currentItem
+                )
+
             }
         }
     }
@@ -76,6 +72,13 @@ struct SlideScreenView: View {
 
 
 
+
 #Preview {
     SlideScreenView()
 }
+
+          #Preview {
+              SlideScreenView()
+          }
+
+

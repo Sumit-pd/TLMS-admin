@@ -1,3 +1,4 @@
+
 import Foundation
 import SwiftUI
 
@@ -114,8 +115,8 @@ struct EducatorsListCard: View {
     @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
-        NavigationLink(destination: EducatorProfile()) {
-            HStack(spacing: 10) {
+        NavigationLink(destination: EducatorProfile(educator: educator)){
+            HStack(spacing: 10){
                 ProfileCircleImage(imageURL: educator.profileImageURL, width: 60, height: 60)
 
                 VStack(alignment: .leading) {
@@ -140,12 +141,20 @@ struct EducatorsListCard: View {
 }
 
 struct LearnerListCard: View {
-    var learner: Learner
+
+    
     @Environment(\.colorScheme) var colorScheme
 
+
+    
+    @ObservedObject var firebaseFetch = FirebaseFetch()
+    
+    var learner : Learner
+    var educator : Educator = Educator(id: UUID().uuidString, firstName: "dfd", lastName: "dfddf", about: "fdfdf", email: "srew", password: "rwfds", phoneNumber: "sdgsd", profileImageURL: "sdfsd")
+
     var body: some View {
-        NavigationLink(destination: EducatorProfile()) {
-            HStack(spacing: 10) {
+        NavigationLink(destination: EducatorProfile(educator: educator)){
+            HStack(spacing: 10){
                 ProfileCircleImage(imageURL: learner.firstName!, width: 60, height: 60)
 
                 VStack(alignment: .leading) {
@@ -172,3 +181,4 @@ struct LearnerListCard: View {
 #Preview {
     EducatorsListCard(educator: Educator(id: "Dummyq", firstName: "rhdgsvdgr", lastName: "hdvsx", about: "hregsdvz", email: "htdfbvsc", password: "grdsc", phoneNumber: "bfdvcsxa", profileImageURL: "ngbdvs"))
 }
+
