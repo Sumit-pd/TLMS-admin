@@ -87,10 +87,10 @@ struct ChatRoomUser {
     let email: String?
     let photoUrl: String?
 }
+
 final class AuthManager {
     static let shared = AuthManager()
     let auth = Auth.auth()
-    
     
     func getCurrentUser() -> ChatRoomUser? {
         guard let user = auth.currentUser else {
@@ -99,4 +99,3 @@ final class AuthManager {
         return ChatRoomUser(uid: user.uid, name: user.displayName ?? "Unknown", email: user.email, photoUrl: user.photoURL?.absoluteString)
     }
 }
-

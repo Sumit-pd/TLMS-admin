@@ -12,7 +12,6 @@
 		0491A2D62C483B51001162E3 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0491A2D52C483B50001162E3 /* MessageView.swift */; };
 		0491A2D82C483B5A001162E3 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0491A2D72C483B5A001162E3 /* ChatView.swift */; };
 		0491A2DA2C483B72001162E3 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0491A2D92C483B72001162E3 /* ChatViewModel.swift */; };
-		0491A2DD2C483BE3001162E3 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 0491A2DC2C483BE3001162E3 /* SDWebImageSwiftUI */; };
 		0491A2FB2C48D5A3001162E3 /* CompleteCourses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0491A2FA2C48D5A3001162E3 /* CompleteCourses.swift */; };
 		0491A2FD2C48D760001162E3 /* backgroundfile.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 0491A2FC2C48D75F001162E3 /* backgroundfile.m4v */; };
 		04CD06012C3C38390081D8AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04CD06002C3C38390081D8AF /* GoogleService-Info.plist */; };
@@ -706,7 +705,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TLMS-admin/Preview Content\"";
-				DEVELOPMENT_TEAM = 4R988LYXRQ;
+				DEVELOPMENT_TEAM = WSRNHSSM78;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "TLMS-admin/Info.plist";
@@ -737,7 +736,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TLMS-admin/Preview Content\"";
-				DEVELOPMENT_TEAM = 4R988LYXRQ;
+				DEVELOPMENT_TEAM = WSRNHSSM78;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "TLMS-admin/Info.plist";
