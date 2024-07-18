@@ -46,29 +46,44 @@ class CourseServices : ObservableObject {
         }
     }
 
-    func fetchModules(course : Course, completion: @escaping ([String]) -> Void) {
-        let db = Firestore.firestore()
-        let ref = db.collection("Courses").document(course.courseName).collection("Modules")
-        
-        ref.getDocuments { (querySnapshot, error) in
-            if let _ = error {
-                print("Error fetching the target names.")
-                completion([])
-                return
+    func fetchModules(course: Course, completion: @escaping ([Module]) -> Void) {
+            let db = Firestore.firestore()
+            let ref = db.collection("Courses").document(course.courseName).collection("Modules")
+            
+            ref.getDocuments { (querySnapshot, error) in
+                if let error = error {
+                    print("Error fetching the modules: \(error)")
+                    completion([])
+                    return
+                }
+                
+                guard let documents = querySnapshot?.documents else {
+                    print("Documents couldn't be fetched.")
+                    completion([])
+                    return
+                }
+                
+                let modules: [Module] = documents.map { doc in
+                    let data = doc.data()
+                    let title = data["title"] as? String ?? "Untitled"
+                    let notesFileName = data["notesFileName"] as? String
+                    let notesUploadProgress = data["notesUploadProgress"] as? Double ?? 0.0
+                    let videoFileName = data["videoFileName"] as? String
+                    let videoUploadProgress = data["videoUploadProgress"] as? Double ?? 0.0
+                    
+                    return Module(
+                        title: title,
+                        notesFileName: notesFileName,
+                        notesUploadProgress: notesUploadProgress,
+                        videoFileName: videoFileName,
+                        videoUploadProgress: videoUploadProgress
+                    )
+                }
+                
+                print("Fetched Modules: ", modules)
+                completion(modules)
             }
-            
-            guard let documents = querySnapshot?.documents else {
-                print("Documents couldn't be fetched.")
-                completion([])
-                return
-            }
-            
-            let moduleNames = documents.map {$0.documentID}
-            print("Fetched Modules : ", moduleNames)
-            completion(moduleNames)
-            
         }
-    }
     
 //    func uploadCourseToTarget(targetName: String, courseName: String, courseDetails: [String: Any], completion: @escaping (Bool) -> Void) {
 //        let db = Firestore.firestore()
