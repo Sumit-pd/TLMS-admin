@@ -5,6 +5,7 @@
 //  Created by Vidhi Iyer  on 11/07/24.
 //
 
+
 import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
@@ -77,9 +78,9 @@ struct EducatorHomeScreen: View {
                     SectionHeader2(title: "My Courses")
                     
                     VStack(spacing: 10) {
-                        MyCourseCard(title: "Swift Fundamentals", enrollments: 1898, imageName: "swift")
-                        MyCourseCard(title: "Swift Fundamentals", enrollments: 1898, imageName: "python")
-                        MyCourseCard(title: "Swift Fundamentals", enrollments: 1898, imageName: "django")
+                        ForEach(firebaseFetch.assignedCourses.filter{$0.state == "published"}){ course in
+                            MyCourseCard(course : course)
+                        }
                     }
                     .padding(.horizontal)
                 }
@@ -141,29 +142,27 @@ struct CourseCard: View {
 }
 
 struct MyCourseCard: View {
-    var title: String
-    var enrollments: Int
-    var imageName: String
-    
+    var course : Course
+    @State var mycourse = false
     var body: some View {
-        HStack {
-            Image(systemName: imageName)
-                .font(.largeTitle)
-                .frame(width: 50, height: 50)
-            VStack(alignment: .leading) {
-                Text(title)
-                    .font(.headline)
-                Text("\(enrollments) Enrollments")
-                    .font(.subheadline)
+        NavigationLink( destination: CompleteCourse(course: course)){
+            HStack {
+                CoursethumbnailImage(imageURL: course.courseImageURL, width: 60 ,height: 60)
+                VStack(alignment: .leading) {
+                    Text(course.courseName)
+                        .font(.headline)
+                    Text("1000 Enrollments")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+                Spacer()
+                Image(systemName: "chevron.right")
                     .foregroundColor(.secondary)
             }
-            Spacer()
-            Image(systemName: "chevron.right")
-                .foregroundColor(.secondary)
+            .padding()
+            .background(Color(.systemGray6))
+            .cornerRadius(10)
         }
-        .padding()
-        .background(Color(.systemGray6))
-        .cornerRadius(10)
     }
 }
 

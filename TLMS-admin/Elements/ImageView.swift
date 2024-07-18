@@ -201,3 +201,29 @@ extension Color {
         )
     }
 }
+struct ProfileEducatorImage: View {
+    var imageName: String
+    var width: CGFloat
+    var height: CGFloat
+    
+    var body: some View {
+        // Load the image and apply constraints
+        if let uiImage = UIImage(named: imageName),
+           uiImage.isPNG() {
+
+                    Image(imageName)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: width, height: height)
+                    Spacer()
+            
+        } else {
+            
+            Image(systemName: "exclamationmark.triangle")
+                .resizable()
+                .scaledToFit()
+                .frame(width: width, height: height)
+                .foregroundColor(.red)
+        }
+    }
+}
