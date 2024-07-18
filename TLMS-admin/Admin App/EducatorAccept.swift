@@ -64,7 +64,7 @@ struct EducatorAccept: View {
                     }
                 }
             }
-
+                    .toolbar(.hidden, for: .tabBar)
             .navigationTitle("Educator")
             .navigationBarTitleDisplayMode(.inline)
             .padding(.top, 100)

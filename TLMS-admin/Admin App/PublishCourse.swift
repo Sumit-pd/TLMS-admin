@@ -36,6 +36,7 @@ struct PublishCourse: View {
                 })
             }
         }
+        .toolbar(.hidden, for: .tabBar)
         .onAppear() {
             allModules()
         }

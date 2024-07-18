@@ -7,6 +7,8 @@ struct CoursesView: View {
     @State var selectedTarget: String
     @State var shouldShowOnboard: Bool = true
     @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject var authViewModel: UserAuthentication
+    @ObservedObject var firebaseFetch = FirebaseFetch()
 
     var body: some View {
         
@@ -45,7 +47,12 @@ struct CoursesView: View {
                                 }
                             }
                         }
-                        
+                        VStack(spacing: 10) {
+                            ForEach(firebaseFetch.assignedCourses.filter{$0.state == "published"}){ course in
+                                MyCourseCard(course : course)
+                            }
+                        }
+                        .padding(.horizontal)
                         
                     }.padding(20)
                 }
