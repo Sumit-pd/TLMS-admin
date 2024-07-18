@@ -15,14 +15,16 @@ struct CourseCreationView: View {
     @State private var showImagePicker: Bool = false
     @State var courseService = CourseServices()
     @Environment(\.presentationMode) var presentationMode
+    @Environment(\.colorScheme) var colorScheme // Add this line to access color scheme
     
     var targetName: String
 
     var body: some View {
+
 //        NavigationView {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
-                    // Add Course Image at the top
+                    
                     Text("Add Course Image")
                         .font(.headline)
                     
@@ -34,7 +36,7 @@ struct CourseCreationView: View {
                                 Image(uiImage: image)
                                     .resizable()
                                     .scaledToFill()
-                                    .frame(height: 200)
+                                    .frame(width: 254 ,height: 200)
                                     .clipShape(RoundedRectangle(cornerRadius: 8))
                             } else {
                                 Image(systemName: "square.and.arrow.up")
@@ -50,102 +52,129 @@ struct CourseCreationView: View {
                         ImagePicker(selectedImage: $courseImage)
                     }
 
-                    EditableFieldView(title: "Course Title", text: $courseTitle, placeholder: "Enter Course Title")
-                        .onChange(of: courseTitle) { _, newVal in
-                            isTitle = validateTitle(title: newVal)
-                        }
+
+
+                Button(action: {
+                    showImagePicker = true
+                }) {
                     HStack {
-                        Spacer()
-                        if !isTitle && courseTitle != "" {
-                            Text("Title should contain max 30 characters")
-                                .font(.caption2)
-                                .foregroundColor(.red)
-                                .padding(.trailing, 35)
+                        if let image = courseImage {
+                            Image(uiImage: image)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(height: 200)
+                                .clipShape(RoundedRectangle(cornerRadius: 8))
                         } else {
-                            Text("Title should contain max 30 characters")
-                                .font(.caption2)
-                                .foregroundColor(.white)
-                                .padding(.trailing, 15)
-                                .opacity(0)
+                            Image(systemName: "square.and.arrow.up")
+                                .foregroundColor(colorScheme == .dark ? .white : .black) // Adjust icon color for dark mode
+                            Text("Add file")
+                                .foregroundColor(colorScheme == .dark ? .white : .black) // Adjust text color for dark mode
                         }
                     }
-
-                    EditableFieldView(title: "Course Description", text: $courseDescription, placeholder: "Enter Course Description", isMultiline: true)
-                        .onChange(of: courseDescription) { _, newVal in
-                            isDescription = validateAbout(about: newVal)
-                        }
-                    HStack {
-                        Spacer()
-                        if !isDescription && courseDescription != "" {
-                            Text("Character Limit is 255")
-                                .font(.caption2)
-                                .foregroundColor(.red)
-                                .padding(.trailing, 35)
-                        } else {
-                            Text("Character Limit is 255")
-                                .font(.caption2)
-                                .foregroundColor(.white)
-                                .padding(.trailing, 15)
-                                .opacity(0)
-                        }
-                    }
-
-
-                    Text("Release Date")
-                        .font(.headline)
-                    DatePicker("Select Date", selection: $releaseDate, displayedComponents: .date)
-                        .datePickerStyle(.compact)
-                        .padding()
-                        .background(Color(.systemGray6))
-                        .cornerRadius(8)
-                        
-
-                    Text("Assign Educator")
-                        .font(.headline)
-
-                    Button(action: {
-                        showEducatorPicker = true
-                    }) {
-                        HStack {
-                            if let educator = selectedEducator {
-                                HStack (spacing: 10){
-                                    ProfileCircleImage(imageURL: educator.profileImageURL, width: 35, height: 35)
-                                    Text(educator.firstName + " " + educator.lastName)
-                                        .font(.subheadline)
-                                        .background(Color(.white))
-                                }
-                                .background(Color(.white))
-                            } else {
-                                Text("Select Educator")
-                                    .font(.subheadline)
-                                    .background(Color(.white))
-                            }
-                        }
-                    }
+                    .padding()
+                    .frame(maxWidth: .infinity)
                     .background(Color(.systemGray6))
                     .cornerRadius(8)
-                    .frame(height: 30)
-
-                    CustomButton(label: "Create Course", action: {
-                        uploadCourseImage { url in
-                            let courseData: Course = Course(courseID: UUID(), courseName: courseTitle, courseDescription: courseDescription, courseImageURL: url!.absoluteString, releaseDate: releaseDate, assignedEducator: selectedEducator!, target: targetName, state: "created")
-                            courseService.createCourse(course: courseData) { error in
-                                if let _ = error {
-                                    print("Error uploading the course.")
-                                }
-                            }
-                            
-                        }
-                        presentationMode.wrappedValue.dismiss()
-                    })
                 }
-                .padding(20)
+                .sheet(isPresented: $showImagePicker) {
+                    ImagePicker(selectedImage: $courseImage)
+                }
+
+                EditableFieldView(title: "Course Title", text: $courseTitle, placeholder: "Enter Course Title")
+                    .onChange(of: courseTitle) { _, newVal in
+                        isTitle = validateTitle(title: newVal)
+                    }
+                HStack {
+                    Spacer()
+                    if !isTitle && courseTitle != "" {
+                        Text("Title should contain max 30 characters")
+                            .font(.caption2)
+                            .foregroundColor(.red)
+                            .padding(.trailing, 35)
+                    } else {
+                        Text("Title should contain max 30 characters")
+                            .font(.caption2)
+                            .foregroundColor(colorScheme == .dark ? .black : .white) // Adjust text color for dark mode
+                            .padding(.trailing, 15)
+                            .opacity(0)
+                    }
+                }
+
+                EditableFieldView(title: "Course Description", text: $courseDescription, placeholder: "Enter Course Description", isMultiline: true)
+                    .onChange(of: courseDescription) { _, newVal in
+                        isDescription = validateAbout(about: newVal)
+                    }
+                HStack {
+                    Spacer()
+                    if !isDescription && courseDescription != "" {
+                        Text("Character Limit is 255")
+                            .font(.caption2)
+                            .foregroundColor(.red)
+                            .padding(.trailing, 35)
+                    } else {
+                        Text("Character Limit is 255")
+                            .font(.caption2)
+                            .foregroundColor(colorScheme == .dark ? .black : .white) // Adjust text color for dark mode
+                            .padding(.trailing, 15)
+                            .opacity(0)
+                    }
+                }
+
+                Text("Release Date")
+                    .font(.headline)
+                    .foregroundColor(colorScheme == .dark ? .white : .black) // Adjust text color for dark mode
+                DatePicker("Select Date", selection: $releaseDate, displayedComponents: .date)
+                    .datePickerStyle(.compact)
+                    .padding()
+                    .background(Color(.systemGray6))
+                    .cornerRadius(8)
+
+                Text("Assign Educator")
+                    .font(.headline)
+                    .foregroundColor(colorScheme == .dark ? .white : .black) // Adjust text color for dark mode
+
+                Button(action: {
+                    showEducatorPicker = true
+                }) {
+                    HStack {
+                        if let educator = selectedEducator {
+                            HStack (spacing: 10){
+                                ProfileCircleImage(imageURL: educator.profileImageURL, width: 35, height: 35)
+                                Text(educator.firstName + " " + educator.lastName)
+                                    .font(.subheadline)
+                                    .foregroundColor(colorScheme == .dark ? .white : .black) // Adjust text color for dark mode
+                            }
+                        } else {
+                            Text("Select Educator")
+                                .font(.subheadline)
+                                .foregroundColor(colorScheme == .dark ? .white : .black) // Adjust text color for dark mode
+                        }
+                    }
+                    .padding()
+                    .background(Color(.systemGray6))
+                    .cornerRadius(8)
+                }
+                .sheet(isPresented: $showEducatorPicker) {
+                    EducatorPickerView(selectedEducator: $selectedEducator)
+                }
+
+                CustomButton(label: "Create Course", action: {
+                    uploadCourseImage { url in
+                        let courseData: Course = Course(courseID: UUID(), courseName: courseTitle, courseDescription: courseDescription, courseImageURL: url!.absoluteString, releaseDate: releaseDate, assignedEducator: selectedEducator!, target: targetName, state: "created")
+                        courseService.createCourse(course: courseData) { error in
+                            if let _ = error {
+                                print("Error uploading the course.")
+                            }
+                        }
+                    }
+                    presentationMode.wrappedValue.dismiss()
+                })
             }
-            .navigationTitle("Course Creation")
-            .navigationBarTitleDisplayMode(.inline)
-            .sheet(isPresented: $showEducatorPicker) {
-                EducatorPickerView(selectedEducator: $selectedEducator)
-            }
+            .padding(20)
+        }
+        .background(colorScheme == .dark ? Color.black : Color.white) // Adjust background color for dark mode
+        .navigationTitle("Course Creation")
+        .navigationBarTitleDisplayMode(.inline)
     }
 
     private func uploadCourseImage(completion: @escaping (URL?) -> Void) {
@@ -185,12 +214,14 @@ struct EditableFieldView: View {
     @Binding var text: String
     var placeholder: String
     var isMultiline: Bool = false
+    @Environment(\.colorScheme) var colorScheme // Add this line to access color scheme
 
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
                 Text(title)
                     .font(.headline)
+                    .foregroundColor(colorScheme == .dark ? .white : .black) // Adjust text color for dark mode
                 Spacer()
             }
 
@@ -216,6 +247,7 @@ struct EducatorPickerView: View {
     @State private var educators: [Educator] = []
     @ObservedObject var firebaseFetch = FirebaseFetch()
     @State private var searchText: String = ""
+    @Environment(\.colorScheme) var colorScheme // Add this line to access color scheme
 
     var body: some View {
         NavigationView {
@@ -237,12 +269,14 @@ struct EducatorPickerView: View {
                         }) {
                             HStack {
                                 ProfileCircleImage(imageURL: educator.profileImageURL, width: 40, height: 40)
-                                Text(educator.firstName+" "+educator.lastName)
+                                Text(educator.firstName + " " + educator.lastName)
                                     .font(.headline)
+                                    .foregroundColor(colorScheme == .dark ? .white : .black) // Adjust text color for dark mode
                                 Spacer()
                                 Image(systemName: "chevron.right")
+                                    .foregroundColor(colorScheme == .dark ? .white : .black) // Adjust icon color for dark mode
                             }
-                            .onAppear() {
+                            .onAppear {
                                 educators = firebaseFetch.educators
                             }
                         }
@@ -251,6 +285,7 @@ struct EducatorPickerView: View {
             }
             .navigationTitle("Select Educator")
             .onAppear(perform: firebaseFetch.fetchEducators)
+            .background(colorScheme == .dark ? Color.black : Color.white) // Adjust background color for dark mode
         }
     }
 }

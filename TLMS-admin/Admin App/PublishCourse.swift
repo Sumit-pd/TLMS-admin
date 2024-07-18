@@ -1,3 +1,4 @@
+
 import SwiftUI
 import AVKit
 import Foundation
@@ -6,13 +7,16 @@ import PDFKit
 struct PublishCourse: View {
     @State var courseService = CourseServices()
     var course: Course
-    @State var modules: [String] = []
+    @State var modules: [Module] = []
     @State private var selectedContent: ContentType?
-    
+    @Environment(\.presentationMode) var presentationMode
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 10) {
+            HStack(alignment: .center){
                 CoursethumbnailImage(imageURL: course.courseImageURL, width: 354, height: 200)
+            }.padding(.top, 20)
+            VStack(alignment: .leading, spacing: 10) {
+                
                 Text(course.courseName)
                     .font(.custom("Poppins-SemiBold", size: 24))
                 Text(course.courseDescription)
@@ -23,9 +27,16 @@ struct PublishCourse: View {
             .navigationTitle("Course Name")
             .navigationBarTitleDisplayMode(.inline)
             VStack {
-                CustomButton(label: "Publish", action: {})
+                CustomButton(label: "Publish", action: {
+                    courseService.updateCourseState(course: course, newState: "published"){
+                        error in
+                        print("Publishing course")
+                    }
+                    presentationMode.wrappedValue.dismiss()
+                })
             }
         }
+        .toolbar(.hidden, for: .tabBar)
         .onAppear() {
             allModules()
         }
@@ -66,13 +77,13 @@ enum ContentType: Identifiable {
 struct ModuleSection: View {
     @State var courseService = CourseServices()
     var course: Course
-    var modules: [String]
+    var modules: [Module]
     @Binding var selectedContent: ContentType?
 
     var body: some View {
-        ForEach(modules, id: \.self) { module in
+        ForEach(modules, id: \.id) { module in
             VStack(alignment: .leading) {
-                Text(module)
+                Text(module.title)
                     .font(.custom("Poppins-SemiBold", size: 18))
                 ModuleCard(selectedContent: $selectedContent)
             }
@@ -164,3 +175,4 @@ struct PDFKitView: UIViewRepresentable {
 #Preview {
     PublishCourse(course: Course(courseID: UUID(), courseName: "afdsf", courseDescription: "sdfs", assignedEducator: Educator(firstName: "sdfsd", lastName: "sdfsd", about: "sdfsd", email: "fsdf", password: "sdfsdf", phoneNumber: "sdfsd", profileImageURL: "sdfsdf"), target: "fasd", state: "asdfa"))
 }
+

@@ -6,60 +6,68 @@
 //
 
 import SwiftUI
+import FirebaseAuth
+
 
 struct EducatorProfile: View {
+    @State var educator : Educator
+    @ObservedObject var fireBaseFatch = FirebaseFetch()
+    @State var userID = Auth.auth().currentUser?.uid
+    
     var body: some View {
         
-        ZStack(alignment: .bottom){
+        ZStack(alignment: .bottom) {
             PNGImageView(imageName: "Waves", width: .infinity, height: .infinity)
+                .padding(.top, 120)
             
             VStack(alignment: .leading, spacing: 10){
-                Image("educator4")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 354, height: 200)
-                    .cornerRadius(12)
+                ProfileEducatorImage(imageName: educator.profileImageURL, width: 354, height: 200)
                     
-                Text("Fahar Imran")
+                Text(educator.firstName + " " + educator.lastName)
                     .font(.custom("Poppins-SemiBold", size: 20))
-                Text("About me, this is how we do it there is no other way you see how we move it and i would love to know abote my self more")
+                Text(educator.about)
                     .font(.custom("Poppins-Medium", size: 16))
-                Text("fahar123@gmail.com")
+                Text(educator.email)
                 VStack(alignment: .leading){
                     Text("Assigned Courses")
                                     .font(.headline)
                                     
                     ScrollView(.horizontal){
-                        
-                        AssignedCourseCardView()
+                        ForEach(fireBaseFatch.assignedCourses ) {course in
+                            AssignedCourseCardView(course: course)
+                        }
                     }
+                    
                 }
+                
                 .padding(.top,20)
                 Spacer()
             }
-            .padding(.top, 100)
+            .onAppear(){
+                fireBaseFatch.fetchAssignedCourses(educatorID: userID!)
+            }
+//            .padding(.top, 100)
             .padding(20)
             .navigationTitle("Educator")
             .navigationBarTitleDisplayMode(.inline)
         }
+        .toolbar(.hidden, for: .tabBar)
         .ignoresSafeArea()
     }
 }
 
-#Preview {
-    EducatorProfile()
-}
+//#Preview {
+//    EducatorProfile()
+//}
 
 
 struct AssignedCourseCardView: View {
     
+    var course : Course
+    
     var body: some View {
         ZStack(alignment: .bottom){
-            Image("css")
-                .resizable()
-                .frame(width: 354,height: 200)
-                .cornerRadius(12)
-            
+            CoursethumbnailImage(imageURL: course.courseImageURL, width: 354, height: 200)
             RoundedRectangle(cornerRadius: 12)
                 .fill(
                     LinearGradient(
@@ -70,10 +78,10 @@ struct AssignedCourseCardView: View {
                 ).frame(width: 354, height: 80)
                 .opacity(0.7)
             VStack(alignment: .leading){
-                Text("Course Name")
+                Text(course.courseName)
                     .font(.custom("Poppins-SemiBold", size: 18))
                     .foregroundColor(.black)
-                Text("this course is made consist of 12 module  and several quizes and what not")
+                Text(course.courseDescription)
                     .font(.custom("Poppins-Medium", size: 16))
                     .foregroundColor(.black)
                     .lineLimit(1)
@@ -86,3 +94,4 @@ struct AssignedCourseCardView: View {
     }
     
 }
+

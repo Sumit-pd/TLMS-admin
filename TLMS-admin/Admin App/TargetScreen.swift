@@ -9,6 +9,8 @@ struct TargetScreen: View {
     @State private var isPresentingNewTarget = false
     @State private var isSelected = false
 //    var course: Course
+    @Environment(\.colorScheme) var colorScheme // Add this line to access color scheme
+
     @State var isRefreshing = false
     var body: some View {
         NavigationView {
@@ -25,11 +27,11 @@ struct TargetScreen: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 25, height: 25)
-                                .foregroundColor(Color(hex: "#6C5DD4")!)
+                                .foregroundColor(colorScheme == .dark ? .white : Color(hex: "#6C5DD4")!)
                             
                             Text("Add Target")
                                 .font(.subheadline)
-                                .foregroundColor(Color(hex: "#6C5DD4")!)
+                                .foregroundColor(colorScheme == .dark ? .white : Color(hex: "#6C5DD4")!)
                                 .fontWeight(.bold)
                             
                         }
@@ -38,8 +40,7 @@ struct TargetScreen: View {
                     ScrollView{
                         if targets.isEmpty {
                             Text("No Target")
-                                .opacity(0.5)
-                                .foregroundColor(Color(hex: "#6C5DD4")!)
+                                .foregroundColor(colorScheme == .dark ? .white : Color(hex: "#6C5DD4")!)
                                 .font(.custom("headline", size: 24))
                                 .fontWeight(.bold)
                                 .padding(.top, 200)
