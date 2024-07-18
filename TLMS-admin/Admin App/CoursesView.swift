@@ -5,41 +5,37 @@ struct CoursesView: View {
     @State private var navigateToCoursesCreation = false
     @StateObject private var viewModel = CoursesListViewModel()
     @State var selectedTarget: String
-    @State var shouldShowOnboard : Bool = true
+    @State var shouldShowOnboard: Bool = true
+    @Environment(\.colorScheme) var colorScheme
+
     var body: some View {
         NavigationView {
             ZStack(alignment: .bottom) {
-
-                    GeometryReader { geometry in
-                            VStack(){
-                                if viewModel.courses.isEmpty {
-                                    Text("No Courses")
-                                        .font(.title)
-                                        .fontWeight(.bold)
-                                        .foregroundColor(Color(.black))
-                                        .opacity(0)
-                                        .position(x: geometry.size.width / 2, y: geometry.size.height * 0.4)
-                                } else {
-                                    ScrollView{
-                                        VStack(alignment: .center, spacing: 10){
-                                            ForEach(viewModel.courses){
-                                                course in
-                                                CourseCardView(course: course)
-                                                
-                                            }
-                                            .onAppear(){
-                                                viewModel.fetchCourses(targetName: selectedTarget)
-                                        }
-                                        }.padding(20)
-                                        
+                GeometryReader { geometry in
+                    VStack() {
+                        if viewModel.courses.isEmpty {
+                            Text("No Courses")
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .foregroundColor(colorScheme == .dark ? .white : .black) // Adjust color for dark mode
+                                .opacity(0)
+                                .position(x: geometry.size.width / 2, y: geometry.size.height * 0.4)
+                        } else {
+                            ScrollView {
+                                VStack(alignment: .center, spacing: 10) {
+                                    ForEach(viewModel.courses) { course in
+                                        CourseCardView(course: course)
+                                    }
+                                    .onAppear {
+                                        viewModel.fetchCourses(targetName: selectedTarget)
                                     }
                                 }
+                                .padding(20)
                             }
-                        
+                        }
                     }
+                }
                 
-
-
                 Image("homescreenWave")
                     .resizable()
                     .scaledToFit()
@@ -56,9 +52,9 @@ struct CoursesView: View {
                             Text(selectedTarget)
                                 .font(.headline)
                                 .fontWeight(.bold)
-                                .foregroundColor(.black)
+                                .foregroundColor(colorScheme == .dark ? .white : .black) // Adjust color for dark mode
                             Image(systemName: "chevron.down")
-                                .foregroundColor(.black)
+                                .foregroundColor(colorScheme == .dark ? .white : .black) // Adjust color for dark mode
                         }
                     }
                 }
@@ -71,6 +67,7 @@ struct CoursesView: View {
                             Image(systemName: "plus")
                                 .font(.system(size: 15))
                                 .fontWeight(.bold)
+                                .foregroundColor(colorScheme == .dark ? .white : .black) // Adjust color for dark mode
                         }
                     }
                 }
@@ -93,16 +90,12 @@ struct CoursesView: View {
     }
 }
 
-
-
-
-import SwiftUI
-
 struct DomainSelectionView: View {
     @Binding var selectedTarget: String
     @Binding var showModal: Bool
     @State var targets: [String] = []
     @State var courseService = CourseServices()
+    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
         VStack {
@@ -117,7 +110,7 @@ struct DomainSelectionView: View {
                                 .padding()
                                 .frame(maxWidth: .infinity)
                                 .cornerRadius(8)
-                                .foregroundColor(.black)
+                                .foregroundColor(colorScheme == .dark ? .white : .black) // Adjust color for dark mode
                         }
                     }
                 }
@@ -128,7 +121,7 @@ struct DomainSelectionView: View {
             allTargets()
         }
         .padding()
-        .background(Color.white)
+        .background(colorScheme == .dark ? Color.black : Color.white) // Adjust background color for dark mode
         .cornerRadius(10)
     }
 
@@ -159,8 +152,6 @@ class CoursesListViewModel: ObservableObject {
         }
     }
 }
-
-
 
 struct CourseView_Previews: PreviewProvider {
     static var previews: some View {

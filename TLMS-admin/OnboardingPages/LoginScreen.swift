@@ -1,12 +1,4 @@
-//
-//  LoginScreen.swift
-//  TLMS-admin
-//
-//  Created by Paras on 06/07/24.
-//
-
 import SwiftUI
-import FirebaseAuth
 import FirebaseAuth
 
 struct LoginScreen: View {
@@ -19,98 +11,115 @@ struct LoginScreen: View {
     @State private var isEmailValid = false
     @EnvironmentObject var userAuth: UserAuthentication
     
-    
     var body: some View {
-        
-            ZStack(alignment:. bottom) {
+        ZStack(alignment: .bottom) {
+            Image("Waves")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 395, height: 195)
+            
+            VStack(alignment: .center, spacing: 30) {
+                Text("Welcome \nTo Svadhyay")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+                    .padding(.top, 80)
+                    .foregroundColor(Color.primary)
                 
-                PNGImageView(imageName: "Waves", width: 395, height: 195)
+                Image("laptop")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 139, height: 157)
                 
-                VStack(alignment : .center, spacing: 30) {
-                    
-                    TitleLabel(text: "Welcome \nTo Svadhyay")
-                        .padding(.top, 80)
-                    
-                    PNGImageView(imageName: "laptop", width: 139, height: 157)
-                    
-                    VStack() {
-                        CustomTextField(placeholder: "Email", text: $email)
-                            .onChange(of: email) { _, newVal in
-                                isEmailValid = validateEmail(email: newVal)
-                                print(isEmailValid)
-                                
-                            }
-                        HStack {
-                            Spacer()
-                            if !isEmailValid && email != ""{
-                                Text("Enter a valid email address")
-                                    .font(.caption2)
-                                    .foregroundColor(.red)
-                                    .padding(.trailing, 35)
-                            } else {
-                                Text("Enter a valid email address")
-                                    .font(.caption2)
-                                    .foregroundColor(.white)
-                                    .padding(.trailing, 15)
-                            }
+                VStack() {
+                    TextField("Email", text: $email)
+                        .padding()
+                        .background(Color(UIColor.secondarySystemBackground))
+                        .cornerRadius(10)
+                        .onChange(of: email) { _, newVal in
+                            isEmailValid = validateEmail(email: newVal)
                         }
-                        
-                        CustomSecureField(placeholder: "Password", text: $password)
-                        
-                    }
                     
                     HStack {
                         Spacer()
-                        Button("Forgot Password?") {
-                            navigateToForgotPassword = true
+                        if !isEmailValid && email != "" {
+                            Text("Enter a valid email address")
+                                .font(.caption2)
+                                .foregroundColor(.red)
+                                .padding(.trailing, 35)
+                        } else {
+                            Text("Enter a valid email address")
+                                .font(.caption2)
+                                .foregroundColor(.clear)
+                                .padding(.trailing, 15)
                         }
-                        .foregroundColor(.blue)
-                        
-                        //                        .padding(.horizontal)
-                        .font(.system(size: 15, weight: .bold, design: .default))
-                        .padding(.trailing ,20)
-                        
-                    }
-                    CustomButton(label: "Login", action: {
-                        userAuth.email = email
-                        userAuth.password = password
-                        userAuth.loginUser()
-                    })
-                    
-                    
-                    .alert(isPresented: $showAlert) {
-                        Alert(title: Text("Login Action"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
                     }
                     
-                    // Sign Up Option
-                    HStack {
-                        Text("Register as Educator?")
-                            .font(.system(size: 15, weight: .regular, design: .default))
-                        NavigationLink(destination: CreateAccountView()) {
-                            Text("Sign Up")
-                                .font(.system(size: 15, weight: .bold, design: .default))
-                                .fontWeight(.bold)
-                            //                                CustomButton(label: "SignUp", action: {})
-                        }
-                        NavigationLink(destination : ForgotPasswordView(), isActive: $navigateToForgotPassword) {
-                            EmptyView()
-                        }
-                        
-                    }
-                    Spacer()
+                    SecureField("Password", text: $password)
+                        .padding()
+                        .background(Color(UIColor.secondarySystemBackground))
+                        .cornerRadius(10)
                 }
                 
+                HStack {
+                    Spacer()
+                    Button("Forgot Password?") {
+                        navigateToForgotPassword = true
+                    }
+                    .foregroundColor(.blue)
+                    .font(.system(size: 15, weight: .bold, design: .default))
+                    .padding(.trailing, 20)
+                }
+                
+                Button(action: {
+                    userAuth.email = email
+                    userAuth.password = password
+                    userAuth.loginUser()
+                }) {
+                    Text("Login")
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                }
+                .padding(.horizontal)
+                .alert(isPresented: $showAlert) {
+                    Alert(title: Text("Login Action"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                }
+                
+                HStack {
+                    Text("Register as Educator?")
+                        .font(.system(size: 15, weight: .regular, design: .default))
+                    
+                    NavigationLink(destination: CreateAccountView()) {
+                        Text("Sign Up")
+                            .font(.system(size: 15, weight: .bold, design: .default))
+                            .fontWeight(.bold)
+                    }
+                    
+                    NavigationLink(destination: ForgotPasswordView(), isActive: $navigateToForgotPassword) {
+                        EmptyView()
+                    }
+                }
+                Spacer()
             }
-            .ignoresSafeArea()
-            
-            .navigationBarBackButtonHidden(true)
-        
+            .padding()
+            .background(Color(UIColor.systemBackground))
+        }
+        .ignoresSafeArea()
+        .navigationBarBackButtonHidden(true)
     }
-    }
-    
-    
+}
+
 struct Login_Previews: PreviewProvider {
     static var previews: some View {
         LoginScreen()
+            .environmentObject(UserAuthentication())
+            .preferredColorScheme(.dark) // Preview in dark mode
+        LoginScreen()
+            .environmentObject(UserAuthentication())
+            .preferredColorScheme(.light) // Preview in light mode
     }
 }
+
