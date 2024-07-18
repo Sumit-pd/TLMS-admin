@@ -9,7 +9,8 @@ import SwiftUI
 import FirebaseAuth
 
 struct FirstTimeLogin: View {
-    
+    @Environment(\.colorScheme) var colorScheme
+
     @Environment(\.presentationMode) var presentationMode
     @State private var newpassword: String = ""
     @State private var confirmPassword: String = ""
@@ -22,14 +23,17 @@ struct FirstTimeLogin: View {
 
             VStack(alignment : .center ,spacing: 30){
                 
-                    TitleLabel(text: "Create New Password")
+                    Text("Create New Password")
+                    .font(.largeTitle)
+                    .foregroundColor(colorScheme == .dark ? .white : .black)
+//                    .padding(.bottom, 100)
                     .padding(.top ,80)
                     PNGImageView(imageName: "MainScreenImage", width: 139, height: 107)
 
                     VStack(spacing: 20) {
                         
-                        CustomSecureField(placeholder: "New Password", text: $newpassword, placeholderOpacity: 0.3)
-                        CustomSecureField(placeholder: "Confirm Password", text: $confirmPassword, placeholderOpacity: 0.3)
+                        CustomSecureField(placeholder: "New Password", text: $newpassword, placeholderOpacity: 0.8)
+                        CustomSecureField(placeholder: "Confirm Password", text: $confirmPassword, placeholderOpacity: 0.8)
                     }
 
                 CustomButton(label: "Create", action: {navigateBackToLogin()})
