@@ -12,7 +12,6 @@
 		0491A2D62C483B51001162E3 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0491A2D52C483B50001162E3 /* MessageView.swift */; };
 		0491A2D82C483B5A001162E3 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0491A2D72C483B5A001162E3 /* ChatView.swift */; };
 		0491A2DA2C483B72001162E3 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0491A2D92C483B72001162E3 /* ChatViewModel.swift */; };
-		0491A2DD2C483BE3001162E3 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 0491A2DC2C483BE3001162E3 /* SDWebImageSwiftUI */; };
 		0491A2FB2C48D5A3001162E3 /* CompleteCourses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0491A2FA2C48D5A3001162E3 /* CompleteCourses.swift */; };
 		0491A2FD2C48D760001162E3 /* backgroundfile.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 0491A2FC2C48D75F001162E3 /* backgroundfile.m4v */; };
 		04CD06012C3C38390081D8AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04CD06002C3C38390081D8AF /* GoogleService-Info.plist */; };
@@ -25,6 +24,7 @@
 		953B899B2C36A8F000A4618D /* EducatorHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953B899A2C36A8F000A4618D /* EducatorHomeScreen.swift */; };
 		BBB4DD062C373EBC00150FE5 /* TargetScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB4DD032C373EBC00150FE5 /* TargetScreen.swift */; };
 		BBB4DD0B2C3748D400150FE5 /* CourseCreationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB4DD0A2C3748D400150FE5 /* CourseCreationScreen.swift */; };
+		BBDB9B8E2C48F82E00F846FB /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = BBDB9B8D2C48F82E00F846FB /* SDWebImageSwiftUI */; };
 		D19D5B0B2C35423100E9AE98 /* TLMS_adminApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D5B0A2C35423100E9AE98 /* TLMS_adminApp.swift */; };
 		D19D5B0F2C35423200E9AE98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D19D5B0E2C35423200E9AE98 /* Assets.xcassets */; };
 		D19D5B122C35423200E9AE98 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D19D5B112C35423200E9AE98 /* Preview Assets.xcassets */; };
@@ -158,7 +158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0491A2DD2C483BE3001162E3 /* SDWebImageSwiftUI in Frameworks */,
+				BBDB9B8E2C48F82E00F846FB /* SDWebImageSwiftUI in Frameworks */,
 				D1D98E532C3557B30087BE49 /* FirebaseFirestoreSwift in Frameworks */,
 				D1D98E4F2C3557B30087BE49 /* FirebaseDatabaseSwift in Frameworks */,
 				D1D98E512C3557B30087BE49 /* FirebaseFirestore in Frameworks */,
@@ -372,7 +372,7 @@
 				D1D98E502C3557B30087BE49 /* FirebaseFirestore */,
 				D1D98E522C3557B30087BE49 /* FirebaseFirestoreSwift */,
 				D1D98E542C3557B30087BE49 /* FirebaseStorage */,
-				0491A2DC2C483BE3001162E3 /* SDWebImageSwiftUI */,
+				BBDB9B8D2C48F82E00F846FB /* SDWebImageSwiftUI */,
 			);
 			productName = "TLMS-admin";
 			productReference = D19D5B072C35423100E9AE98 /* TLMS-admin.app */;
@@ -448,7 +448,7 @@
 			mainGroup = D19D5AFE2C35423100E9AE98;
 			packageReferences = (
 				D1D98E492C3557B30087BE49 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				0491A2DB2C483BE3001162E3 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				BBDB9B8C2C48F82E00F846FB /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = D19D5B082C35423100E9AE98 /* Products */;
 			projectDirPath = "";
@@ -705,7 +705,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TLMS-admin/Preview Content\"";
-				DEVELOPMENT_TEAM = 4R988LYXRQ;
+				DEVELOPMENT_TEAM = WSRNHSSM78;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "TLMS-admin/Info.plist";
@@ -736,7 +736,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TLMS-admin/Preview Content\"";
-				DEVELOPMENT_TEAM = 4R988LYXRQ;
+				DEVELOPMENT_TEAM = WSRNHSSM78;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "TLMS-admin/Info.plist";
@@ -877,7 +877,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0491A2DB2C483BE3001162E3 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+		BBDB9B8C2C48F82E00F846FB /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
 			requirement = {
@@ -896,9 +896,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0491A2DC2C483BE3001162E3 /* SDWebImageSwiftUI */ = {
+		BBDB9B8D2C48F82E00F846FB /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0491A2DB2C483BE3001162E3 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			package = BBDB9B8C2C48F82E00F846FB /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
 		};
 		D1D98E4A2C3557B30087BE49 /* FirebaseAuth */ = {

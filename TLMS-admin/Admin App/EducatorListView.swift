@@ -7,7 +7,8 @@ struct EducatorListView: View {
     @State private var selectedSegment = 0
     @State private var searchText = ""
     private let segments = ["Educators", "Learners"]
-    
+    @Environment(\.colorScheme) var colorScheme
+
     @ObservedObject var firebaseFetch = FirebaseFetch()
     
     var body: some View {
@@ -24,6 +25,7 @@ struct EducatorListView: View {
                 
                
                     TextField("Search User", text: $searchText)
+
                         .shadow(color: .gray, radius: 3)
                         .background(Color(.white))
                         .cornerRadius(8)
@@ -40,6 +42,7 @@ struct EducatorListView: View {
                    
      
      
+
                 if selectedSegment == 0 {
                     GeometryReader { geometry in
                         ScrollView {
@@ -54,7 +57,7 @@ struct EducatorListView: View {
                                     Text("No results found")
                                         .font(.title)
                                         .fontWeight(.bold)
-                                        .foregroundColor(Color(.black))
+                                        .foregroundColor(.primary)
                                         .position(x: geometry.size.width / 2, y: geometry.size.height * 0.4)
                                 } else {
                                     ForEach(filteredEducators) { educator in
@@ -84,7 +87,7 @@ struct EducatorListView: View {
                                     Text("No results found")
                                         .font(.title)
                                         .fontWeight(.bold)
-                                        .foregroundColor(Color(.black))
+                                        .foregroundColor(.primary)
                                         .position(x: geometry.size.width / 2, y: geometry.size.height * 0.4)
                                 } else {
                                     ForEach(filteredLearners) { learner in
@@ -115,6 +118,7 @@ struct EducatorListView: View {
 
 struct EducatorsListCard: View {
     var educator: Educator
+    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
         NavigationLink(destination: EducatorProfile(educator: educator)){
@@ -124,6 +128,7 @@ struct EducatorsListCard: View {
                 VStack(alignment: .leading) {
                     Text(educator.firstName + " " + educator.lastName)
                         .font(.custom("Poppins-Medium", size: 18))
+                        .foregroundColor(.primary)
                     Text(educator.about)
                         .lineLimit(2)
                         .font(.custom("Poppins-Regular", size: 16))
@@ -131,21 +136,29 @@ struct EducatorsListCard: View {
                 }
                 Spacer()
                 Image(systemName: "chevron.right")
+                    .foregroundColor(.secondary)
             }
             .padding(10)
+
             .frame(height: 100)
+
         }
         .navigationTitle("User")
     }
 }
 
 struct LearnerListCard: View {
+
+    
+    @Environment(\.colorScheme) var colorScheme
+
+
     
     @ObservedObject var firebaseFetch = FirebaseFetch()
     
     var learner : Learner
     var educator : Educator = Educator(id: UUID().uuidString, firstName: "dfd", lastName: "dfddf", about: "fdfdf", email: "srew", password: "rwfds", phoneNumber: "sdgsd", profileImageURL: "sdfsd")
-    
+
     var body: some View {
         NavigationLink(destination: EducatorProfile(educator: educator)){
             HStack(spacing: 10){
@@ -154,6 +167,7 @@ struct LearnerListCard: View {
                 VStack(alignment: .leading) {
                     Text(learner.firstName! + " " + learner.lastName!)
                         .font(.custom("Poppins-Medium", size: 18))
+                        .foregroundColor(.primary)
                     Text("Since \(learner.joinedDate!)")
                         .lineLimit(2)
                         .font(.custom("Poppins-Regular", size: 16))
@@ -161,9 +175,12 @@ struct LearnerListCard: View {
                 }
                 Spacer()
                 Image(systemName: "chevron.right")
+                    .foregroundColor(.secondary)
             }
             .padding(10)
+
             .frame(height: 100)
+
         }
         .navigationTitle("User")
     }

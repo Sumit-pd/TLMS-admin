@@ -5,14 +5,10 @@ struct DetailedEducatorRequestView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @ObservedObject var firebaseFetch = FirebaseFetch()
-    var educator : Educator
+    var educator: Educator
     
     @State private var profileImage: Image? = Image(systemName: "person.circle.fill")
-    @State private var name: String = ""
-    @State private var about: String = ""
-    @State private var phoneNumber: String = ""
-    @State private var email: String = ""
-
+    
     var body: some View {
         VStack {
             // Profile Picture
@@ -25,32 +21,14 @@ struct DetailedEducatorRequestView: View {
                 .onTapGesture {
                     // Implement image picker logic here
                 }
-                Divider()
+            Divider()
 
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
-                    VStack(alignment: .leading) {
-                        Text("Name:")
-                            .font(.headline)
-                        InfoFieldViews(text: educator.firstName + educator.lastName)
-                    }
-                    
-                    VStack(alignment: .leading) {
-                        Text("About:")
-                            .font(.headline)
-                        InfoFieldViews(text: educator.about)
-                    }
-                    
-                    VStack(alignment: .leading) {
-                        Text("Phone Number:")
-                            .font(.headline)
-                        InfoFieldViews(text: educator.phoneNumber)
-                    }
-                    VStack(alignment: .leading) {
-                        Text("Email:")
-                            .font(.headline)
-                        InfoFieldViews(text: educator.email)
-                    }
+                    InfoSection(title: "Name:", content: educator.firstName + " " + educator.lastName)
+                    InfoSection(title: "About:", content: educator.about)
+                    InfoSection(title: "Phone Number:", content: educator.phoneNumber)
+                    InfoSection(title: "Email:", content: educator.email)
                 }
                 .padding(.horizontal)
             }
@@ -71,35 +49,55 @@ struct DetailedEducatorRequestView: View {
             .padding(.bottom)
         }
         .padding()
+        .background(Color(.systemBackground))
+        .edgesIgnoringSafeArea(.all)
     }
 }
 
-struct EducatorProfileApprovalView_Previews: PreviewProvider {
+struct DetailedEducatorRequestView_Previews: PreviewProvider {
     static var previews: some View {
-        let educator = Educator(firstName: "Veronica",lastName: "Lodge", about: "Hey Noobies, Coding isn't your thing!", email: "veronica@gmail.com", password: "123456", phoneNumber: "9898090909", profileImageURL: "ProfileURL"
+        let educator = Educator(
+            firstName: "Veronica", lastName: "Lodge", about: "Hey Noobies, Coding isn't your thing!", email: "veronica@gmail.com", password: "123456", phoneNumber: "9898090909", profileImageURL: "ProfileURL"
         )
         DetailedEducatorRequestView(educator: educator)
     }
 }
 
-struct InfoFieldViews : View {
-    var text : String
+struct InfoSection: View {
+    var title: String
+    var content: String
     
-    var body : some View {
+    @Environment(\.colorScheme) var colorScheme
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(title)
+                .font(.headline)
+                .foregroundColor(colorScheme == .dark ? .white : .black)
+            InfoFieldViews(text: content)
+        }
+    }
+}
+
+struct InfoFieldViews: View {
+    var text: String
+    
+    @Environment(\.colorScheme) var colorScheme
+    
+    var body: some View {
         Text(text)
             .padding()
-            .background(Color(.systemGray6))
+            .background(colorScheme == .dark ? Color(.systemGray5) : Color(.systemGray6))
             .cornerRadius(10)
     }
 }
 
-struct RequestsButton : View{
-    var text : String
-    var action : () -> Void
+struct RequestsButton: View {
+    var text: String
+    var action: () -> Void
     
-    var body : some View {
-        
-        Button(action : action) {
+    var body: some View {
+        Button(action: action) {
             Text(text)
                 .foregroundColor(.white)
                 .padding(.vertical, 10)

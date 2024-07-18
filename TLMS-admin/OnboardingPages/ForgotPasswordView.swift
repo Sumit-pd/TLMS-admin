@@ -11,6 +11,7 @@ import FirebaseAuth
 struct ForgotPasswordView: View {
     
     @Environment(\.presentationMode) var presentationMode
+    @Environment(\.colorScheme) var colorScheme
     @State private var email = ""
     @State private var isEmailValid = false
     @State private var showAlert = false
@@ -19,21 +20,20 @@ struct ForgotPasswordView: View {
     
     var body: some View {
         VStack(alignment: .center, spacing: 70) {
-            
-            TitleLabel(text: "Enter your registered email address")
+            Text("Enter your registered email address")
+                .font(.largeTitle)
+                .foregroundColor(colorScheme == .dark ? .white : .black)
                 .padding(.bottom, 100)
-            
             VStack() {
                 CustomTextField(placeholder: "Email", text: $email)
                     .onChange(of: email) { _, newVal in
                         isEmailValid = validateEmail(email: newVal)
                         print(isEmailValid)
-                        
                 }
             }
             HStack {
                 Spacer()
-                if !isEmailValid && email != ""{
+                if !isEmailValid && email != "" {
                     Text("Enter a valid email address")
                         .font(.caption2)
                         .foregroundColor(.red)
@@ -41,7 +41,7 @@ struct ForgotPasswordView: View {
                 } else {
                     Text("Enter a valid email address")
                         .font(.caption2)
-                        .foregroundColor(.white)
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
                         .padding(.trailing, 15)
                 }
             }
@@ -54,7 +54,6 @@ struct ForgotPasswordView: View {
                     passwordReset()
                 }
             })
-            
         }
         .padding(.bottom, 100)
         .alert(isPresented: $showAlert) {
@@ -65,26 +64,20 @@ struct ForgotPasswordView: View {
                     presentationMode.wrappedValue.dismiss()
                 })
         }
-        
-        
     }
     
     func passwordReset() {
-        Auth.auth().sendPasswordReset(withEmail: email) {
-            (error) in
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
             if let _ = error {
                 print("Error. Couldn't mail the link.")
                 alertMessage = "Failed to send the link"
                 showAlert = true
+            } else {
+                print("Sent Mail for Changing Password")
+                alertMessage = "Successfully sent the link to your registered E-Mail."
+                showAlert = true
             }
-            print("Sent Mail for Changing Password")
-            alertMessage = "Sucessfully sent the link to your registred E-Mail."
-            showAlert = true
         }
-    }
-    
-    func backToHome() {
-        
     }
 }
 

@@ -8,6 +8,7 @@ struct EducatorAccept: View {
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
+
             PNGImageView(imageName: "uprectange", width: .infinity, height: .infinity)
                 .overlay{
                     VStack(alignment: .leading, spacing: 10) {
@@ -32,6 +33,7 @@ struct EducatorAccept: View {
                 }
                         
              
+
                 Spacer()
                 
                 HStack(alignment: .center) {
@@ -62,14 +64,14 @@ struct EducatorAccept: View {
                     }
                 }
             }
-                    
+
             .navigationTitle("Educator")
             .navigationBarTitleDisplayMode(.inline)
             .padding(.top, 100)
             .padding(.bottom, 30)
             .padding(20)
         }
-        
+
         .background(colorScheme == .dark ? Color.black : Color.white)
         .ignoresSafeArea()
     }
