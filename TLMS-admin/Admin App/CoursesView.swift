@@ -11,6 +11,12 @@ struct CoursesView: View {
     var body: some View {
         
             ZStack(alignment: .bottom) {
+                Image("homescreenWave")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: .infinity)
+                    .edgesIgnoringSafeArea(.bottom)
+                
                 GeometryReader { geometry in
                     VStack() {
                         if viewModel.courses.isEmpty {
@@ -21,26 +27,30 @@ struct CoursesView: View {
                                 .opacity(0)
                                 .position(x: geometry.size.width / 2, y: geometry.size.height * 0.4)
                         } else {
-                            ScrollView {
-                                VStack(alignment: .center, spacing: 10) {
-                                    ForEach(viewModel.courses) { course in
-                                        CourseCardView(course: course)
+                            
+                            VStack(alignment: .leading, spacing: 10){
+                                Text("Current Courses")
+                                    .font(.custom("Poppins-SemiBold", size: 18))
+                                    .foregroundColor(Color.primary)
+                                ScrollView (.horizontal){
+                                    HStack(alignment: .center, spacing: 10) {
+                                        ForEach(viewModel.courses) { course in
+                                            CourseCardView(course: course)
+                                        }
+                                        .onAppear {
+                                            viewModel.fetchCourses(targetName: selectedTarget)
+                                        }
                                     }
-                                    .onAppear {
-                                        viewModel.fetchCourses(targetName: selectedTarget)
-                                    }
+                                    
                                 }
-                                .padding(20)
                             }
                         }
-                    }
+                        
+                        
+                    }.padding(20)
                 }
                 
-                Image("homescreenWave")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: .infinity)
-                    .edgesIgnoringSafeArea(.bottom)
+                
             }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
