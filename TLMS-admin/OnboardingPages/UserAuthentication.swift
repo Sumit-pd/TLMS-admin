@@ -11,11 +11,11 @@ class UserAuthentication: ObservableObject {
     @Published var password: String = ""
     @Published var isLoggedIn = false
     @Published var givenPasswordToAdmin : String = ""
-
+    
     init() {
         checkUserStatus()
     }
-
+    
     func loginUser() {
         Auth.auth().signIn(withEmail: email, password: password) { [self] firebaseResult, err in
             if let err = err {
@@ -31,7 +31,7 @@ class UserAuthentication: ObservableObject {
             fetchUserRole()
         }
     }
-
+    
     func signOut() {
         do {
             try Auth.auth().signOut()
@@ -41,7 +41,7 @@ class UserAuthentication: ObservableObject {
             print("Error signing out: %@", signOutError)
         }
     }
-
+    
     func fetchUserRole() {
         guard let user = Auth.auth().currentUser else { return }
         let db = Firestore.firestore()
@@ -71,11 +71,32 @@ class UserAuthentication: ObservableObject {
             }
         }
     }
-
-
+    
+    
     func checkUserStatus() {
         if Auth.auth().currentUser != nil {
             self.fetchUserRole()
         }
     }
 }
+
+//chats
+struct ChatRoomUser {
+    let uid: String
+    let name: String
+    let email: String?
+    let photoUrl: String?
+}
+final class AuthManager {
+    static let shared = AuthManager()
+    let auth = Auth.auth()
+    
+    
+    func getCurrentUser() -> ChatRoomUser? {
+        guard let user = auth.currentUser else {
+            return nil
+        }
+        return ChatRoomUser(uid: user.uid, name: user.displayName ?? "Unknown", email: user.email, photoUrl: user.photoURL?.absoluteString)
+    }
+}
+
