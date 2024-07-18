@@ -13,6 +13,8 @@
 		0491A2D82C483B5A001162E3 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0491A2D72C483B5A001162E3 /* ChatView.swift */; };
 		0491A2DA2C483B72001162E3 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0491A2D92C483B72001162E3 /* ChatViewModel.swift */; };
 		0491A2DD2C483BE3001162E3 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 0491A2DC2C483BE3001162E3 /* SDWebImageSwiftUI */; };
+		0491A2FB2C48D5A3001162E3 /* CompleteCourses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0491A2FA2C48D5A3001162E3 /* CompleteCourses.swift */; };
+		0491A2FD2C48D760001162E3 /* backgroundfile.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 0491A2FC2C48D75F001162E3 /* backgroundfile.m4v */; };
 		04CD06012C3C38390081D8AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04CD06002C3C38390081D8AF /* GoogleService-Info.plist */; };
 		326433012C44E31D00BC1713 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326433002C44E31D00BC1713 /* StatsView.swift */; };
 		326433032C457E0700BC1713 /* SlideScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326433022C457E0700BC1713 /* SlideScreenView.swift */; };
@@ -92,6 +94,8 @@
 		0491A2D52C483B50001162E3 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		0491A2D72C483B5A001162E3 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		0491A2D92C483B72001162E3 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		0491A2FA2C48D5A3001162E3 /* CompleteCourses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteCourses.swift; sourceTree = "<group>"; };
+		0491A2FC2C48D75F001162E3 /* backgroundfile.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; name = backgroundfile.m4v; path = ../../../backgroundfile.m4v; sourceTree = "<group>"; };
 		04CD06002C3C38390081D8AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "TLMS-admin/OnboardingPages/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		326433002C44E31D00BC1713 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		326433022C457E0700BC1713 /* SlideScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideScreenView.swift; sourceTree = "<group>"; };
@@ -328,6 +332,7 @@
 				326433002C44E31D00BC1713 /* StatsView.swift */,
 				326433022C457E0700BC1713 /* SlideScreenView.swift */,
 				326433082C47B96800BC1713 /* PublishCourse.swift */,
+				0491A2FC2C48D75F001162E3 /* backgroundfile.m4v */,
 			);
 			path = "Admin App";
 			sourceTree = "<group>";
@@ -339,6 +344,7 @@
 				EF7E94F32C4128820001C917 /* NotificationPage.swift */,
 				EF7E94FF2C44EE730001C917 /* CourseUploadView.swift */,
 				EF7E94F12C4128540001C917 /* NotificationCard.swift */,
+				0491A2FA2C48D5A3001162E3 /* CompleteCourses.swift */,
 			);
 			path = "Educator App";
 			sourceTree = "<group>";
@@ -465,6 +471,7 @@
 				04CD06012C3C38390081D8AF /* GoogleService-Info.plist in Resources */,
 				D19D5B352C35425F00E9AE98 /* .gitignore in Resources */,
 				D19D5B0F2C35423200E9AE98 /* Assets.xcassets in Resources */,
+				0491A2FD2C48D760001162E3 /* backgroundfile.m4v in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,6 +537,7 @@
 				EF25118C2C3966E50035C58E /* PasswordField.swift in Sources */,
 				EF2511BC2C3C28E60035C58E /* RegexCheck.swift in Sources */,
 				EF2865F62C3725B300C08AE8 /* DataModel.swift in Sources */,
+				0491A2FB2C48D5A3001162E3 /* CompleteCourses.swift in Sources */,
 				EF2511892C3966560035C58E /* TitleLabel.swift in Sources */,
 				EFC5394E2C3D1E4F009556DF /* ForgotPasswordView.swift in Sources */,
 				0491A2DA2C483B72001162E3 /* ChatViewModel.swift in Sources */,
