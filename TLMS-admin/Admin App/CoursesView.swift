@@ -9,7 +9,7 @@ struct CoursesView: View {
     @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
-        NavigationView {
+        
             ZStack(alignment: .bottom) {
                 GeometryReader { geometry in
                     VStack() {
@@ -84,7 +84,7 @@ struct CoursesView: View {
             .onChange(of: selectedTarget) { newTarget in
                 viewModel.fetchCourses(targetName: newTarget)
             }
-        }
+        
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
     }

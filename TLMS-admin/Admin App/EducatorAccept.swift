@@ -8,25 +8,31 @@ struct EducatorAccept: View {
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
-        ZStack {
-            PNGImageView(imageName: "uprectange", width: .infinity, height: .infinity)
-            VStack(alignment: .leading, spacing: 10) {
-                CoursethumbnailImage(imageURL: educator.profileImageURL, width: 60, height: 60)
-                Text(educator.fullName)
-                    .font(.custom("Poppins-SemiBold", size: 28))
-                    .fontWeight(.bold)
-                    .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
-                
-                Text(educator.about)
-                    .font(.custom("Poppins-SemiBold", size: 16))
-                    .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
 
-                Text(educator.email)
-                    .font(.custom("Poppins-Medium", size: 16))
-                    .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
-                Text(educator.phoneNumber)
-                    .font(.custom("Poppins-Medium", size: 16))
-                    .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
+            PNGImageView(imageName: "uprectange", width: .infinity, height: .infinity)
+                .overlay{
+                    VStack(alignment: .leading, spacing: 10) {
+                ProfileEducatorImage(imageName: educator.profileImageURL, width: .infinity, height: 200)
+                VStack(alignment: .leading){
+                    Text(educator.fullName)
+                        .font(.custom("Poppins-SemiBold", size: 28))
+                        .fontWeight(.bold)
+                        .foregroundColor(colorScheme == .dark ? Color.white: Color.black)
+                    
+                    
+                    Text(educator.about)
+                        .font(.custom("Poppins-SemiBold", size: 16))
+                        .foregroundColor(colorScheme == .dark ? Color.white: Color.black)
+                    
+                    Text(educator.email)
+                        .font(.custom("Poppins-Medium", size: 16))
+                        .foregroundColor(colorScheme == .dark ? Color.white: Color.black)
+                    Text(educator.phoneNumber)
+                        .font(.custom("Poppins-Medium", size: 16))
+                        .foregroundColor(colorScheme == .dark ? Color.white: Color.black)
+                }
+                        
+             
 
                 Spacer()
                 
@@ -58,13 +64,14 @@ struct EducatorAccept: View {
                     }
                 }
             }
+
             .navigationTitle("Educator")
             .navigationBarTitleDisplayMode(.inline)
             .padding(.top, 100)
             .padding(.bottom, 30)
             .padding(20)
         }
-        .frame(width: .infinity, height: .infinity)
+
         .background(colorScheme == .dark ? Color.black : Color.white)
         .ignoresSafeArea()
     }

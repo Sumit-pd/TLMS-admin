@@ -8,7 +8,9 @@ struct NotificationView: View {
     private let segments = ["Updates", "Educators"]
     
     var body: some View {
-        NavigationView {
+
+        
+
             VStack {
                 Picker("Select Segment", selection: $selectedSegment) {
                     ForEach(0..<segments.count) { index in
@@ -30,27 +32,44 @@ struct NotificationView: View {
                                     .shadow(color: Color.black.opacity(0.08), radius: 10, x: 0, y: 5)
                                     .padding(10)
                             }
+
+                            
+                                .background(Color("color 3"))
+                                .cornerRadius(12)
+                                .shadow(color: .black.opacity(0.08), radius: 10, x: 0, y: 5)
+                                .padding(10)
+                                .onAppear(){
+                                    firebaseFetch.fetchCourses()
+                                }
+
                         }
                     }.padding(10)
                 } else if selectedSegment == 1 {
-                    GeometryReader { geometry in
-                        ScrollView {
-                            VStack(spacing: 5) {
-                                if firebaseFetch.pendingEducators.isEmpty {
-                                    Text("No Educators")
-                                        .font(.title)
-                                        .fontWeight(.bold)
-                                        .foregroundColor(Color.primary)
-                                        .opacity(0.5)
-                                        .position(x: geometry.size.width / 2, y: geometry.size.height * 0.4)
-                                } else {
-                                    ForEach(firebaseFetch.pendingEducators) { educator in
-                                        EducatorCardView(educator: educator)
-                                            .frame(width: 354, height: 100)
-                                            .background(Color("color3"))
-                                            .cornerRadius(12)
-                                            .shadow(color: Color.black.opacity(0.08), radius: 10, x: 0, y: 5)
-                                            .padding(10)
+
+                   
+                        GeometryReader { geometry in
+                            ScrollView{
+                                VStack(spacing: 5){
+                                    if firebaseFetch.pendingEducators.isEmpty {
+                                        Text("No Educators")
+                                            .font(.title)
+                                            .fontWeight(.bold)
+                                            .foregroundColor(Color(.black))
+                                            .opacity(0)
+                                            .position(x: geometry.size.width / 2, y: geometry.size.height * 0.4)
+                                    } else {
+                                            
+                                                ForEach(firebaseFetch.pendingEducators) { educator in
+                                                    EducatorperCardView(educator: educator)
+                                                  }
+                                                    .background(Color("color 3"))
+                                                    .cornerRadius(12)
+                                                    .shadow(color: .black.opacity(0.08), radius: 10, x: 0, y: 5)
+                                                    .padding(10)
+                                                    .onAppear(){
+                                                        print(firebaseFetch.fetchPendingEducators)
+                                                    }
+
                                     }
                                 }
                             }
@@ -64,7 +83,11 @@ struct NotificationView: View {
             }
             .navigationTitle("Notifications")
             .navigationBarTitleDisplayMode(.inline)
-        }
+
+        
+        
+        
+
     }
 }
 
@@ -95,7 +118,7 @@ struct EducatorCardView: View {
                     .foregroundColor(colorScheme == .dark ? .white : .black)
             }
             .padding(10)
-            .frame(width: 354, height: 100)
+            
         }
     }
 }
@@ -120,7 +143,7 @@ struct UpdateCardView: View {
                 .foregroundColor(.black)
         }
         .padding(10)
-        .frame(width: 354, height: 100)
+       
     }
         
     }

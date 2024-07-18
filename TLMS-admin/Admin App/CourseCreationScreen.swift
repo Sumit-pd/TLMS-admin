@@ -20,11 +20,39 @@ struct CourseCreationView: View {
     var targetName: String
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                Text("Add Course Image")
-                    .font(.headline)
-                    .foregroundColor(colorScheme == .dark ? .white : .black) // Adjust text color for dark mode
+
+//        NavigationView {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 20) {
+                    
+                    Text("Add Course Image")
+                        .font(.headline)
+                    
+                    Button(action: {
+                        showImagePicker = true
+                    }) {
+                        HStack {
+                            if let image = courseImage {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 254 ,height: 200)
+                                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                            } else {
+                                Image(systemName: "square.and.arrow.up")
+                                Text("Add file")
+                            }
+                        }
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color(.systemGray6))
+                        .cornerRadius(8)
+                    }
+                    .sheet(isPresented: $showImagePicker) {
+                        ImagePicker(selectedImage: $courseImage)
+                    }
+
+
 
                 Button(action: {
                     showImagePicker = true
