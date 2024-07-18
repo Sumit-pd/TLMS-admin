@@ -51,6 +51,7 @@ struct EducatorProfile: View {
             .navigationTitle("Educator")
             .navigationBarTitleDisplayMode(.inline)
         }
+        .toolbar(.hidden, for: .tabBar)
         .ignoresSafeArea()
     }
 }

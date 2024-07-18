@@ -8,88 +8,81 @@ struct NotificationView: View {
     private let segments = ["Updates", "Educators"]
     
     var body: some View {
-
         
-
-            VStack {
-                Picker("Select Segment", selection: $selectedSegment) {
-                    ForEach(0..<segments.count) { index in
-                        Text(segments[index])
-                            .tag(index)
-                    }
+        
+        
+        VStack {
+            Picker("Select Segment", selection: $selectedSegment) {
+                ForEach(0..<segments.count) { index in
+                    Text(segments[index])
+                        .tag(index)
                 }
-                .pickerStyle(SegmentedPickerStyle())
-                .padding()
-                
-                if selectedSegment == 0 {
-                    ScrollView {
-                        VStack(spacing: 10) {
-                            ForEach(firebaseFetch.courses.filter { $0.state == "completed" }) { course in
-                                UpdateCardView(course: course)
-                                    .frame(width: 354, height: 100)
-                                    .background(Color("color3"))
-                                    .cornerRadius(12)
-                                    .shadow(color: Color.black.opacity(0.08), radius: 10, x: 0, y: 5)
-                                    .padding(10)
-                            }
+            }
+            .pickerStyle(SegmentedPickerStyle())
+            .padding()
+            
+            if selectedSegment == 0 {
+                ScrollView {
+                    VStack(spacing: 10) {
+                        ForEach(firebaseFetch.courses.filter { $0.state == "completed" }) { course in
+                            UpdateCardView(course: course)
+                        }
 
-                            
+                        .background(Color("color 3"))
+                        .cornerRadius(12)
+                        .shadow(color: .black.opacity(0.08), radius: 10, x: 0, y: 5)
+                        .padding(10)
+                        .onAppear(){
+                            firebaseFetch.fetchCourses()
+                        }
+                        
+                    }
+                }.padding(10)
+            } else if selectedSegment == 1 {
+                
+                
+                GeometryReader { geometry in
+                    ScrollView{
+                        VStack(spacing: 5){
+                            if firebaseFetch.pendingEducators.isEmpty {
+                                Text("No Educators")
+                                    .font(.title)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color(.black))
+                                    .opacity(0)
+                                    .position(x: geometry.size.width / 2, y: geometry.size.height * 0.4)
+                            } else {
+                                
+                                ForEach(firebaseFetch.pendingEducators) { educator in
+                                    EducatorCardView(educator: educator)
+                                }
                                 .background(Color("color 3"))
                                 .cornerRadius(12)
                                 .shadow(color: .black.opacity(0.08), radius: 10, x: 0, y: 5)
                                 .padding(10)
                                 .onAppear(){
-                                    firebaseFetch.fetchCourses()
+                                    print(firebaseFetch.fetchPendingEducators)
                                 }
-
-                        }
-                    }.padding(10)
-                } else if selectedSegment == 1 {
-
-                   
-                        GeometryReader { geometry in
-                            ScrollView{
-                                VStack(spacing: 5){
-                                    if firebaseFetch.pendingEducators.isEmpty {
-                                        Text("No Educators")
-                                            .font(.title)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(Color(.black))
-                                            .opacity(0)
-                                            .position(x: geometry.size.width / 2, y: geometry.size.height * 0.4)
-                                    } else {
-                                            
-                                                ForEach(firebaseFetch.pendingEducators) { educator in
-                                                    EducatorperCardView(educator: educator)
-                                                  }
-                                                    .background(Color("color 3"))
-                                                    .cornerRadius(12)
-                                                    .shadow(color: .black.opacity(0.08), radius: 10, x: 0, y: 5)
-                                                    .padding(10)
-                                                    .onAppear(){
-                                                        print(firebaseFetch.fetchPendingEducators)
-                                                    }
-
-                                    }
-                                }
+                                
                             }
-                        }.padding(10)
+                        }
                     }
-                }
+                }.padding(10)
             }
-            .onAppear {
-                firebaseFetch.fetchPendingEducators()
-                firebaseFetch.fetchCourses()
-            }
-            .navigationTitle("Notifications")
-            .navigationBarTitleDisplayMode(.inline)
-
         
-        
-        
+    }
+        .onAppear {
+            firebaseFetch.fetchPendingEducators()
+            firebaseFetch.fetchCourses()
+        }
+        .navigationTitle("Notifications")
+        .navigationBarTitleDisplayMode(.inline)
+    
+    
+    
+}
 
     }
-}
 
 #Preview {
     NotificationView()

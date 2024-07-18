@@ -10,7 +10,7 @@ import SwiftUI
 struct CompleteCourse: View {
     @State var courseService = CourseServices()
     var course : Course
-    @State var modules : [String] = []
+    @State var modules : [Module] = []
     private let segments = ["Content", "Quiz"]
     @State private var selectedSegment = 0
     @State private var isNavigatingToChat = false
@@ -72,12 +72,12 @@ struct CompleteCourse: View {
     struct VideoModuleSection: View {
         @State var courseService = CourseServices()
         var course : Course
-        var modules : [String]
+        var modules : [Module]
         
         var body: some View {
-            ForEach(modules, id: \.self){ module in
+            ForEach(modules, id: \.id){ module in
                 VStack(alignment: .leading){
-                    Text(module)
+                    Text(module.title)
                         .font(.custom("Poppins-SemiBold", size: 18))
                     VideoModuleCard()
                 }

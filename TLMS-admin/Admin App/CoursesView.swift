@@ -7,10 +7,18 @@ struct CoursesView: View {
     @State var selectedTarget: String
     @State var shouldShowOnboard: Bool = true
     @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject var authViewModel: UserAuthentication
+    @ObservedObject var firebaseFetch = FirebaseFetch()
 
     var body: some View {
         
             ZStack(alignment: .bottom) {
+                Image("homescreenWave")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: .infinity)
+                    .edgesIgnoringSafeArea(.bottom)
+                
                 GeometryReader { geometry in
                     VStack() {
                         if viewModel.courses.isEmpty {
@@ -21,26 +29,35 @@ struct CoursesView: View {
                                 .opacity(0)
                                 .position(x: geometry.size.width / 2, y: geometry.size.height * 0.4)
                         } else {
-                            ScrollView {
-                                VStack(alignment: .center, spacing: 10) {
-                                    ForEach(viewModel.courses) { course in
-                                        CourseCardView(course: course)
+                            
+                            VStack(alignment: .leading, spacing: 10){
+                                Text("Current Courses")
+                                    .font(.custom("Poppins-SemiBold", size: 18))
+                                    .foregroundColor(Color.primary)
+                                ScrollView (.horizontal){
+                                    HStack(alignment: .center, spacing: 10) {
+                                        ForEach(viewModel.courses) { course in
+                                            CourseCardView(course: course)
+                                        }
+                                        .onAppear {
+                                            viewModel.fetchCourses(targetName: selectedTarget)
+                                        }
                                     }
-                                    .onAppear {
-                                        viewModel.fetchCourses(targetName: selectedTarget)
-                                    }
+                                    
                                 }
-                                .padding(20)
                             }
                         }
-                    }
+                        VStack(spacing: 10) {
+                            ForEach(firebaseFetch.assignedCourses.filter{$0.state == "published"}){ course in
+                                MyCourseCard(course : course)
+                            }
+                        }
+                        .padding(.horizontal)
+                        
+                    }.padding(20)
                 }
                 
-                Image("homescreenWave")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: .infinity)
-                    .edgesIgnoringSafeArea(.bottom)
+                
             }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

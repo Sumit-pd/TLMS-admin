@@ -7,7 +7,7 @@ import PDFKit
 struct PublishCourse: View {
     @State var courseService = CourseServices()
     var course: Course
-    @State var modules: [String] = []
+    @State var modules: [Module] = []
     @State private var selectedContent: ContentType?
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
@@ -36,6 +36,7 @@ struct PublishCourse: View {
                 })
             }
         }
+        .toolbar(.hidden, for: .tabBar)
         .onAppear() {
             allModules()
         }
@@ -76,13 +77,13 @@ enum ContentType: Identifiable {
 struct ModuleSection: View {
     @State var courseService = CourseServices()
     var course: Course
-    var modules: [String]
+    var modules: [Module]
     @Binding var selectedContent: ContentType?
 
     var body: some View {
-        ForEach(modules, id: \.self) { module in
+        ForEach(modules, id: \.id) { module in
             VStack(alignment: .leading) {
-                Text(module)
+                Text(module.title)
                     .font(.custom("Poppins-SemiBold", size: 18))
                 ModuleCard(selectedContent: $selectedContent)
             }
