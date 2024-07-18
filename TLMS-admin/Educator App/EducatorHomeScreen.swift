@@ -78,9 +78,11 @@ struct EducatorHomeScreen: View {
                     SectionHeader2(title: "My Courses")
                     
                     VStack(spacing: 10) {
+
                         ForEach(firebaseFetch.assignedCourses.filter{$0.state == "published"}){ course in
                             MyCourseCard(course : course)
                         }
+
                     }
                     .padding(.horizontal)
                 }

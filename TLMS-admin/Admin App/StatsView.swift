@@ -2,6 +2,10 @@ import SwiftUI
 import FirebaseAuth
 
 struct StatsView: View {
+
+    
+    @ObservedObject var firebaseFetch = FirebaseFetch()
+    
     var body: some View {
 
             ScrollView{
@@ -24,6 +28,10 @@ struct StatsView: View {
 }
 
 struct Statscard: View {
+
+    
+    @ObservedObject var firebaseFetch = FirebaseFetch()
+
     @State var isRefreshing = false
     @EnvironmentObject var authViewModel: UserAuthentication
     
@@ -31,7 +39,7 @@ struct Statscard: View {
         VStack(alignment: .leading, spacing: 20) {
             TotalEnrollment()
             CourseEnrollment()
-            
+
             HStack {
                 Button(action: {
                     do {
@@ -42,20 +50,17 @@ struct Statscard: View {
                     }
                 }) {
                     Text("Sign Out")
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.blue)
-                        .cornerRadius(8)
+
+                        .foregroundColor(.blue)
                 }
                 .padding()
-                
-                Button(action: {
+                Button(action : {
                     isRefreshing.toggle()
                 }) {
                     Image(systemName: "arrow.circlepath")
-                        .foregroundColor(.blue)
                 }
             }
+
         }
         .padding()
         .background(Color("cardBackground"))
@@ -65,7 +70,12 @@ struct Statscard: View {
 }
 
 struct TotalEnrollment: View {
+
+    
+    @ObservedObject var firebaseFetch = FirebaseFetch()
+
     @Environment(\.colorScheme) var colorScheme
+
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -85,7 +95,7 @@ struct TotalEnrollment: View {
                 
                 HStack {
                     VStack {
-                        Text("Data1")
+                        Text("\(firebaseFetch.educators.count)")
                             .font(.custom("Poppins-Bold", size: 24))
                             .frame(width: 177, alignment: .center)
                             .foregroundColor(Color.primary)
@@ -96,7 +106,7 @@ struct TotalEnrollment: View {
                     }
                     Divider().padding(.bottom,15)
                     VStack {
-                        Text("Data2")
+                        Text("\(firebaseFetch.learners.count)")
                             .font(.custom("Poppins-Bold", size: 24))
                             .frame(width: 177, alignment: .center)
                             .foregroundColor(Color.primary)
@@ -106,17 +116,42 @@ struct TotalEnrollment: View {
                             .foregroundColor(Color.primary)
                     }
                 }
-            }
+
+                .onAppear() {
+                    firebaseFetch.fetchLearners()
+                    firebaseFetch.fetchEducators()
+                }
+                
+            }.frame(height: 100)
+
         }
     }}
 
 
-struct CourseEnrollment: View {
+struct CourseEnrollment : View {
+    
+    @State var courseService  = CourseServices()
+    @ObservedObject var firebaseFetch = FirebaseFetch()
+//    var course: Course
+
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("Courses Enrollments")
                 .font(.custom("Poppins-SemiBold", size: 18))
-                .foregroundColor(Color.primary)
+
+           
+//                ForEach(course)
+            VStack{
+                ForEach(firebaseFetch.courses.filter{$0.state == "published"}) {
+                    course in
+                    CustomCard(course: course)
+                }
+            }
+                .onAppear() {
+                    firebaseFetch.fetchCourses()
+                }
+            }
+
             
             HStack {
                 CoursethumbnailImage(imageURL: "", width: 80, height: 80)
@@ -138,5 +173,28 @@ struct CourseEnrollment: View {
             .background(Color("color2"))
             .cornerRadius(12)
         }
+    }
+}
+
+struct CustomCard : View {
+    
+    @ObservedObject var firebaseFetch = FirebaseFetch()
+    var course : Course
+    var body: some View {
+        HStack{
+            CoursethumbnailImage(imageURL: course.courseImageURL, width: 80, height: 80)
+            Text(course.courseName)
+                .font(.custom("Poppins-Medium", size: 20))
+                .frame(maxWidth: 200, alignment: .leading)
+                .lineLimit(1)
+            Spacer()
+            Text("\(course.numberOfStudentsEnrolled ?? 0)")
+                .font(.custom("Poppins-Bold", size: 24))
+            
+        }
+        .padding(10)
+        .frame(width: 360, height: 100)
+        .background(Color("color 2"))
+    .cornerRadius(12)
     }
 }
