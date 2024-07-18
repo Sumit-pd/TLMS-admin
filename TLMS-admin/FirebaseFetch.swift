@@ -87,6 +87,7 @@ class FirebaseFetch: ObservableObject {
             }
         }
     }
+    
     func fetchEducators() {
             let db = Firestore.firestore()
             db.collection("Educators").getDocuments { snapshot, error in

@@ -77,9 +77,7 @@ struct EducatorHomeScreen: View {
                     SectionHeader2(title: "My Courses")
                     
                     VStack(spacing: 10) {
-                        MyCourseCard(title: "Swift Fundamentals", enrollments: 1898, imageName: "swift")
-                        MyCourseCard(title: "Swift Fundamentals", enrollments: 1898, imageName: "python")
-                        MyCourseCard(title: "Swift Fundamentals", enrollments: 1898, imageName: "django")
+                        
                     }
                     .padding(.horizontal)
                 }
