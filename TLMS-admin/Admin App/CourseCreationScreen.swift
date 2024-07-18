@@ -22,7 +22,7 @@ struct CourseCreationView: View {
 //        NavigationView {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
-                    // Add Course Image at the top
+                    
                     Text("Add Course Image")
                         .font(.headline)
                     
@@ -34,7 +34,7 @@ struct CourseCreationView: View {
                                 Image(uiImage: image)
                                     .resizable()
                                     .scaledToFill()
-                                    .frame(height: 200)
+                                    .frame(width: 254 ,height: 200)
                                     .clipShape(RoundedRectangle(cornerRadius: 8))
                             } else {
                                 Image(systemName: "square.and.arrow.up")

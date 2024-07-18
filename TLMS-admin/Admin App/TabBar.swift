@@ -6,44 +6,43 @@ struct TabBar: View {
 //    var course: Course
     
     var body: some View {
-        NavigationStack{
+        
             VStack {
                 CustomTabBarAppearance() // Apply custom tab bar appearance
                     .frame(height: 0) // Hide the actual tab bar
                     .hidden()
                 
                 TabView(selection: $selectedTabIndex) {
-                    NotificationView()
+                    NavigationStack{
+                        NotificationView()}
                         .tabItem {
                             Image(systemName: "bell")
                             Text("Notification")
                         }
                         .tag(0) // Tag for NotificationView
-                    
-                    CoursesView(selectedTarget: target)
+                    NavigationStack{
+                        CoursesView(selectedTarget: target)}
                         .tabItem {
                             Image(systemName: "book")
                             Text("Courses")
                         }
                         .tag(1) // Tag for CoursesView
-                    
-                    EducatorListView()
+                    NavigationStack{
+                        EducatorListView()}
                         .tabItem {
                             Image(systemName: "person.3.fill")
                             Text("Educators")
                         }
                         .tag(2) // Tag for ProfileView
-                    
-                    StatsView()
+                    NavigationStack{
+                        StatsView()}
                         .tabItem {
                             Image(systemName: "chart.bar.xaxis")
-                            Text("Courses")
+                            Text("Account")
                         }
                         .tag(3)
-                }
-                .onAppear {
-                    selectedTabIndex = 1 // Set CoursesView as default on screen appear
-                }
+                
+               
                 .navigationBarBackButtonHidden(true)}
             
         }

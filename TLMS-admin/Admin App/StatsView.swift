@@ -10,18 +10,18 @@ import FirebaseAuth
 struct StatsView: View {
 //    var course: Course
     var body: some View {
-        NavigationView{
+        
             ScrollView{
                 VStack{
                     Statscard()
                 }
                 .padding(20)
-                .frame(width: .infinity)
+               
                 
             }
-            .navigationTitle("Enrollments")
+            .navigationTitle("Account")
             .navigationBarTitleDisplayMode(.automatic)
-        }
+        
     }
 }
 
@@ -75,7 +75,7 @@ struct TotalEnrollment: View {
             ZStack(alignment: .bottom){
                 RoundedRectangle(cornerRadius: 12)
                     .fill(Color("color 2"))
-                    .frame(width: .infinity, height: 100)
+                    .frame(height: 100)
                 PNGImageView(imageName: "wave2", width: .infinity, height: .infinity)
                     
                 

@@ -7,7 +7,7 @@ struct CoursesView: View {
     @State var selectedTarget: String
     @State var shouldShowOnboard : Bool = true
     var body: some View {
-        NavigationView {
+        
             ZStack(alignment: .bottom) {
 
                     GeometryReader { geometry in
@@ -87,7 +87,7 @@ struct CoursesView: View {
             .onChange(of: selectedTarget) { newTarget in
                 viewModel.fetchCourses(targetName: newTarget)
             }
-        }
+        
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
     }

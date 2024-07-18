@@ -8,7 +8,7 @@ struct NotificationView: View {
     private let segments = ["Updates", "Educators"]
     
     var body: some View {
-        NavigationView{
+        
             VStack {
                 Picker("Select Segment", selection: $selectedSegment) {
                     ForEach(0..<segments.count) { index in
@@ -27,7 +27,7 @@ struct NotificationView: View {
                                 UpdateCardView(course: course)
                                   
                             }
-                            .frame(width: 354, height: 100)
+                            
                                 .background(Color("color 3"))
                                 .cornerRadius(12)
                                 .shadow(color: .black.opacity(0.08), radius: 10, x: 0, y: 5)
@@ -55,7 +55,7 @@ struct NotificationView: View {
                                             
                                                 ForEach(firebaseFetch.pendingEducators) { educator in
                                                     EducatorperCardView(educator: educator)
-                                                  } .frame(width: 354, height: 100)
+                                                  }
                                                     .background(Color("color 3"))
                                                     .cornerRadius(12)
                                                     .shadow(color: .black.opacity(0.08), radius: 10, x: 0, y: 5)
@@ -79,7 +79,7 @@ struct NotificationView: View {
             }
             .navigationTitle("Notifications")
             .navigationBarTitleDisplayMode(.inline)
-        }
+        
         
         
     }
@@ -109,7 +109,7 @@ struct EducatorperCardView: View {
                     .foregroundColor(.black)
             }
             .padding(10)
-            .frame(width: 354, height: 100)
+            
         }
     }
 }
@@ -134,7 +134,7 @@ struct UpdateCardView: View {
                 .foregroundColor(.black)
         }
         .padding(10)
-        .frame(width: 354, height: 100)
+       
     }
         
     }
