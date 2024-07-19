@@ -3,24 +3,36 @@ import FirebaseAuth
 
 struct StatsView: View {
 
-    
+    @EnvironmentObject var authViewModel: UserAuthentication
     @ObservedObject var firebaseFetch = FirebaseFetch()
     
     var body: some View {
-
-            ScrollView{
-                VStack{
-                    Statscard()
+           
+                ScrollView {
+                    VStack {
+                        Statscard()
+                    }
+                    .padding(20)
                 }
-                .padding(20)
-               
-                
-
-            }
-            .navigationTitle("Account")
-            .navigationBarTitleDisplayMode(.automatic)
-        
-    }
+                .navigationTitle("Account")
+                .navigationBarTitleDisplayMode(.automatic)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {
+                            do {
+                                try Auth.auth().signOut()
+                                authViewModel.signOut()
+                            } catch let signOutError as NSError {
+                                print("Error signing out: %@", signOutError)
+                            }
+                        }) {
+                           Text("Sign out")
+                                .foregroundColor(.blue)
+                        }
+                    }
+                }
+            
+        }
 }
 
 #Preview {
@@ -40,26 +52,26 @@ struct Statscard: View {
             TotalEnrollment()
             CourseEnrollment()
 
-            HStack {
-                Button(action: {
-                    do {
-                        try Auth.auth().signOut()
-                        authViewModel.signOut()
-                    } catch let signOutError as NSError {
-                        print("Error signing out: %@", signOutError)
-                    }
-                }) {
-                    Text("Sign Out")
-
-                        .foregroundColor(.blue)
-                }
-                .padding()
-                Button(action : {
-                    isRefreshing.toggle()
-                }) {
-                    Image(systemName: "arrow.circlepath")
-                }
-            }
+//            HStack {
+//                Button(action: {
+//                    do {
+//                        try Auth.auth().signOut()
+//                        authViewModel.signOut()
+//                    } catch let signOutError as NSError {
+//                        print("Error signing out: %@", signOutError)
+//                    }
+//                }) {
+//                    Text("Sign Out")
+//
+//                        .foregroundColor(.blue)
+//                }
+//                .padding()
+//                Button(action : {
+//                    isRefreshing.toggle()
+//                }) {
+//                    Image(systemName: "arrow.circlepath")
+//                }
+//            }
 
         }
         .padding()
@@ -85,13 +97,16 @@ struct TotalEnrollment: View {
             
             ZStack(alignment: .bottom) {
                 RoundedRectangle(cornerRadius: 12)
-
+                  
                     .fill(Color("color 2"))
-                    .frame(height: 100)
+                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: 100,maxHeight: 100)
 
-                PNGImageView(imageName: "wave2", width: .infinity, height: .infinity)
-                    .contrast(colorScheme == .dark ? 12 : 2)
+                
+                    PNGImageView(imageName: "wave2", width: .infinity, height: .infinity)
+                        .contrast(colorScheme == .dark ? 12 : 2)
                     .frame(height: 100)
+                
+                    
                 
                 HStack {
                     VStack {
@@ -132,15 +147,13 @@ struct CourseEnrollment : View {
     
     @State var courseService  = CourseServices()
     @ObservedObject var firebaseFetch = FirebaseFetch()
-//    var course: Course
+
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("Courses Enrollments")
+            Text("Publish courses")
                 .font(.custom("Poppins-SemiBold", size: 18))
 
-           
-//                ForEach(course)
             VStack{
                 ForEach(firebaseFetch.courses.filter{$0.state == "published"}) {
                     course in
@@ -152,29 +165,10 @@ struct CourseEnrollment : View {
                 }
             }
 
-            
-            HStack {
-                CoursethumbnailImage(imageURL: "", width: 80, height: 80)
-                
-                Text("Swift Fundamentals")
-                    .font(.custom("Poppins-Medium", size: 20))
-                    .frame(maxWidth: 200, alignment: .leading)
-                    .foregroundColor(Color.primary)
-                    .lineLimit(1)
-                
-                Spacer()
-                
-                Text("234")
-                    .font(.custom("Poppins-Bold", size: 24))
-                    .foregroundColor(Color.primary)
-            }
-            .padding(10)
-            .frame(width: 360, height: 100)
-            .background(Color("color2"))
-            .cornerRadius(12)
+        
         }
     }
-}
+
 
 struct CustomCard : View {
     

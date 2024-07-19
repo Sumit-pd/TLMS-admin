@@ -169,11 +169,11 @@ struct EducatorImage: View {
             }.frame(width: width, height: height)
         } else {
             
-            Image(systemName: "exclamationmark.triangle")
+            Image(systemName: "person.circle.fill")
                 .resizable()
                 .scaledToFit()
                 .frame(width: width, height: height)
-                .foregroundColor(.red)
+                .foregroundColor(Color("color 1"))
         }
     }
 }
@@ -219,11 +219,11 @@ struct ProfileEducatorImage: View {
             
         } else {
             
-            Image(systemName: "exclamationmark.triangle")
+            Image(systemName: "person.circle.fill")
                 .resizable()
                 .scaledToFit()
                 .frame(width: width, height: height)
-                .foregroundColor(.red)
+                .foregroundColor(Color("color 1"))
         }
     }
 }

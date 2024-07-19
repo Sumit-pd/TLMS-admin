@@ -22,6 +22,7 @@ struct EducatorProfile: View {
             
             VStack(alignment: .leading, spacing: 10){
                 ProfileEducatorImage(imageName: educator.profileImageURL, width: 354, height: 200)
+                    .padding(.top ,30)
                     
                 Text(educator.firstName + " " + educator.lastName)
                     .font(.custom("Poppins-SemiBold", size: 20))
@@ -33,7 +34,7 @@ struct EducatorProfile: View {
                                     .font(.headline)
                                     
                     ScrollView(.horizontal){
-                        ForEach(fireBaseFatch.assignedCourses ) {course in
+                        ForEach(fireBaseFatch.assignedCourses) {course in
                             AssignedCourseCardView(course: course)
                         }
                     }
@@ -55,10 +56,6 @@ struct EducatorProfile: View {
         .ignoresSafeArea()
     }
 }
-
-//#Preview {
-//    EducatorProfile()
-//}
 
 
 struct AssignedCourseCardView: View {
