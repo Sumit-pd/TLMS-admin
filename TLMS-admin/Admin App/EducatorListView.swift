@@ -26,8 +26,8 @@ struct EducatorListView: View {
                
             HStack {
                 TextField("Search User", text: $searchText)
-                    .padding(.horizontal, 10)
-                    
+                    .padding(.horizontal, 40)
+                    .padding(7)
                     .shadow(color: .gray, radius: 3)
                     .background(Color(.white))
                     .cornerRadius(8)
@@ -36,12 +36,13 @@ struct EducatorListView: View {
                             Spacer()
                             Image(systemName: "magnifyingglass")
                                 .foregroundColor(.gray)
+                                .padding(.trailing,320)
                         }
                     )
                 
                 Spacer()
             }.shadow(radius: 6)
-                .padding(20)
+                .padding(10)
                         
                
                    
