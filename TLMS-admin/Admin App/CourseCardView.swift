@@ -47,19 +47,19 @@ struct CourseCardView: View {
                 }
                 
                 Spacer()
-                Button(action: {}) {
-                                   Text("Edit")
-                                       .foregroundColor(.white)
-                                       .padding()
-                                       .frame(width: 80,height: 45)
-                                       .background(Color("color 1")
-                                       )
-                                       .cornerRadius(20)
-                                       .overlay(
-                                           RoundedRectangle(cornerRadius: 20)
-                                               .stroke(Color.white, lineWidth: 0.8)
-                                       )
-                               }
+//                Button(action: {}) {
+//                                   Text("Edit")
+//                                       .foregroundColor(.white)
+//                                       .padding()
+//                                       .frame(width: 80,height: 45)
+//                                       .background(Color("color 1")
+//                                       )
+//                                       .cornerRadius(20)
+//                                       .overlay(
+//                                           RoundedRectangle(cornerRadius: 20)
+//                                               .stroke(Color.white, lineWidth: 0.8)
+//                                       )
+//                               }
             }.frame(width: 335, height: 80)
             .padding(.top,15)
             

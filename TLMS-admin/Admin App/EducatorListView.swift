@@ -19,24 +19,29 @@ struct EducatorListView: View {
                         Text(segments[index])
                             .tag(index)
                     }
-                }
+                }.padding()
                 .pickerStyle(SegmentedPickerStyle())
-                .padding()
+               
                 
                
-                    TextField("Search User", text: $searchText)
-
-                        .shadow(color: .gray, radius: 3)
-                        .background(Color(.white))
-                        .cornerRadius(8)
-                        .overlay(
-                            HStack {
-                                Spacer()
-                                Image(systemName: "magnifyingglass")
-                                    .foregroundColor(.gray)
-                            }.padding(10)
-                                )
+            HStack {
+                TextField("Search User", text: $searchText)
+                    .padding(.horizontal, 10)
+                    
+                    .shadow(color: .gray, radius: 3)
+                    .background(Color(.white))
+                    .cornerRadius(8)
+                    .overlay(
+                        HStack {
                             Spacer()
+                            Image(systemName: "magnifyingglass")
+                                .foregroundColor(.gray)
+                        }
+                    )
+                
+                Spacer()
+            }.shadow(radius: 6)
+                .padding(20)
                         
                
                    
@@ -104,7 +109,7 @@ struct EducatorListView: View {
                        
                     }
                 }
-            }
+        }
         
      
             .onAppear {

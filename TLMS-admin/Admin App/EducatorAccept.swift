@@ -9,33 +9,33 @@ struct EducatorAccept: View {
     
     var body: some View {
 
-            PNGImageView(imageName: "uprectange", width: .infinity, height: .infinity)
+        PNGImageView(imageName: "uprectange", width: 400, height: .infinity)
                 .overlay{
-                    VStack(alignment: .leading, spacing: 10) {
+                    VStack(alignment: .center, spacing: 10) {
                 ProfileEducatorImage(imageName: educator.profileImageURL, width: .infinity, height: 200)
-                VStack(alignment: .leading){
-                    Text(educator.fullName)
-                        .font(.custom("Poppins-SemiBold", size: 28))
-                        .fontWeight(.bold)
-                        .foregroundColor(colorScheme == .dark ? Color.white: Color.black)
-                    
-                    
-                    Text(educator.about)
-                        .font(.custom("Poppins-SemiBold", size: 16))
-                        .foregroundColor(colorScheme == .dark ? Color.white: Color.black)
-                    
-                    Text(educator.email)
-                        .font(.custom("Poppins-Medium", size: 16))
-                        .foregroundColor(colorScheme == .dark ? Color.white: Color.black)
-                    Text(educator.phoneNumber)
-                        .font(.custom("Poppins-Medium", size: 16))
-                        .foregroundColor(colorScheme == .dark ? Color.white: Color.black)
-                }
-                        
-             
-
-                Spacer()
-                
+                        HStack {
+                            VStack(alignment: .leading){
+                                Text(educator.fullName)
+                                    .font(.custom("Poppins-SemiBold", size: 28))
+                                    .fontWeight(.bold)
+                                    .foregroundColor(colorScheme == .dark ? Color.white: Color.black)
+                                
+                                
+                                Text(educator.about)
+                                    .font(.custom("Poppins-SemiBold", size: 16))
+                                    .foregroundColor(colorScheme == .dark ? Color.white: Color.black)
+                                
+                                Text(educator.email)
+                                    .font(.custom("Poppins-Medium", size: 16))
+                                    .foregroundColor(colorScheme == .dark ? Color.white: Color.black)
+                                Text(educator.phoneNumber)
+                                    .font(.custom("Poppins-Medium", size: 16))
+                                    .foregroundColor(colorScheme == .dark ? Color.white: Color.black)
+                            }
+                            
+                            Spacer()
+                        }
+                        Spacer()
                 HStack(alignment: .center) {
                     Button(action: {
                         firebaseFetch.removeEducator(educator: educator)
@@ -67,13 +67,14 @@ struct EducatorAccept: View {
                     .toolbar(.hidden, for: .tabBar)
             .navigationTitle("Educator")
             .navigationBarTitleDisplayMode(.inline)
-            .padding(.top, 100)
+            .padding(.top, 80)
             .padding(.bottom, 30)
             .padding(20)
+            
         }
-
+                .ignoresSafeArea()
         .background(colorScheme == .dark ? Color.black : Color.white)
-        .ignoresSafeArea()
+       
     }
 }
 
