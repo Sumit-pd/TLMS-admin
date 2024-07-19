@@ -16,74 +16,184 @@ struct CourseUploadFile: View {
     @State private var showingDocumentPicker = false
     @State private var documentURL: URL?
     @State var course : Course
+    
+    
+    
+    @State var quiz = Quiz(questions: [], score: 0)
+    
+    
 
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack {
-                    HStack {
-                        Image(systemName: "person.fill")
-                        Text(course.courseName)
-                    }
+                VStack(alignment: .leading){
+                    
                     Picker(selection: $selection, label: Text("Picker")) {
                         Text("Modules").tag(0)
                         Text("Quiz").tag(1)
                     }
                     .pickerStyle(SegmentedPickerStyle())
-                    .colorMultiply(.purple)
-                    .padding(10)
-
-                    HStack {
-                        Text("Add Course Contents")
-                            .fontWeight(.bold)
-                        Spacer()
-                        Button(action: { addNewModule() }) {
-                            Text("+ Add Module")
+                    .colorMultiply(Color("color 2"))
+                   
+                    
+                        
+                    if(selection == 0){
+                        
+                        HStack {
+                            Text("Add Course Contents")
+//                                .font(.custom("Poppins-Bold", size: 18))
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .padding(.bottom, 10)
+                                .padding(.top , 10)
+                               
+                            Spacer()
+                            Button(action: { addNewModule() }) {
+                                Text("+ Add Module")
+                            }
+                            .font(.system(size: 12))
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 5)
+                            .padding(8)
+                            .background(Color("color 1"))
+                            .cornerRadius(5)
+                        }
+                        
+                        
+                        ForEach(modules.indices, id: \.self) { index in
+                            ModuleContent(module: $modules[index], course: course)
+                                .background(Color("color 2"))
+                                .cornerRadius(10)
+                                
+                                .padding(.vertical, 5)
+                            
+                            if index < modules.count - 1 {
+                                Divider()
+                                    .padding(.horizontal, 10)
+                            }
+                        }
+                        
+                        Button(action: {}) {
+                            Text("Save as Draft")
                         }
                         .font(.system(size: 12))
-                        .foregroundColor(.white)
+                        .frame(width: 330, height: 25)
                         .padding(.horizontal, 5)
                         .padding(8)
-                        .background(Color.purple)
-                        .cornerRadius(5)
+                        .foregroundColor(.black)
+                        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color("color 1"), lineWidth: 0.8))
+                        .padding(.top, 20)
+                        
+                        CustomButton(label: "Mark as Complete", action: {
+                            courseService.updateCourseState(course: course, newState: "completed") {
+                                error in
+                                print("Error")
+                            }
+                            presentationMode.wrappedValue.dismiss()
+                        })
+                        
                     }
-                    .padding(10)
-
-                    ForEach(modules.indices, id: \.self) { index in
-                        ModuleContent(module: $modules[index], course: course)
-                            .background(Color.purple.opacity(0.05))
-                            .cornerRadius(10)
+                   
+            
+                    else if selection == 1{
+                        
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text("Upload Quizzes")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .padding(.bottom, 10)
+                                .padding(.top , 10)
+                            
+                            
+                                
+                                ForEach(quiz.questions.indices, id: \.self) { index in
+                                    
+                                    QuestionStack(question: $quiz.questions[index], questionNumber: index + 1)
+                                        .padding(.bottom, 10)
+                                        .background(Color("color 2"))
+                                        .cornerRadius(10)
+                                        
+                                        
+                                        .onDrag({
+                                            return NSItemProvider(object: String(index) as NSString)
+                                        })
+                                }
+                                .onMove(perform: moveQuestion)
+                            
+                         
+                            
+                            Button(action: { addNewQuestion() }) {
+                                Text("+ Add More")
+                                    .font(.system(size: 14))
+                                    .foregroundColor(Color("color 1"))
+                            }
                             .padding(.horizontal, 10)
-                            .padding(.vertical, 5)
-
-                        if index < modules.count - 1 {
-                            Divider()
-                                .padding(.horizontal, 10)
+                            .padding(.top, 10)
+                            
+                            Button(action: {}) {
+                                Text("Save as Draft")
+                            }
+                            .font(.system(size: 12))
+                            .frame(width: 330, height: 25)
+                            .padding(8)
+                            .foregroundColor(.black)
+                            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color("color 1"), lineWidth: 0.8))
+                            .padding(.top, 20)
+                            
+                            CustomButton(label: "Save and Continue", action: {storeQuiz()})
                         }
+                        
+                       
+                        
+                        
                     }
-
-                    Button(action: {}) {
-                        Text("Save as Draft")
-                    }
-                    .font(.system(size: 12))
-                    .frame(width: 330, height: 25)
-                    .padding(.horizontal, 5)
-                    .padding(8)
-                    .foregroundColor(.black)
-                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.purple, lineWidth: 0.8))
-                    .padding(.top, 20)
-
-                    CustomButton(label: "Mark as Complete", action: {
-                        courseService.updateCourseState(course: course, newState: "completed") {
-                            error in
-                            print("Error")
-                        }
-                        presentationMode.wrappedValue.dismiss()
-                    })
+                    
                 }
-                .padding(10)
+                .padding(20)
+                .navigationTitle("Course Creation")
+                .navigationBarTitleDisplayMode(.inline)
             }
         }
+    }
+    func storeQuiz() {
+        let db = Firestore.firestore()
+        
+
+        let courseRef = db.collection("Courses").document(course.courseName)
+
+        var allQuestionsData: [[String: Any]] = []
+
+        for question in quiz.questions {
+            let questionData: [String: Any] = [
+                "questionText": question.questionText,
+                "options": question.options,
+                "correctOptionNumber": question.correctOptionNumber
+            ]
+            allQuestionsData.append(questionData)
+        }
+
+        let quizData: [String: Any] = [
+            "questions": allQuestionsData,
+            "score": quiz.score
+        ]
+
+        courseRef.updateData(quizData) { error in
+            if let error = error {
+                print("Error saving quiz to Firestore: \(error.localizedDescription)")
+            } else {
+                print("Quiz successfully saved to Firestore!")
+            }
+        }
+    }
+
+    
+    func moveQuestion(from source: IndexSet, to destination: Int) {
+        quiz.questions.move(fromOffsets: source, toOffset: destination)
+    }
+    
+    func addNewQuestion() {
+        let newQuestion = Question(questionText: "", options: ["", "", "", ""], correctOptionNumber: -1)
+        quiz.questions.append(newQuestion)
     }
 
     func addNewModule() {
@@ -92,6 +202,79 @@ struct CourseUploadFile: View {
         modules.append(newModule)
     }
 }
+
+struct QuestionStack: View {
+    
+   
+    @Binding var question: Question
+    var questionNumber: Int
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("Question \(questionNumber)")
+                .font(.headline)
+                .fontWeight(.bold)
+            
+            HStack {
+                Image(systemName: "line.horizontal.3")
+                TextField("Question", text: $question.questionText)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.leading, 10)
+            }
+            .padding(.vertical, 10)
+            
+            VStack(alignment: .leading) {
+                ForEach(question.options.indices, id: \.self) { index in
+                    HStack {
+                        RadioButton(selectedOption: $question.correctOptionNumber, optionNumber: index, optionText: $question.options[index])
+                        TextField("Option \(index + 1)", text: $question.options[index])
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .padding(.leading, 10)
+                    }
+                    .padding(.vertical, 5)
+                }
+            }
+            .padding(.leading, 10)
+            .padding(.bottom, 10)
+        }
+        .padding()
+        .cornerRadius(10)
+        
+    }
+}
+
+struct RadioButton: View {
+    @Binding var selectedOption: Int
+    var optionNumber: Int
+    @Binding var optionText: String
+    
+    var body: some View {
+        Button(action: {
+            selectedOption = optionNumber
+        }) {
+            HStack {
+                Image(systemName: selectedOption == optionNumber ? "largecircle.fill.circle" : "circle")
+            }
+        }
+        .buttonStyle(PlainButtonStyle())
+    }
+}
+
+
+
+extension Question: Equatable {
+    static func == (lhs: Question, rhs: Question) -> Bool {
+        return lhs.questionText == rhs.questionText && lhs.options == rhs.options && lhs.correctOptionNumber == rhs.correctOptionNumber
+    }
+}
+
+
+
+
+
+
+
+
 
 // Define the ModuleContent view
 struct ModuleContent: View {

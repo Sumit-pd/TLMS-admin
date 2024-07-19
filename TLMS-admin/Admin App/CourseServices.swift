@@ -179,6 +179,54 @@ class CourseServices : ObservableObject {
             }
         }
     }
+    func fetchCoursesByTargetAndState(targetName: String, completion: @escaping ([Course]?, Error?) -> Void) {
+            let db = Firestore.firestore()
+            let coursesRef = db.collection("Courses")
+            
+            coursesRef.whereField("target", isEqualTo: targetName).whereField("state", isEqualTo: "created").getDocuments { snapshot, error in
+                if let error = error {
+                    completion(nil, error)
+                    return
+                }
+                
+                guard let documents = snapshot?.documents else {
+                    completion(nil, nil)
+                    return
+                }
+                
+                var courses: [Course] = []
+                let dispatchGroup = DispatchGroup()
+                
+                for document in documents {
+                    dispatchGroup.enter()
+                    let data = document.data()
+                    guard let courseIDString = data["courseID"] as? String,
+                          let courseID = UUID(uuidString: courseIDString),
+                          let courseName = data["courseName"] as? String,
+                          let courseDescription = data["courseDescription"] as? String,
+                          let courseImageURL = data["courseImageURL"] as? String,
+                          let assignedEducatorID = data["assignedEducator"] as? String,
+                          let releaseDate = (data["releaseDate"] as? Timestamp)?.dateValue(),
+                          let target = data["target"] as? String,
+                          let state = data["state"] as? String else {
+                        dispatchGroup.leave()
+                        continue
+                    }
+                    
+                    self.fetchEducatorByID(assignedEducatorID) { educator in
+                        if let educator = educator {
+                            let course = Course(courseID: courseID, courseName: courseName, courseDescription: courseDescription, courseImageURL: courseImageURL, releaseDate: releaseDate, assignedEducator: educator, target: target, state: state)
+                            courses.append(course)
+                        }
+                        dispatchGroup.leave()
+                    }
+                }
+                
+                dispatchGroup.notify(queue: .main) {
+                    completion(courses, nil)
+                }
+            }
+        }
 
 
     func fetchEducatorByID(_ id: String, completion: @escaping (Educator?) -> Void) {
