@@ -59,8 +59,8 @@ struct CoursesView: View {
                                                 .padding(.top)
                                         
                                         
-                                        ScrollView{
-                                            VStack(alignment: .center , spacing: 10){
+                                        ScrollView(.vertical){
+                                            VStack( spacing: 10){
                                                 ForEach(viewModelForPublishedCourse.courses){
                                                     course in
                                                     HorizontalCardView(course: course)
@@ -161,7 +161,7 @@ struct HorizontalCardView: View {
                         .lineLimit(3)
                 }
               
-            }.padding()
+            }
             .frame(width: 354, height: 100)
             .background(Color("noticationBoxColour"))
             .cornerRadius(12)

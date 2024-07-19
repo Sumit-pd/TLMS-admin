@@ -1,9 +1,3 @@
-//
-//  HomeScreen.swift
-//  TLMS-admin
-//
-//  Created by Vidhi Iyer  on 11/07/24.
-//
 
 
 import SwiftUI
@@ -14,6 +8,7 @@ import FirebaseStorage
 struct EducatorHomeScreen: View {
     @EnvironmentObject var authViewModel: UserAuthentication
     @ObservedObject var firebaseFetch = FirebaseFetch()
+    @State var navAhead : Bool = false
     
     var body: some View {
         NavigationView {
@@ -29,17 +24,35 @@ struct EducatorHomeScreen: View {
                                     Text("Start teaching!")
                                 }
                                 Spacer()
-                                Button(action: {
-                                    do {
-                                        try Auth.auth().signOut()
-                                        authViewModel.signOut()
-                                    } catch let signOutError as NSError {
-                                        print("Error signing out: %@", signOutError)
+                                HStack {
+                                  
+            
+                                    Button(action: {
+                                        navAhead = true
+                                    }) {
+                                        Image(systemName: "bell.fill")
+                                            .font(.title2)
+                                            .foregroundColor(Color("color 1"))
                                     }
-                                }) {
-                                    Image(systemName: "gearshape")
-                                        .font(.title2)
-                                        .foregroundColor(.black)
+                                    NavigationLink(destination : NotificationPage(educatorID: Auth.auth().currentUser!.uid), isActive: $navAhead) {
+                                        EmptyView()
+                                    }
+                                    .padding(.horizontal,2)
+                               
+                                    Button(action: {
+                                        do {
+                                            try Auth.auth().signOut()
+                                            authViewModel.signOut()
+                                        } catch let signOutError as NSError {
+                                            print("Error signing out: %@", signOutError)
+                                        }
+                                    }) {
+                                        Image(systemName: "rectangle.portrait.and.arrow.right")
+                                            .font(.title2)
+                                            .foregroundColor(Color("color 1"))
+                                    }
+                                    
+                                    
                                 }
                             }
                                 .font(.subheadline)
@@ -186,7 +199,7 @@ struct SectionHeader: View {
 
 struct SectionHeader2: View {
     var title: String
-    @State var navAhead : Bool = false
+ 
     
     var body: some View {
             HStack {
@@ -194,16 +207,12 @@ struct SectionHeader2: View {
                     .font(.headline)
                     .fontWeight(.bold)
                 Spacer()
-                Button(action : {
-                    navAhead = true
-                }) {
-                    Text("See All")
-                }
+                
+                   
+                
             }
             .padding(.horizontal)
-        NavigationLink(destination : NotificationPage(educatorID: Auth.auth().currentUser!.uid), isActive: $navAhead) {
-            EmptyView()
-        }
+      
     }
 }
 

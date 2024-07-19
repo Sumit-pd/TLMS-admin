@@ -42,9 +42,6 @@ struct Content {
 
 struct Quiz {
     var questions : [Question]
-    var maxScore : Int {
-        questions.count * 5
-    }
     var score : Int
 }
 

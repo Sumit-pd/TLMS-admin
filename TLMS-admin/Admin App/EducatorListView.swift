@@ -26,8 +26,8 @@ struct EducatorListView: View {
                
             HStack {
                 TextField("Search User", text: $searchText)
-                    .padding(.horizontal, 10)
-                    
+                    .padding(.horizontal, 40)
+                    .padding(7)
                     .shadow(color: .gray, radius: 3)
                     .background(Color(.white))
                     .cornerRadius(8)
@@ -36,12 +36,13 @@ struct EducatorListView: View {
                             Spacer()
                             Image(systemName: "magnifyingglass")
                                 .foregroundColor(.gray)
+                                .padding(.trailing,320)
                         }
                     )
                 
                 Spacer()
             }.shadow(radius: 6)
-                .padding(20)
+                .padding(10)
                         
                
                    
@@ -126,8 +127,8 @@ struct EducatorsListCard: View {
     @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
-        NavigationLink(destination: EducatorProfile(educator: educator)){
-            HStack(spacing: 10){
+        NavigationLink(destination: EducatorProfile(educator: educator)) {
+            HStack(spacing: 10) {
                 ProfileCircleImage(imageURL: educator.profileImageURL, width: 60, height: 60)
 
                 VStack(alignment: .leading) {
@@ -153,20 +154,12 @@ struct EducatorsListCard: View {
 }
 
 struct LearnerListCard: View {
-
+    var learner: Learner
     
-    @Environment(\.colorScheme) var colorScheme
-
-
-    
-    @ObservedObject var firebaseFetch = FirebaseFetch()
-    
-    var learner : Learner
-    var educator : Educator = Educator(id: UUID().uuidString, firstName: "dfd", lastName: "dfddf", about: "fdfdf", email: "srew", password: "rwfds", phoneNumber: "sdgsd", profileImageURL: "sdfsd")
 
     var body: some View {
-        NavigationLink(destination: EducatorProfile(educator: educator)){
-            HStack(spacing: 10){
+//        NavigationLink(destination: EducatorProfile()) {
+            HStack(spacing: 10) {
                 ProfileCircleImage(imageURL: learner.firstName!, width: 60, height: 60)
 
                 VStack(alignment: .leading) {
@@ -183,11 +176,9 @@ struct LearnerListCard: View {
                     .foregroundColor(.secondary)
             }
             .padding(10)
-
-            .frame(height: 100)
-
-        }
-        .navigationTitle("User")
+            .frame(width: 354, height: 100)
+//        }
+        .navigationTitle("Learners")
     }
 }
 

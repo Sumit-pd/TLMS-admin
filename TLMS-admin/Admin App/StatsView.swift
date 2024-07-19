@@ -26,8 +26,9 @@ struct StatsView: View {
                                 print("Error signing out: %@", signOutError)
                             }
                         }) {
-                           Text("Sign out")
-                                .foregroundColor(.blue)
+                            Image(systemName: "rectangle.portrait.and.arrow.right")
+                                .font(.title3)
+                                .foregroundColor(Color("color 1"))
                         }
                     }
                 }
@@ -99,12 +100,12 @@ struct TotalEnrollment: View {
                 RoundedRectangle(cornerRadius: 12)
                   
                     .fill(Color("color 2"))
-                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: 100,maxHeight: 100)
+//                    .frame(maxWidth: /@START_MENU_TOKEN@/.infinity/@END_MENU_TOKEN@/, minHeight: 100,maxHeight: 100)
 
-                
-                    PNGImageView(imageName: "wave2", width: .infinity, height: .infinity)
-                        .contrast(colorScheme == .dark ? 12 : 2)
-                    .frame(height: 100)
+//
+//                    PNGImageView(imageName: "wave2", width: .infinity, height: .infinity)
+//                        .contrast(colorScheme == .dark ? 12 : 2)
+//                    .frame(height: 100)
                 
                     
                 

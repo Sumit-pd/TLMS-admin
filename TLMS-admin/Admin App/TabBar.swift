@@ -37,7 +37,7 @@ struct TabBar: View {
 
                         .tabItem {
                             Image(systemName: "person.3.fill")
-                            Text("Educators")
+                            Text("users")
                         }
 
                         .tag(2) // Tag for ProfileView
@@ -45,7 +45,7 @@ struct TabBar: View {
                         StatsView()}
                         .tabItem {
                             Image(systemName: "chart.bar.xaxis")
-                            Text("Account")
+                            Text("Enrolments")
                         }
                         .tag(3)
                 
