@@ -100,7 +100,7 @@ struct TotalEnrollment: View {
                 RoundedRectangle(cornerRadius: 12)
                   
                     .fill(Color("color 2"))
-                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: 100,maxHeight: 100)
+//                    .frame(maxWidth: /@START_MENU_TOKEN@/.infinity/@END_MENU_TOKEN@/, minHeight: 100,maxHeight: 100)
 
 //                
 //                    PNGImageView(imageName: "wave2", width: .infinity, height: .infinity)

@@ -201,6 +201,8 @@ extension Color {
         )
     }
 }
+
+
 struct ProfileEducatorImage: View {
     var imageName: String
     var width: CGFloat

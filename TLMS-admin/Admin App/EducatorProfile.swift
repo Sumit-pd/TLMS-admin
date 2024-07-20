@@ -1,9 +1,3 @@
-//
-//  EducatorProfile.swift
-//  TLMS-admin
-//
-//  Created by Abcom on 15/07/24.
-//
 
 import SwiftUI
 import FirebaseAuth

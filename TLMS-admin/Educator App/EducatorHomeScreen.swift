@@ -1,9 +1,3 @@
-//
-//  HomeScreen.swift
-//  TLMS-admin
-//
-//  Created by Vidhi Iyer  on 11/07/24.
-//
 
 
 import SwiftUI

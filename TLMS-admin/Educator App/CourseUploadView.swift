@@ -55,14 +55,14 @@ struct CourseUploadFile: View {
                             .foregroundColor(.white)
                             .padding(.horizontal, 5)
                             .padding(8)
-                            .background(Color("color 1"))
+                            .background(Color.purple)
                             .cornerRadius(5)
                         }
                         
                         
                         ForEach(modules.indices, id: \.self) { index in
                             ModuleContent(module: $modules[index], course: course)
-                                .background(Color("color 2"))
+                                .background(Color.purple.opacity(0.05))
                                 .cornerRadius(10)
                                 
                                 .padding(.vertical, 5)
@@ -110,7 +110,7 @@ struct CourseUploadFile: View {
                                     
                                     QuestionStack(question: $quiz.questions[index], questionNumber: index + 1)
                                         .padding(.bottom, 10)
-                                        .background(Color("color 2"))
+                                        .background(Color.purple.opacity(0.05))
                                         .cornerRadius(10)
                                         
                                         
@@ -125,7 +125,7 @@ struct CourseUploadFile: View {
                             Button(action: { addNewQuestion() }) {
                                 Text("+ Add More")
                                     .font(.system(size: 14))
-                                    .foregroundColor(Color("color 1"))
+                                    .foregroundColor(.purple)
                             }
                             .padding(.horizontal, 10)
                             .padding(.top, 10)
@@ -137,7 +137,7 @@ struct CourseUploadFile: View {
                             .frame(width: 330, height: 25)
                             .padding(8)
                             .foregroundColor(.black)
-                            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color("color 1"), lineWidth: 0.8))
+                            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.purple, lineWidth: 0.8))
                             .padding(.top, 20)
                             
                             CustomButton(label: "Save and Continue", action: {storeQuiz()})
