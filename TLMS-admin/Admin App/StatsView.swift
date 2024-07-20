@@ -102,7 +102,7 @@ struct TotalEnrollment: View {
                     .fill(Color("color 2"))
 //                    .frame(maxWidth: /@START_MENU_TOKEN@/.infinity/@END_MENU_TOKEN@/, minHeight: 100,maxHeight: 100)
 
-//
+//                
 //                    PNGImageView(imageName: "wave2", width: .infinity, height: .infinity)
 //                        .contrast(colorScheme == .dark ? 12 : 2)
 //                    .frame(height: 100)

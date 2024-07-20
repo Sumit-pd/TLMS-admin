@@ -21,7 +21,7 @@ struct CoursesView: View {
                                         .opacity(0)
                                         .position(x: geometry.size.width / 2, y: geometry.size.height * 0.4)
                                 } else {
-                                    Spacer()
+                                   
                                     VStack {
                                         
                                         HStack {
